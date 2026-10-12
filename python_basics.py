@@ -1076,3 +1076,57 @@
 
 # print(calculate_expression(3))  # 14
 
+# # ==========================================
+# # 62. PIN EXTRACTOR - استخراج کد از شعر
+# # ==========================================
+
+# def pin_extractor(poems):
+#     secret_codes = []  # ذخیره کدهای استخراج‌شده
+
+#     # پیمایش شعرها
+#     for poem in poems:
+#         secret_code = ''
+
+#         # تقسیم شعر به خطوط جداگانه
+#         lines = poem.split('\n')
+
+#         # دریافت اندیس و متن هر خط
+#         for line_index, line in enumerate(lines):
+#             words = line.split()  # تقسیم خط به کلمات
+
+#             # بررسی وجود کلمه در اندیس موردنظر
+#             if len(words) > line_index:
+#                 # افزودن تعداد حروف کلمه به کد
+#                 secret_code += str(len(words[line_index]))
+#             else:
+#                 # اگر کلمه‌ای وجود نداشت، صفر اضافه می‌شود
+#                 secret_code += '0'
+
+#         # ذخیره کد استخراج‌شده از شعر
+#         secret_codes.append(secret_code)
+
+#     return secret_codes  # برگرداندن تمام کدها
+
+
+# # ==========================================
+# # 63. TESTING - آزمایش تابع
+# # ==========================================
+
+# poem1 = """Stars and the moon
+# shine in the sky
+# white and
+# until the end of the night"""
+
+# poem2 = """The grass is green
+# here and there
+# hoping for rain
+# before it turns yellow"""
+
+# poem3 = """There
+# once
+# was
+# a
+# dragon"""
+
+# # ارسال شعرها به‌صورت یک لیست
+# print(pin_extractor([poem1, poem2, poem3]))
