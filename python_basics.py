@@ -668,3 +668,26 @@ developer = ('Alice', 34, 'Rust Developer')
 #   File "<stdin>", line 2, in <module>
 # IndexError: list index out of range
 # """
+developer = 'Jessica'
+tuple(developer) # ('J', 'e', 's', 's', 'i', 'c', 'a')
+
+programming_languages = ('Python', 'Java', 'C++', 'Rust')
+
+'Rust' in programming_languages # True
+'JavaScript' in programming_languages # False
+
+developer = ('Alice', 34, 'Rust Developer')
+name, age, job = developer
+
+print(name) # 'Alice'
+print(age) # 34
+print(job) # 'Rust Developer'
+
+developer = ('Alice', 34, 'Rust Developer')
+name, *rest = developer
+
+print(name) # 'Alice'
+print(rest) # [34, 'Rust Developer']
+
+desserts = ('cake', 'pie', 'cookies', 'ice cream')
+desserts[1:3] # ('pie', 'cookies')
