@@ -451,9 +451,9 @@
 
 # print(create_character("ren", 4, 2, 1)) 
 
-# ==========================================
-# 24. LIST INDEXING - دسترسی به اعضای لیست
-# ==========================================
+# #==========================================
+# #24. LIST INDEXING - دسترسی به اعضای لیست
+# #==========================================
 
 # cities = ['Los Angeles', 'London', 'Tokyo']
 
@@ -718,138 +718,182 @@
 
 # print(desserts[1:3])  # ('pie', 'cookies')
 
-# ==========================================
-# 42. TUPLE METHODS - متدهای تاپل
-# ==========================================
+# # ==========================================
+# # 42. TUPLE METHODS - متدهای تاپل
+# # ==========================================
 
-programming_languages = ('Rust', 'Java', 'Python', 'C++', 'Rust')
+# # programming_languages = ('Rust', 'Java', 'Python', 'C++', 'Rust')
 
-print(programming_languages.count('Rust'))        # تعداد تکرار مقدار
-print(programming_languages.count('JavaScript'))  # اگر نباشد، 0
+# print(programming_languages.count('Rust'))        # تعداد تکرار مقدار
+# print(programming_languages.count('JavaScript'))  # اگر نباشد، 0
 
-# متد count به یک آرگومان نیاز دارد
-# programming_languages.count()
-# TypeError: آرگومان لازم ارسال نشده است
-
-
-# پیدا کردن اندیس اولین وقوع مقدار
-print(programming_languages.index('Java'))  # 1
-
-# اگر مقدار وجود نداشته باشد، خطای ValueError رخ می‌دهد
-# programming_languages.index('JavaScript')
+# # متد count به یک آرگومان نیاز دارد
+# # programming_languages.count()
+# # TypeError: آرگومان لازم ارسال نشده است
 
 
-# جست‌وجو از اندیس مشخص
-programming_languages = ('Rust', 'Java', 'Python', 'C++', 'Rust', 'Python')
+# # پیدا کردن اندیس اولین وقوع مقدار
+# print(programming_languages.index('Java'))  # 1
 
-print(programming_languages.index('Python', 3))  # 5
-
-# جست‌وجو در محدوده مشخص؛ اندیس پایان شامل نمی‌شود
-programming_languages = (
-    'Rust', 'Java', 'Python', 'C++',
-    'Rust', 'Python', 'JavaScript', 'Python'
-)
-
-print(programming_languages.index('Python', 2, 5))  # 2
+# # اگر مقدار وجود نداشته باشد، خطای ValueError رخ می‌دهد
+# # programming_languages.index('JavaScript')
 
 
-# ==========================================
-# 43. SORTED - مرتب‌سازی تاپل
-# ==========================================
+# # جست‌وجو از اندیس مشخص
+# programming_languages = ('Rust', 'Java', 'Python', 'C++', 'Rust', 'Python')
 
-numbers = (13, 2, 78, 3, 45, 67, 18, 7)
+# print(programming_languages.index('Python', 3))  # 5
 
-# مرتب‌سازی صعودی و ساخت لیست جدید
-print(sorted(numbers))
+# # جست‌وجو در محدوده مشخص؛ اندیس پایان شامل نمی‌شود
+# programming_languages = (
+#     'Rust', 'Java', 'Python', 'C++',
+#     'Rust', 'Python', 'JavaScript', 'Python'
+# )
 
-programming_languages = ('Rust', 'Java', 'Python', 'C++', 'Rust', 'Python')
-
-# مرتب‌سازی بر اساس طول رشته‌ها
-print(sorted(programming_languages, key=len))
-
-# مرتب‌سازی نزولی بر اساس ترتیب حروف
-print(sorted(programming_languages, reverse=True))
+# print(programming_languages.index('Python', 2, 5))  # 2
 
 
-# ==========================================
-# 44. FOR LOOP - حلقه for
-# ==========================================
+# # ==========================================
+# # 43. SORTED - مرتب‌سازی تاپل
+# # ==========================================
 
-programming_languages = ['Rust', 'Java', 'Python', 'C++']
+# numbers = (13, 2, 78, 3, 45, 67, 18, 7)
 
-for language in programming_languages:
-    print(language)  # پیمایش اعضای لیست
+# # مرتب‌سازی صعودی و ساخت لیست جدید
+# print(sorted(numbers))
 
-# پیمایش کاراکترهای رشته
-for char in 'code':
-    print(char)
+# programming_languages = ('Rust', 'Java', 'Python', 'C++', 'Rust', 'Python')
 
+# # مرتب‌سازی بر اساس طول رشته‌ها
+# print(sorted(programming_languages, key=len))
 
-# ==========================================
-# 45. NESTED LOOPS - حلقه‌های تو در تو
-# ==========================================
-
-categories = ['Fruit', 'Vegetable']
-foods = ['Apple', 'Carrot', 'Banana']
-
-# اجرای حلقه داخلی برای هر عضو حلقه خارجی
-for category in categories:
-    for food in foods:
-        print(category, food)
+# # مرتب‌سازی نزولی بر اساس ترتیب حروف
+# print(sorted(programming_languages, reverse=True))
 
 
-# ==========================================
-# 46. WHILE LOOP - حلقه while
-# ==========================================
+# # ==========================================
+# # 44. FOR LOOP - حلقه for
+# # ==========================================
 
-secret_number = 3
-guess = 0
+# programming_languages = ['Rust', 'Java', 'Python', 'C++']
 
-# تکرار تا زمانی که عدد درست حدس زده شود
-while guess != secret_number:
-    guess = int(input('Guess the number (1-5): '))
+# for language in programming_languages:
+#     print(language)  # پیمایش اعضای لیست
 
-    if guess != secret_number:
-        print('Wrong! Try again.')
-
-print('You got it!')
+# # پیمایش کاراکترهای رشته
+# for char in 'code':
+#     print(char)
 
 
-# ==========================================
-# 47. BREAK - خروج از حلقه
-# ==========================================
+# # ==========================================
+# # 45. NESTED LOOPS - حلقه‌های تو در تو
+# # ==========================================
 
-developer_names = ['Jess', 'Naomi', 'Tom']
+# categories = ['Fruit', 'Vegetable']
+# foods = ['Apple', 'Carrot', 'Banana']
 
-for developer in developer_names:
-    if developer == 'Naomi':
-        break  # توقف کامل حلقه
-    print(developer)
-
-
-# ==========================================
-# 48. CONTINUE - رد کردن تکرار فعلی
-# ==========================================
-
-developer_names = ['Jess', 'Naomi', 'Tom']
-
-for developer in developer_names:
-    if developer == 'Naomi':
-        continue  # رد کردن این تکرار
-    print(developer)
+# # اجرای حلقه داخلی برای هر عضو حلقه خارجی
+# for category in categories:
+#     for food in foods:
+#         print(category, food)
 
 
-# ==========================================
-# 49. FOR-ELSE - استفاده از else در حلقه
-# ==========================================
+# # ==========================================
+# # 46. WHILE LOOP - حلقه while
+# # ==========================================
 
-words = ['sky', 'apple', 'rhythm', 'fly', 'orange']
+# secret_number = 3
+# guess = 0
 
-for word in words:
-    for letter in word:
-        if letter.lower() in 'aeiou':
-            print(f"'{word}' contains the vowel '{letter}'")
-            break
-    else:
-        # فقط وقتی اجرا می‌شود که حلقه داخلی break نشود
-        print(f"'{word}' has no vowels")
+# # تکرار تا زمانی که عدد درست حدس زده شود
+# while guess != secret_number:
+#     guess = int(input('Guess the number (1-5): '))
+
+#     if guess != secret_number:
+#         print('Wrong! Try again.')
+
+# print('You got it!')
+
+
+# # ==========================================
+# # 47. BREAK - خروج از حلقه
+# # ==========================================
+
+# developer_names = ['Jess', 'Naomi', 'Tom']
+
+# for developer in developer_names:
+#     if developer == 'Naomi':
+#         break  # توقف کامل حلقه
+#     print(developer)
+
+
+# # ==========================================
+# # 48. CONTINUE - رد کردن تکرار فعلی
+# # ==========================================
+
+# developer_names = ['Jess', 'Naomi', 'Tom']
+
+# for developer in developer_names:
+#     if developer == 'Naomi':
+#         continue  # رد کردن این تکرار
+#     print(developer)
+
+
+# # ==========================================
+# # 49. FOR-ELSE - استفاده از else در حلقه
+# # ==========================================
+
+# words = ['sky', 'apple', 'rhythm', 'fly', 'orange']
+
+# for word in words:
+#     for letter in word:
+#         if letter.lower() in 'aeiou':
+#             print(f"'{word}' contains the vowel '{letter}'")
+#             break
+#     else:
+#         # فقط وقتی اجرا می‌شود که حلقه داخلی break نشود
+#         print(f"'{word}' has no vowels")
+        
+from inspect import Traceback
+
+
+for num in range(3):
+    print(num)
+for num in range(1, 5):
+    print(num)
+for num in range(2, 11, 2):
+    print(num)
+# for num in range():
+#     print(num)
+# ERROR!
+# Traceback (most recent call last):
+#   File "<main.py>", line 1, in <module>
+# TypeError: range expected at least 1 argument, got 0
+# for num in range(3.1):
+#     print(num)
+# ERROR!
+# Traceback (most recent call last):
+#   File "<main.py>", line 1, in <module>
+# TypeError: 'float' object cannot be interpreted as an integer
+for num in range(40, 0, -10):
+    print(num)
+numbers = list(range(2, 11, 2))
+print(numbers) # [2, 4, 6, 8, 10]
+
+languages = ['Spanish', 'English', 'Russian', 'Chinese']
+
+for language in languages:
+    print(language)
+
+languages = ['Spanish', 'English', 'Russian', 'Chinese']
+
+index = 0
+
+for language in languages:
+    print(f'Index {index} and language {language}')
+    index += 1
+
+languages = ['Spanish', 'English', 'Russian', 'Chinese']
+
+list(enumerate(languages))
+# [(0, 'Spanish'), (1, 'English'), (2, 'Russian'), (3, 'Chinese')]
