@@ -1130,3 +1130,46 @@
 
 # # ارسال شعرها به‌صورت یک لیست
 # print(pin_extractor([poem1, poem2, poem3]))
+
+
+# # ==========================================
+# # 63. NUMBER PATTERN - ساخت الگوی اعداد
+# # ==========================================
+
+# def number_pattern(n):
+
+#     # بررسی صحیح بودن نوع ورودی
+#     if not isinstance(n, int) or isinstance(n, bool):
+#         return "Argument must be an integer value."
+
+#     # بررسی مثبت بودن عدد
+#     if n < 1:
+#         return "Argument must be an integer greater than 0."
+
+#     result = ""  # رشته‌ای برای ذخیره نتیجه
+
+#     # پیمایش اعداد از 1 تا n
+#     for i in range(1, n + 1):
+
+#         # افزودن فاصله بین اعداد
+#         if i > 1:
+#             result += " "
+
+#         # تبدیل عدد به رشته و افزودن به نتیجه
+#         result += str(i)
+
+#     return result  # برگرداندن رشته نهایی
+
+
+# # ==========================================
+# # 64. TESTING - آزمایش تابع
+# # ==========================================
+
+# print(number_pattern(5))      # 1 2 3 4 5
+# print(number_pattern(1))      # 1
+# print(number_pattern(0))      # پیام خطا
+# print(number_pattern(-3))     # پیام خطا
+# print(number_pattern(2.5))    # پیام خطا
+# print(number_pattern(True))   # پیام خطا
+# print(number_pattern("5"))    # پیام خطا
+
