@@ -897,3 +897,18 @@ languages = ['Spanish', 'English', 'Russian', 'Chinese']
 
 list(enumerate(languages))
 # [(0, 'Spanish'), (1, 'English'), (2, 'Russian'), (3, 'Chinese')]
+
+languages = ['Spanish', 'English', 'Russian', 'Chinese']
+
+for index, language in enumerate(languages):
+    print(f'Index {index} and language {language}')
+languages = ['Spanish', 'English', 'Russian', 'Chinese']
+
+for index, language in enumerate(languages, 1):
+    print(f'Index {index} and language {language}')
+developers = ['Naomi', 'Dario', 'Jessica', 'Tom']
+ids = [1, 2, 3, 4]
+
+list(zip(developers, ids))
+# [('Naomi', 1), ('Dario', 2), ('Jessica', 3), ('Tom', 4)]
+
