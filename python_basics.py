@@ -455,197 +455,197 @@
 # 24. LIST INDEXING - دسترسی به اعضای لیست
 # ==========================================
 
-cities = ['Los Angeles', 'London', 'Tokyo']
+# cities = ['Los Angeles', 'London', 'Tokyo']
 
-print(cities[0])   # اولین عضو
-print(cities[-1])  # آخرین عضو
+# print(cities[0])   # اولین عضو
+# print(cities[-1])  # آخرین عضو
 
-# تبدیل رشته به لیست کاراکترها
-developer = 'Jessica'
-print(list(developer))
+# # تبدیل رشته به لیست کاراکترها
+# developer = 'Jessica'
+# print(list(developer))
 
-# تعداد اعضای لیست
-numbers = [1, 2, 3, 4, 5]
-print(len(numbers))
+# # تعداد اعضای لیست
+# numbers = [1, 2, 3, 4, 5]
+# print(len(numbers))
 
 
-# ==========================================
-# 25. MODIFYING LISTS - تغییر اعضای لیست
-# ==========================================
+# # ==========================================
+# # 25. MODIFYING LISTS - تغییر اعضای لیست
+# # ==========================================
 
-programming_languages = ['Python', 'Java', 'C++', 'Rust']
+# programming_languages = ['Python', 'Java', 'C++', 'Rust']
 
-programming_languages[0] = 'JavaScript'
-print(programming_languages)  # تغییر عضو اول
+# programming_languages[0] = 'JavaScript'
+# print(programming_languages)  # تغییر عضو اول
 
-# شماره اندیس باید در محدوده لیست باشد
-# programming_languages[10] = 'JavaScript'
-# IndexError: اندیس خارج از محدوده است
+# # شماره اندیس باید در محدوده لیست باشد
+# # programming_languages[10] = 'JavaScript'
+# # IndexError: اندیس خارج از محدوده است
 
 
-# ==========================================
-# 26. REMOVING ELEMENTS - حذف اعضای لیست
-# ==========================================
+# # ==========================================
+# # 26. REMOVING ELEMENTS - حذف اعضای لیست
+# # ==========================================
 
-developer = ['Jane Doe', 23, 'Python Developer']
+# developer = ['Jane Doe', 23, 'Python Developer']
 
-del developer[1]  # حذف عضو با اندیس مشخص
-print(developer)
+# del developer[1]  # حذف عضو با اندیس مشخص
+# print(developer)
 
-numbers = [10, 20, 30, 40, 50]
-numbers.remove(50)  # حذف اولین مقدار مشخص
-print(numbers)
+# numbers = [10, 20, 30, 40, 50]
+# numbers.remove(50)  # حذف اولین مقدار مشخص
+# print(numbers)
 
-numbers = [1, 2, 3, 4, 5]
-removed_number = numbers.pop(1)  # حذف و برگرداندن عضو
-print(removed_number)
+# numbers = [1, 2, 3, 4, 5]
+# removed_number = numbers.pop(1)  # حذف و برگرداندن عضو
+# print(removed_number)
 
-numbers.pop()  # حذف آخرین عضو
-numbers.clear()  # حذف تمام اعضا
+# numbers.pop()  # حذف آخرین عضو
+# numbers.clear()  # حذف تمام اعضا
 
 
-# ==========================================
-# 27. MEMBERSHIP - بررسی وجود عضو در لیست
-# ==========================================
+# # ==========================================
+# # 27. MEMBERSHIP - بررسی وجود عضو در لیست
+# # ==========================================
 
-programming_languages = ['Python', 'Java', 'C++', 'Rust']
+# programming_languages = ['Python', 'Java', 'C++', 'Rust']
 
-print('Rust' in programming_languages)        # True
-print('JavaScript' in programming_languages)  # False
+# print('Rust' in programming_languages)        # True
+# print('JavaScript' in programming_languages)  # False
 
 
-# ==========================================
-# 28. NESTED LISTS - لیست‌های تو در تو
-# ==========================================
+# # ==========================================
+# # 28. NESTED LISTS - لیست‌های تو در تو
+# # ==========================================
 
-developer = ['Alice', 25, ['Python', 'Rust', 'C++']]
+# developer = ['Alice', 25, ['Python', 'Rust', 'C++']]
 
-print(developer[2])     # دسترسی به لیست داخلی
-print(developer[2][1])  # دسترسی به عضو دوم لیست داخلی
+# print(developer[2])     # دسترسی به لیست داخلی
+# print(developer[2][1])  # دسترسی به عضو دوم لیست داخلی
 
 
-# ==========================================
-# 29. UNPACKING LISTS - باز کردن اعضای لیست
-# ==========================================
+# # ==========================================
+# # 29. UNPACKING LISTS - باز کردن اعضای لیست
+# # ==========================================
 
-developer = ['Alice', 34, 'Rust Developer']
+# developer = ['Alice', 34, 'Rust Developer']
 
-name, age, job = developer
+# name, age, job = developer
 
-print(name)
-print(age)
-print(job)
+# print(name)
+# print(age)
+# print(job)
 
-# استفاده از * برای دریافت اعضای باقی‌مانده
-name, *rest = developer
+# # استفاده از * برای دریافت اعضای باقی‌مانده
+# name, *rest = developer
 
-print(name)
-print(rest)
+# print(name)
+# print(rest)
 
-# تعداد متغیرها باید با اعضای لیست سازگار باشد
-# name, age, job, city = developer
-# ValueError: تعداد اعضا کافی نیست
+# # تعداد متغیرها باید با اعضای لیست سازگار باشد
+# # name, age, job, city = developer
+# # ValueError: تعداد اعضا کافی نیست
 
 
-# ==========================================
-# 30. LIST SLICING - برش لیست
-# ==========================================
+# # ==========================================
+# # 30. LIST SLICING - برش لیست
+# # ==========================================
 
-desserts = ['Cake', 'Cookies', 'Ice Cream', 'Pie', 'Brownies']
+# desserts = ['Cake', 'Cookies', 'Ice Cream', 'Pie', 'Brownies']
 
-print(desserts[1:4])  # اعضای اندیس 1 تا قبل از 4
+# print(desserts[1:4])  # اعضای اندیس 1 تا قبل از 4
 
-numbers = [1, 2, 3, 4, 5, 6]
+# numbers = [1, 2, 3, 4, 5, 6]
 
-print(numbers[1::2])  # اعضا با فاصله 2 از اندیس 1
-print(numbers[0::2])  # اعضا با فاصله 2 از اندیس 0
+# print(numbers[1::2])  # اعضا با فاصله 2 از اندیس 1
+# print(numbers[0::2])  # اعضا با فاصله 2 از اندیس 0
 
 
-# ==========================================
-# 31. APPEND AND EXTEND - افزودن به لیست
-# ==========================================
+# # ==========================================
+# # 31. APPEND AND EXTEND - افزودن به لیست
+# # ==========================================
 
-numbers = [1, 2, 3, 4, 5]
-numbers.append(6)  # افزودن یک عضو
-print(numbers)
+# numbers = [1, 2, 3, 4, 5]
+# numbers.append(6)  # افزودن یک عضو
+# print(numbers)
 
-# append لیست را به‌عنوان یک عضو اضافه می‌کند
-even_numbers = [6, 8, 10]
-numbers.append(even_numbers)
-print(numbers)
+# # append لیست را به‌عنوان یک عضو اضافه می‌کند
+# even_numbers = [6, 8, 10]
+# numbers.append(even_numbers)
+# print(numbers)
 
-# extend اعضای لیست دیگر را جداگانه اضافه می‌کند
-numbers = [1, 2, 3, 4, 5]
-even_numbers = [6, 8, 10]
+# # extend اعضای لیست دیگر را جداگانه اضافه می‌کند
+# numbers = [1, 2, 3, 4, 5]
+# even_numbers = [6, 8, 10]
 
-numbers.extend(even_numbers)
-print(numbers)
+# numbers.extend(even_numbers)
+# print(numbers)
 
 
-# ==========================================
-# 32. INSERT - افزودن در موقعیت مشخص
-# ==========================================
+# # ==========================================
+# # 32. INSERT - افزودن در موقعیت مشخص
+# # ==========================================
 
-numbers = [1, 2, 3, 4, 5]
+# numbers = [1, 2, 3, 4, 5]
 
-numbers.insert(2, 2.5)  # افزودن در اندیس 2
-print(numbers)
+# numbers.insert(2, 2.5)  # افزودن در اندیس 2
+# print(numbers)
 
 
-# ==========================================
-# 33. POP AND CLEAR - حذف اعضا
-# ==========================================
+# # ==========================================
+# # 33. POP AND CLEAR - حذف اعضا
+# # ==========================================
 
-numbers = [1, 2, 3, 4, 5]
+# numbers = [1, 2, 3, 4, 5]
 
-removed_number = numbers.pop(1)  # حذف عضو اندیس 1
-print(removed_number)
+# removed_number = numbers.pop(1)  # حذف عضو اندیس 1
+# print(removed_number)
 
-numbers.pop()  # حذف آخرین عضو
-print(numbers)
+# numbers.pop()  # حذف آخرین عضو
+# print(numbers)
 
-numbers.clear()  # خالی کردن لیست
-print(numbers)
+# numbers.clear()  # خالی کردن لیست
+# print(numbers)
 
 
-# ==========================================
-# 34. SORT AND SORTED - مرتب‌سازی لیست
-# ==========================================
+# # ==========================================
+# # 34. SORT AND SORTED - مرتب‌سازی لیست
+# # ==========================================
 
-numbers = [19, 2, 35, 1, 67, 41]
+# numbers = [19, 2, 35, 1, 67, 41]
 
-numbers.sort()  # مرتب‌سازی خود لیست
-print(numbers)
+# numbers.sort()  # مرتب‌سازی خود لیست
+# print(numbers)
 
-numbers = [19, 2, 35, 1, 67, 41]
+# numbers = [19, 2, 35, 1, 67, 41]
 
-sorted_numbers = sorted(numbers)  # ساخت لیست مرتب جدید
+# sorted_numbers = sorted(numbers)  # ساخت لیست مرتب جدید
 
-print(numbers)         # لیست اصلی بدون تغییر
-print(sorted_numbers)  # لیست مرتب‌شده
+# print(numbers)         # لیست اصلی بدون تغییر
+# print(sorted_numbers)  # لیست مرتب‌شده
 
-# مرتب‌سازی نزولی
-numbers.sort(reverse=True)
-print(numbers)
+# # مرتب‌سازی نزولی
+# numbers.sort(reverse=True)
+# print(numbers)
 
 
-# ==========================================
-# 35. REVERSE - معکوس کردن ترتیب لیست
-# ==========================================
+# # ==========================================
+# # 35. REVERSE - معکوس کردن ترتیب لیست
+# # ==========================================
 
-numbers = [6, 5, 4, 3, 2, 1]
+# numbers = [6, 5, 4, 3, 2, 1]
 
-numbers.reverse()
-print(numbers)
+# numbers.reverse()
+# print(numbers)
 
 
-# ==========================================
-# 36. INDEX - پیدا کردن اندیس یک عضو
-# ==========================================
+# # ==========================================
+# # 36. INDEX - پیدا کردن اندیس یک عضو
+# # ==========================================
 
-programming_languages = ['Rust', 'Java', 'Python', 'C++']
+# programming_languages = ['Rust', 'Java', 'Python', 'C++']
 
-print(programming_languages.index('Java'))
+# print(programming_languages.index('Java'))
 
-# اگر مقدار وجود نداشته باشد، خطای ValueError رخ می‌دهد
-# print(programming_languages.index('JavaScript'))
+# # اگر مقدار وجود نداشته باشد، خطای ValueError رخ می‌دهد
+# # print(programming_languages.index('JavaScript'))
