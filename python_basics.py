@@ -1008,30 +1008,71 @@
 # total = sum(numbers, start=10)
 # print(total)
 
+# ==========================================
+# 57. LAMBDA - توابع بی‌نام
+# ==========================================
+
+# تعریف تابع معمولی
 def square(num):
     return num ** 2
 
-print(square(4)) # 16
-lambda num: num ** 2
+print(square(4))  # 16
+
+# تعریف تابع بی‌نام با lambda
+square = lambda num: num ** 2
+print(square(4))  # 16
+
+# ساختار کلی:
+# lambda parameters: expression
+
+
+# ==========================================
+# 58. LAMBDA WITH FILTER - فیلتر با لامبدا
+# ==========================================
 
 numbers = [1, 2, 3, 4, 5]
 
+# انتخاب اعداد زوج
 even_numbers = list(filter(lambda x: x % 2 == 0, numbers))
 print(even_numbers)  # [2, 4]
 
+
+# ==========================================
+# 59. LAMBDA WITH MAP - تبدیل اعضا با لامبدا
+# ==========================================
+
 numbers = [1, 2, 3, 4, 5]
 
+# محاسبه توان دوم هر عدد
 square = lambda x: x ** 2
-squared_numbers = list(map(square, numbers))
-print(squared_numbers) # [1, 4, 9, 16, 25]
 
-result = (lambda x: (x**2 + 2*x - 1) if x > 0 else (x**3 - x + 4))(3)
+squared_numbers = list(map(square, numbers))
+print(squared_numbers)  # [1, 4, 9, 16, 25]
+
+
+# ==========================================
+# 60. CONDITIONAL LAMBDA - شرط در لامبدا
+# ==========================================
+
+# اجرای عبارت اول اگر x مثبت باشد؛ در غیر این صورت عبارت دوم
+result = (
+    lambda x: (x ** 2 + 2 * x - 1) if x > 0
+    else (x ** 3 - x + 4)
+)(3)
+
 print(result)  # 14
 
+
+# ==========================================
+# 61. LAMBDA VS FUNCTION - مقایسه با تابع معمولی
+# ==========================================
+
+# پیاده‌سازی همان شرط با تابع معمولی
 def calculate_expression(x):
     if x > 0:
-        return x**2 + 2*x - 1
+        return x ** 2 + 2 * x - 1
     else:
-        return x**3 - x + 4
+        return x ** 3 - x + 4
 
 print(calculate_expression(3))  # 14
+
