@@ -649,3 +649,22 @@
 
 # # اگر مقدار وجود نداشته باشد، خطای ValueError رخ می‌دهد
 # # print(programming_languages.index('JavaScript'))
+
+developer = ('Alice', 34, 'Rust Developer')
+
+# programming_languages = ('Python', 'Java', 'C++', 'Rust')
+# programming_languages[0] = 'JavaScript'
+
+# """
+# Traceback (most recent call last):
+#   File "<stdin>", line 2, in <module>
+# TypeError: 'tuple' object does not support item assignment
+# """
+# numbers = (1, 2, 3, 4, 5)
+# numbers[7]
+
+# """
+# Traceback (most recent call last):
+#   File "<stdin>", line 2, in <module>
+# IndexError: list index out of range
+# """
