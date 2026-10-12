@@ -718,79 +718,131 @@
 
 # print(desserts[1:3])  # ('pie', 'cookies')
 
-programming_languages = ('Rust', 'Java', 'Python', 'C++', 'Rust')
-programming_languages.count('Rust') # 2
-programming_languages.count('JavaScript') # 0
-# programming_languages.count()
+# ==========================================
+# 42. TUPLE METHODS - متدهای تاپل
+# ==========================================
 
-# """
-# Traceback (most recent call last):
-#   File "<stdin>", line 2, in <module>
-# TypeError: tuple.count() takes exactly one argument (0 given)
-# """
-programming_languages.index('Java') # 1
+programming_languages = ('Rust', 'Java', 'Python', 'C++', 'Rust')
+
+print(programming_languages.count('Rust'))        # تعداد تکرار مقدار
+print(programming_languages.count('JavaScript'))  # اگر نباشد، 0
+
+# متد count به یک آرگومان نیاز دارد
+# programming_languages.count()
+# TypeError: آرگومان لازم ارسال نشده است
+
+
+# پیدا کردن اندیس اولین وقوع مقدار
+print(programming_languages.index('Java'))  # 1
+
+# اگر مقدار وجود نداشته باشد، خطای ValueError رخ می‌دهد
 # programming_languages.index('JavaScript')
 
-# """
-# Traceback (most recent call last):
-#   File "<stdin>", line 2, in <module>
-# ValueError: tuple.index(x): x not in tuple
-# """
+
+# جست‌وجو از اندیس مشخص
 programming_languages = ('Rust', 'Java', 'Python', 'C++', 'Rust', 'Python')
-programming_languages.index('Python', 3) # 5
-programming_languages = ('Rust', 'Java', 'Python', 'C++', 'Rust', 'Python', 'JavaScript', 'Python')
-programming_languages.index('Python', 2, 5) # 2
+
+print(programming_languages.index('Python', 3))  # 5
+
+# جست‌وجو در محدوده مشخص؛ اندیس پایان شامل نمی‌شود
+programming_languages = (
+    'Rust', 'Java', 'Python', 'C++',
+    'Rust', 'Python', 'JavaScript', 'Python'
+)
+
+print(programming_languages.index('Python', 2, 5))  # 2
+
+
+# ==========================================
+# 43. SORTED - مرتب‌سازی تاپل
+# ==========================================
 
 numbers = (13, 2, 78, 3, 45, 67, 18, 7)
-sorted(numbers) # [2, 3, 7, 13, 18, 45, 67, 78]
+
+# مرتب‌سازی صعودی و ساخت لیست جدید
+print(sorted(numbers))
 
 programming_languages = ('Rust', 'Java', 'Python', 'C++', 'Rust', 'Python')
-sorted(programming_languages, key=len)
 
-# Result
-# ['C++', 'Rust', 'Java', 'Rust', 'Python', 'Python']
+# مرتب‌سازی بر اساس طول رشته‌ها
+print(sorted(programming_languages, key=len))
 
-
+# مرتب‌سازی نزولی بر اساس ترتیب حروف
 print(sorted(programming_languages, reverse=True))
 
-# Result
-# ['Rust', 'Rust', 'Python', 'Python', 'Java', 'C++']
+
+# ==========================================
+# 44. FOR LOOP - حلقه for
+# ==========================================
 
 programming_languages = ['Rust', 'Java', 'Python', 'C++']
 
 for language in programming_languages:
-    print(language)
-    
+    print(language)  # پیمایش اعضای لیست
+
+# پیمایش کاراکترهای رشته
 for char in 'code':
     print(char)
+
+
+# ==========================================
+# 45. NESTED LOOPS - حلقه‌های تو در تو
+# ==========================================
+
 categories = ['Fruit', 'Vegetable']
 foods = ['Apple', 'Carrot', 'Banana']
 
+# اجرای حلقه داخلی برای هر عضو حلقه خارجی
 for category in categories:
     for food in foods:
         print(category, food)
+
+
+# ==========================================
+# 46. WHILE LOOP - حلقه while
+# ==========================================
+
 secret_number = 3
 guess = 0
 
+# تکرار تا زمانی که عدد درست حدس زده شود
 while guess != secret_number:
     guess = int(input('Guess the number (1-5): '))
+
     if guess != secret_number:
         print('Wrong! Try again.')
 
 print('You got it!')
 
+
+# ==========================================
+# 47. BREAK - خروج از حلقه
+# ==========================================
+
 developer_names = ['Jess', 'Naomi', 'Tom']
 
 for developer in developer_names:
     if developer == 'Naomi':
-        break
+        break  # توقف کامل حلقه
     print(developer)
+
+
+# ==========================================
+# 48. CONTINUE - رد کردن تکرار فعلی
+# ==========================================
+
 developer_names = ['Jess', 'Naomi', 'Tom']
 
 for developer in developer_names:
     if developer == 'Naomi':
-        continue
+        continue  # رد کردن این تکرار
     print(developer)
+
+
+# ==========================================
+# 49. FOR-ELSE - استفاده از else در حلقه
+# ==========================================
+
 words = ['sky', 'apple', 'rhythm', 'fly', 'orange']
 
 for word in words:
@@ -799,4 +851,5 @@ for word in words:
             print(f"'{word}' contains the vowel '{letter}'")
             break
     else:
+        # فقط وقتی اجرا می‌شود که حلقه داخلی break نشود
         print(f"'{word}' has no vowels")
