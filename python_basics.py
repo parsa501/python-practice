@@ -650,44 +650,70 @@
 # # اگر مقدار وجود نداشته باشد، خطای ValueError رخ می‌دهد
 # # print(programming_languages.index('JavaScript'))
 
+
+# ==========================================
+# 37. TUPLES - تاپل‌ها
+# ==========================================
+
+# تاپل مجموعه‌ای مرتب و غیرقابل تغییر است
 developer = ('Alice', 34, 'Rust Developer')
 
+print(developer[0])   # دسترسی به عضو اول
+print(developer[-1])  # دسترسی به عضو آخر
+
+# تغییر اعضای تاپل مجاز نیست
 # programming_languages = ('Python', 'Java', 'C++', 'Rust')
 # programming_languages[0] = 'JavaScript'
+# TypeError: تاپل از تغییر عضو پشتیبانی نمی‌کند
 
-# """
-# Traceback (most recent call last):
-#   File "<stdin>", line 2, in <module>
-# TypeError: 'tuple' object does not support item assignment
-# """
+# دسترسی به اندیس خارج از محدوده
 # numbers = (1, 2, 3, 4, 5)
 # numbers[7]
+# IndexError: اندیس خارج از محدوده است
 
-# """
-# Traceback (most recent call last):
-#   File "<stdin>", line 2, in <module>
-# IndexError: list index out of range
-# """
+
+# ==========================================
+# 38. TUPLE CONVERSION - تبدیل به تاپل
+# ==========================================
+
 developer = 'Jessica'
-tuple(developer) # ('J', 'e', 's', 's', 'i', 'c', 'a')
+
+print(tuple(developer))  # تبدیل رشته به تاپل کاراکترها
+
+
+# ==========================================
+# 39. MEMBERSHIP - بررسی وجود عضو در تاپل
+# ==========================================
 
 programming_languages = ('Python', 'Java', 'C++', 'Rust')
 
-'Rust' in programming_languages # True
-'JavaScript' in programming_languages # False
+print('Rust' in programming_languages)        # True
+print('JavaScript' in programming_languages)  # False
+
+
+# ==========================================
+# 40. UNPACKING TUPLES - باز کردن اعضای تاپل
+# ==========================================
 
 developer = ('Alice', 34, 'Rust Developer')
+
 name, age, job = developer
 
-print(name) # 'Alice'
-print(age) # 34
-print(job) # 'Rust Developer'
+print(name)
+print(age)
+print(job)
 
-developer = ('Alice', 34, 'Rust Developer')
+# دریافت اعضای باقی‌مانده با *
 name, *rest = developer
 
-print(name) # 'Alice'
-print(rest) # [34, 'Rust Developer']
+print(name)
+print(rest)  # لیست اعضای باقی‌مانده
+
+
+# ==========================================
+# 41. TUPLE SLICING - برش تاپل
+# ==========================================
 
 desserts = ('cake', 'pie', 'cookies', 'ice cream')
-desserts[1:3] # ('pie', 'cookies')
+
+print(desserts[1:3])  # ('pie', 'cookies')
