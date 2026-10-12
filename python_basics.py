@@ -651,69 +651,124 @@
 # # print(programming_languages.index('JavaScript'))
 
 
-# ==========================================
-# 37. TUPLES - تاپل‌ها
-# ==========================================
+# # ==========================================
+# # 37. TUPLES - تاپل‌ها
+# # ==========================================
 
-# تاپل مجموعه‌ای مرتب و غیرقابل تغییر است
-developer = ('Alice', 34, 'Rust Developer')
+# # تاپل مجموعه‌ای مرتب و غیرقابل تغییر است
+# developer = ('Alice', 34, 'Rust Developer')
 
-print(developer[0])   # دسترسی به عضو اول
-print(developer[-1])  # دسترسی به عضو آخر
+# print(developer[0])   # دسترسی به عضو اول
+# print(developer[-1])  # دسترسی به عضو آخر
 
-# تغییر اعضای تاپل مجاز نیست
+# # تغییر اعضای تاپل مجاز نیست
+# # programming_languages = ('Python', 'Java', 'C++', 'Rust')
+# # programming_languages[0] = 'JavaScript'
+# # TypeError: تاپل از تغییر عضو پشتیبانی نمی‌کند
+
+# # دسترسی به اندیس خارج از محدوده
+# # numbers = (1, 2, 3, 4, 5)
+# # numbers[7]
+# # IndexError: اندیس خارج از محدوده است
+
+
+# # ==========================================
+# # 38. TUPLE CONVERSION - تبدیل به تاپل
+# # ==========================================
+
+# developer = 'Jessica'
+
+# print(tuple(developer))  # تبدیل رشته به تاپل کاراکترها
+
+
+# # ==========================================
+# # 39. MEMBERSHIP - بررسی وجود عضو در تاپل
+# # ==========================================
+
 # programming_languages = ('Python', 'Java', 'C++', 'Rust')
-# programming_languages[0] = 'JavaScript'
-# TypeError: تاپل از تغییر عضو پشتیبانی نمی‌کند
 
-# دسترسی به اندیس خارج از محدوده
-# numbers = (1, 2, 3, 4, 5)
-# numbers[7]
-# IndexError: اندیس خارج از محدوده است
+# print('Rust' in programming_languages)        # True
+# print('JavaScript' in programming_languages)  # False
 
 
-# ==========================================
-# 38. TUPLE CONVERSION - تبدیل به تاپل
-# ==========================================
+# # ==========================================
+# # 40. UNPACKING TUPLES - باز کردن اعضای تاپل
+# # ==========================================
 
-developer = 'Jessica'
+# developer = ('Alice', 34, 'Rust Developer')
 
-print(tuple(developer))  # تبدیل رشته به تاپل کاراکترها
+# name, age, job = developer
 
+# print(name)
+# print(age)
+# print(job)
 
-# ==========================================
-# 39. MEMBERSHIP - بررسی وجود عضو در تاپل
-# ==========================================
+# # دریافت اعضای باقی‌مانده با *
+# name, *rest = developer
 
-programming_languages = ('Python', 'Java', 'C++', 'Rust')
-
-print('Rust' in programming_languages)        # True
-print('JavaScript' in programming_languages)  # False
-
-
-# ==========================================
-# 40. UNPACKING TUPLES - باز کردن اعضای تاپل
-# ==========================================
-
-developer = ('Alice', 34, 'Rust Developer')
-
-name, age, job = developer
-
-print(name)
-print(age)
-print(job)
-
-# دریافت اعضای باقی‌مانده با *
-name, *rest = developer
-
-print(name)
-print(rest)  # لیست اعضای باقی‌مانده
+# print(name)
+# print(rest)  # لیست اعضای باقی‌مانده
 
 
-# ==========================================
-# 41. TUPLE SLICING - برش تاپل
-# ==========================================
+# # ==========================================
+# # 41. TUPLE SLICING - برش تاپل
+# # ==========================================
 
-desserts = ('cake', 'pie', 'cookies', 'ice cream')
+# desserts = ('cake', 'pie', 'cookies', 'ice cream')
 
-print(desserts[1:3])  # ('pie', 'cookies')
+# print(desserts[1:3])  # ('pie', 'cookies')
+
+programming_languages = ('Rust', 'Java', 'Python', 'C++', 'Rust')
+programming_languages.count('Rust') # 2
+programming_languages.count('JavaScript') # 0
+# programming_languages.count()
+
+# """
+# Traceback (most recent call last):
+#   File "<stdin>", line 2, in <module>
+# TypeError: tuple.count() takes exactly one argument (0 given)
+# """
+programming_languages.index('Java') # 1
+# programming_languages.index('JavaScript')
+
+# """
+# Traceback (most recent call last):
+#   File "<stdin>", line 2, in <module>
+# ValueError: tuple.index(x): x not in tuple
+# """
+programming_languages = ('Rust', 'Java', 'Python', 'C++', 'Rust', 'Python')
+programming_languages.index('Python', 3) # 5
+programming_languages = ('Rust', 'Java', 'Python', 'C++', 'Rust', 'Python', 'JavaScript', 'Python')
+programming_languages.index('Python', 2, 5) # 2
+
+numbers = (13, 2, 78, 3, 45, 67, 18, 7)
+sorted(numbers) # [2, 3, 7, 13, 18, 45, 67, 78]
+
+programming_languages = ('Rust', 'Java', 'Python', 'C++', 'Rust', 'Python')
+sorted(programming_languages, key=len)
+
+# Result
+# ['C++', 'Rust', 'Java', 'Rust', 'Python', 'Python']
+
+
+print(sorted(programming_languages, reverse=True))
+
+# Result
+# ['Rust', 'Rust', 'Python', 'Python', 'Java', 'C++']
+
+programming_languages = ['Rust', 'Java', 'Python', 'C++']
+
+for language in programming_languages:
+    print(language)
+    
+for char in 'code':
+    print(char)
+categories = ['Fruit', 'Vegetable']
+foods = ['Apple', 'Carrot', 'Banana']
+
+for category in categories:
+    for food in foods:
+        print(category, food)
+secret_number = 3
+guess = 0
+
