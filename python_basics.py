@@ -545,3 +545,42 @@ numbers = [10, 20, 30, 40, 50, 50, 50]
 numbers.remove(50)
 
 print(numbers) # [10, 20, 30, 40, 50, 50]
+
+numbers = [1, 2, 3, 4, 5]
+numbers.pop(1) # The number 2 is returned
+
+numbers = [1, 2, 3, 4, 5]
+numbers.pop() # The number 5 is returned
+
+numbers = [1, 2, 3, 4, 5]
+numbers.clear()
+
+print(numbers) # []
+
+numbers = [19, 2, 35, 1, 67, 41]
+numbers.sort()
+
+print(numbers) # [1, 2, 19, 35, 41, 67]
+
+numbers = [19, 2, 35, 1, 67, 41]
+sorted_numbers = sorted(numbers)
+
+print(numbers) # [19, 2, 35, 1, 67, 41]
+print(sorted_numbers) # [1, 2, 19, 35, 41, 67]
+
+numbers = [6, 5, 4, 3, 2, 1]
+numbers.reverse()
+
+print(numbers) # [1, 2, 3, 4, 5, 6]
+
+programming_languages = ['Rust', 'Java', 'Python', 'C++']
+programming_languages.index('Java') # 1
+
+# programming_languages = ['Rust', 'Java', 'Python', 'C++']
+# programming_languages.index('JavaScript')
+
+# """
+# Traceback (most recent call last):
+#   File "<stdin>", line 1, in <module>
+# ValueError: 'JavaScript' is not in list
+# """
