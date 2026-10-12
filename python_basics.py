@@ -494,3 +494,54 @@ name, age, job = developer
 print(name) # 'Alice'
 print(age) # 34
 print(job) # 'Rust Developer'
+#*
+name, *rest = developer
+print(name) # 'Alice'
+print(rest) # [34, 'Rust Developer']
+
+# developer = ['Alice', 34, 'Rust Developer']
+# name, age, job, city = developer
+
+# """
+# Traceback (most recent call last):
+#   File "<stdin>", line 2, in <module>
+# ValueError: not enough values to unpack (expected 4, got 3)
+# """
+
+desserts = ['Cake', 'Cookies', 'Ice Cream', 'Pie', 'Brownies']
+print(desserts[1:4]) # ['Cookies', 'Ice Cream', 'Pie']
+
+numbers = [1, 2, 3, 4, 5, 6]
+print(numbers[1::2]) # [2, 4, 6]
+print(numbers[0::2]) # [1, 3, 5]
+
+numbers = [1, 2, 3, 4, 5]
+numbers.append(6)
+print(numbers) # [1, 2, 3, 4, 5, 6]
+
+numbers = [1, 2, 3, 4, 5]
+even_numbers = [6, 8, 10]
+
+numbers.append(even_numbers)
+print(numbers) # [1, 2, 3, 4, 5, [6, 8, 10]]
+
+numbers = [1, 2, 3, 4, 5]
+even_numbers = [6, 8, 10]
+
+numbers.extend(even_numbers)
+print(numbers) # [1, 2, 3, 4, 5, 6, 8, 10]
+
+numbers = [1, 2, 3, 4, 5]
+numbers.insert(2, 2.5)
+
+print(numbers) # [1, 2, 2.5, 3, 4, 5]
+
+numbers = [10, 20, 30, 40, 50]
+numbers.remove(50)
+
+print(numbers) # [10, 20, 30, 40]
+
+numbers = [10, 20, 30, 40, 50, 50, 50]
+numbers.remove(50)
+
+print(numbers) # [10, 20, 30, 40, 50, 50]
