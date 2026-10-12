@@ -854,156 +854,184 @@
 #         # فقط وقتی اجرا می‌شود که حلقه داخلی break نشود
 #         print(f"'{word}' has no vowels")
         
-# ==========================================
-# 50. RANGE - تولید دنباله‌ای از اعداد
-# ==========================================
+# # ==========================================
+# # 50. RANGE - تولید دنباله‌ای از اعداد
+# # ==========================================
 
-# تولید اعداد از 0 تا قبل از 3
-for num in range(3):
-    print(num)
+# # تولید اعداد از 0 تا قبل از 3
+# for num in range(3):
+#     print(num)
 
-# تعیین نقطه شروع و پایان
-for num in range(1, 5):
-    print(num)
+# # تعیین نقطه شروع و پایان
+# for num in range(1, 5):
+#     print(num)
 
-# تعیین شروع، پایان و گام
-for num in range(2, 11, 2):
-    print(num)
+# # تعیین شروع، پایان و گام
+# for num in range(2, 11, 2):
+#     print(num)
 
-# range حداقل به یک آرگومان صحیح نیاز دارد
-# range()
-# TypeError: حداقل یک آرگومان لازم است
+# # range حداقل به یک آرگومان صحیح نیاز دارد
+# # range()
+# # TypeError: حداقل یک آرگومان لازم است
 
-# آرگومان range باید عدد صحیح باشد
-# range(3.1)
-# TypeError: عدد اعشاری قابل استفاده نیست
+# # آرگومان range باید عدد صحیح باشد
+# # range(3.1)
+# # TypeError: عدد اعشاری قابل استفاده نیست
 
-# گام منفی برای شمارش معکوس
-for num in range(40, 0, -10):
-    print(num)
+# # گام منفی برای شمارش معکوس
+# for num in range(40, 0, -10):
+#     print(num)
 
-# تبدیل range به لیست
-numbers = list(range(2, 11, 2))
-print(numbers)
-
-
-# ==========================================
-# 51. ENUMERATE - شماره‌گذاری اعضا
-# ==========================================
-
-languages = ['Spanish', 'English', 'Russian', 'Chinese']
-
-# پیمایش اعضای لیست
-for language in languages:
-    print(language)
-
-# شماره‌گذاری دستی اعضا
-index = 0
-
-for language in languages:
-    print(f'Index {index} and language {language}')
-    index += 1
-
-# ساخت زوج‌های (اندیس، مقدار)
-print(list(enumerate(languages)))
-
-# دریافت اندیس و مقدار به‌صورت هم‌زمان
-for index, language in enumerate(languages):
-    print(f'Index {index} and language {language}')
-
-# شروع شماره‌گذاری از 1
-for index, language in enumerate(languages, 1):
-    print(f'Index {index} and language {language}')
+# # تبدیل range به لیست
+# numbers = list(range(2, 11, 2))
+# print(numbers)
 
 
-# ==========================================
-# 52. ZIP - ترکیب اعضای چند مجموعه
-# ==========================================
+# # ==========================================
+# # 51. ENUMERATE - شماره‌گذاری اعضا
+# # ==========================================
 
-developers = ['Naomi', 'Dario', 'Jessica', 'Tom']
-ids = [1, 2, 3, 4]
+# languages = ['Spanish', 'English', 'Russian', 'Chinese']
 
-# ترکیب اعضای هم‌موقعیت
-print(list(zip(developers, ids)))
+# # پیمایش اعضای لیست
+# for language in languages:
+#     print(language)
 
-# پیمایش هم‌زمان دو لیست
-for name, dev_id in zip(developers, ids):
-    print(f'Name: {name}')
-    print(f'ID: {dev_id}')
+# # شماره‌گذاری دستی اعضا
+# index = 0
 
-# zip تا طول کوتاه‌ترین مجموعه پیش می‌رود
+# for language in languages:
+#     print(f'Index {index} and language {language}')
+#     index += 1
+
+# # ساخت زوج‌های (اندیس، مقدار)
+# print(list(enumerate(languages)))
+
+# # دریافت اندیس و مقدار به‌صورت هم‌زمان
+# for index, language in enumerate(languages):
+#     print(f'Index {index} and language {language}')
+
+# # شروع شماره‌گذاری از 1
+# for index, language in enumerate(languages, 1):
+#     print(f'Index {index} and language {language}')
 
 
-# ==========================================
-# 53. LIST COMPREHENSION - ساخت لیست خلاصه
-# ==========================================
+# # ==========================================
+# # 52. ZIP - ترکیب اعضای چند مجموعه
+# # ==========================================
 
-# ساخت لیست اعداد زوج با حلقه معمولی
-even_numbers = []
+# developers = ['Naomi', 'Dario', 'Jessica', 'Tom']
+# ids = [1, 2, 3, 4]
 
-for num in range(21):
-    if num % 2 == 0:
-        even_numbers.append(num)
+# # ترکیب اعضای هم‌موقعیت
+# print(list(zip(developers, ids)))
 
-print(even_numbers)
+# # پیمایش هم‌زمان دو لیست
+# for name, dev_id in zip(developers, ids):
+#     print(f'Name: {name}')
+#     print(f'ID: {dev_id}')
 
-# ساخت همان لیست با List Comprehension
-even_numbers = [num for num in range(21) if num % 2 == 0]
-print(even_numbers)
+# # zip تا طول کوتاه‌ترین مجموعه پیش می‌رود
 
-# تعیین زوج یا فرد بودن هر عدد
+
+# # ==========================================
+# # 53. LIST COMPREHENSION - ساخت لیست خلاصه
+# # ==========================================
+
+# # ساخت لیست اعداد زوج با حلقه معمولی
+# even_numbers = []
+
+# for num in range(21):
+#     if num % 2 == 0:
+#         even_numbers.append(num)
+
+# print(even_numbers)
+
+# # ساخت همان لیست با List Comprehension
+# even_numbers = [num for num in range(21) if num % 2 == 0]
+# print(even_numbers)
+
+# # تعیین زوج یا فرد بودن هر عدد
+# numbers = [1, 2, 3, 4, 5]
+
+# result = [
+#     (num, 'Even') if num % 2 == 0 else (num, 'Odd')
+#     for num in numbers
+# ]
+
+# print(result)
+
+
+# # ==========================================
+# # 54. FILTER - فیلتر کردن اعضا
+# # ==========================================
+
+# words = ['tree', 'sky', 'mountain', 'river', 'cloud', 'sun']
+
+# def is_long_word(word):
+#     return len(word) > 4
+
+# # انتخاب کلماتی که طول آن‌ها بیشتر از 4 است
+# long_words = list(filter(is_long_word, words))
+# print(long_words)
+
+
+# # ==========================================
+# # 55. MAP - اعمال تابع روی اعضا
+# # ==========================================
+
+# celsius = [0, 10, 20, 30, 40]
+
+# def to_fahrenheit(temp):
+#     return (temp * 9 / 5) + 32
+
+# # تبدیل تمام دماها به فارنهایت
+# fahrenheit = list(map(to_fahrenheit, celsius))
+# print(fahrenheit)
+
+
+# # ==========================================
+# # 56. SUM - محاسبه مجموع اعداد
+# # ==========================================
+
+# numbers = [5, 10, 15, 20]
+
+# # محاسبه مجموع اعضا
+# total = sum(numbers)
+# print(total)
+
+# # تعیین مقدار اولیه مجموع
+# total = sum(numbers, 10)
+# print(total)
+
+# # استفاده از آرگومان نام‌گذاری‌شده
+# total = sum(numbers, start=10)
+# print(total)
+
+def square(num):
+    return num ** 2
+
+print(square(4)) # 16
+lambda num: num ** 2
+
 numbers = [1, 2, 3, 4, 5]
 
-result = [
-    (num, 'Even') if num % 2 == 0 else (num, 'Odd')
-    for num in numbers
-]
+even_numbers = list(filter(lambda x: x % 2 == 0, numbers))
+print(even_numbers)  # [2, 4]
 
-print(result)
+numbers = [1, 2, 3, 4, 5]
 
+square = lambda x: x ** 2
+squared_numbers = list(map(square, numbers))
+print(squared_numbers) # [1, 4, 9, 16, 25]
 
-# ==========================================
-# 54. FILTER - فیلتر کردن اعضا
-# ==========================================
+result = (lambda x: (x**2 + 2*x - 1) if x > 0 else (x**3 - x + 4))(3)
+print(result)  # 14
 
-words = ['tree', 'sky', 'mountain', 'river', 'cloud', 'sun']
+def calculate_expression(x):
+    if x > 0:
+        return x**2 + 2*x - 1
+    else:
+        return x**3 - x + 4
 
-def is_long_word(word):
-    return len(word) > 4
-
-# انتخاب کلماتی که طول آن‌ها بیشتر از 4 است
-long_words = list(filter(is_long_word, words))
-print(long_words)
-
-
-# ==========================================
-# 55. MAP - اعمال تابع روی اعضا
-# ==========================================
-
-celsius = [0, 10, 20, 30, 40]
-
-def to_fahrenheit(temp):
-    return (temp * 9 / 5) + 32
-
-# تبدیل تمام دماها به فارنهایت
-fahrenheit = list(map(to_fahrenheit, celsius))
-print(fahrenheit)
-
-
-# ==========================================
-# 56. SUM - محاسبه مجموع اعداد
-# ==========================================
-
-numbers = [5, 10, 15, 20]
-
-# محاسبه مجموع اعضا
-total = sum(numbers)
-print(total)
-
-# تعیین مقدار اولیه مجموع
-total = sum(numbers, 10)
-print(total)
-
-# استفاده از آرگومان نام‌گذاری‌شده
-total = sum(numbers, start=10)
-print(total)
+print(calculate_expression(3))  # 14
