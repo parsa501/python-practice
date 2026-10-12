@@ -954,3 +954,7 @@ print(total) # Result: 50
 numbers = [5, 10, 15, 20]
 total = sum(numbers, 10) # positional argument
 print(total) # 60
+
+numbers = [5, 10, 15, 20]
+total = sum(numbers, start=10) # keyword argument
+print(total) # 60
