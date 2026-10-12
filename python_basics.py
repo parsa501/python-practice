@@ -475,3 +475,22 @@ print(programming_languages) # ['JavaScript', 'Java', 'C++', 'Rust']
 developer = ['Jane Doe', 23, 'Python Developer']
 del developer[1]
 print(developer) # ['Jane Doe', 'Python Developer']
+
+#Checking If an Element Is in a List
+programming_languages = ['Python', 'Java', 'C++', 'Rust']
+
+print('Rust' in programming_languages) # True
+print('JavaScript' in programming_languages) # False
+
+developer = ['Alice', 25, ['Python', 'Rust', 'C++']]
+print(developer[2]) # ['Python', 'Rust', 'C++']
+
+developer = ['Alice', 25, ['Python', 'Rust', 'C++']]
+developer[2][1] # 'Rust'
+
+developer = ['Alice', 34, 'Rust Developer']
+name, age, job = developer
+
+print(name) # 'Alice'
+print(age) # 34
+print(job) # 'Rust Developer'
