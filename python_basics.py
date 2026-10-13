@@ -1173,3 +1173,35 @@
 # print(number_pattern(True))   # پیام خطا
 # print(number_pattern("5"))    # پیام خطا
 
+dictionary = {
+    'key1': 'value1',
+    'key2': 'value2'
+}
+
+pizza = {
+    'name': 'Margherita Pizza',
+    'price': 8.9,
+    'calories_per_slice': 250,
+    'toppings': ['mozzarella', 'basil']
+}
+
+pizza = dict([('name', 'Margherita Pizza'), ('price', 8.9), ('calories_per_slice', 250), ('toppings', ['mozzarella', 'basil'])])
+pizza['name'] = 'Margherita'
+print(pizza['name']) # 'Margherita'
+
+#dictionary.get(key, default)
+print(pizza.get('name', 'Unknown')) # 'Margherita'
+print(pizza.get('unknown_key', 'Default Value')) # 'Default Value'
+pizza.get('toppings', []) # ['mozzarella', 'basil']
+pizza.keys()
+# dict_keys(['name', 'price', 'calories_per_slice'])
+
+pizza.values()
+# dict_values(['Margherita Pizza', 8.9, 250])
+
+pizza.keys()
+# dict_keys(['name', 'price', 'calories_per_slice'])
+pizza.clear()
+pizza.pop('price', 10)
+pizza.pop('total_price',"Margherita Pizza") # KeyError
+pizza.popitem()
