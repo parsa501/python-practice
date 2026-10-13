@@ -1204,4 +1204,16 @@ pizza.keys()
 pizza.clear()
 pizza.pop('price', 10)
 pizza.pop('total_price',"Margherita Pizza") # KeyError
+
+pizza.update({ 'price': 15, 'total_time': 25 })
+
+{
+    'name': 'Margherita Pizza', 
+    'price': 15, 
+    'calories_per_slice': 250, 
+    'toppings': ['mozzarella', 'basil'], 
+    'total_time': 25
+} 
+
 pizza.popitem()
+
