@@ -1442,3 +1442,40 @@
 # # ==========================================
 # print(5 in my_set)  # True
 
+# import module_name
+import math
+math.sqrt(36)
+
+import math as m 
+m.sqrt(36)
+
+#from module_name import name1, name2
+#from module_name import name1 as alias1, name2 as alias2
+
+from math import radians, sin, cos
+
+from math import radians, sin, cos
+
+angle_degrees = 40
+angle_radians = radians(angle_degrees)
+
+sine_value = sin(angle_radians)
+cos_value = cos(angle_radians)
+
+print(sine_value) # 0.6427876096865393
+print(cos_value)  # 0.766044443118978
+
+#from module_name import *
+from math import *
+print(sqrt(36))  # 6.0
+print(pow(5, 2)) # 25.0
+print(exp(1))    # 2.718281828459045
+
+import math
+print(math.pi)
+import datetime
+birthday = datetime.date(1959, 7, 15)
+print(birthday.day)    # 15
+print(birthday.month)  # 7
+print(birthday.year)   # 1959
+
