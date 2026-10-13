@@ -1291,125 +1291,99 @@
 # # ==========================================
 
 # pizza.clear()
-
 # print(pizza)  # {}
 
 # # ==========================================
-# # 65. DICTIONARIES - دیکشنری‌ها
+# # 73. DICTIONARY LOOPS - پیمایش دیکشنری
 # # ==========================================
 
-# # ساخت دیکشنری با کلید و مقدار
-# dictionary = {
-#     'key1': 'value1',
-#     'key2': 'value2'
+# products = {
+#     'Laptop': 990,
+#     'Smartphone': 600,
+#     'Tablet': 250,
+#     'Headphones': 70,
 # }
 
-# pizza = {
-#     'name': 'Margherita Pizza',
-#     'price': 8.9,
-#     'calories_per_slice': 250,
-#     'toppings': ['mozzarella', 'basil']
+# # پیمایش مقادیر دیکشنری
+# for price in products.values():
+#     print(price)
+
+# # پیمایش کلیدهای دیکشنری
+# for product in products.keys():
+#     print(product)
+
+# # پیمایش مستقیم دیکشنری؛ به‌صورت پیش‌فرض کلیدها
+# for product in products:
+#     print(product)
+
+# # پیمایش زوج‌های کلید و مقدار
+# for product in products.items():
+#     print(product)
+
+# # دریافت کلید و مقدار در دو متغیر جداگانه
+# for product, price in products.items():
+#     print(product, price)
+
+
+# # ==========================================
+# # 74. MODIFY VALUES - تغییر مقادیر دیکشنری
+# # ==========================================
+
+# products = {
+#     'Laptop': 990,
+#     'Smartphone': 600,
+#     'Tablet': 250,
+#     'Headphones': 70,
 # }
 
+# # اعمال 20 درصد تخفیف روی قیمت‌ها
+# for product, price in products.items():
+#     products[product] = round(price * 0.8)
 
-# # ==========================================
-# # 66. DICT CONSTRUCTOR - ساخت دیکشنری با dict
-# # ==========================================
-
-# # ساخت دیکشنری از زوج‌های کلید و مقدار
-# pizza = dict([
-#     ('name', 'Margherita Pizza'),
-#     ('price', 8.9),
-#     ('calories_per_slice', 250),
-#     ('toppings', ['mozzarella', 'basil'])
-# ])
+# print(products)
 
 
 # # ==========================================
-# # 67. ACCESS AND MODIFY - دسترسی و تغییر مقادیر
+# # 75. ENUMERATE DICTIONARY - شماره‌گذاری کلیدها
 # # ==========================================
 
-# # تغییر مقدار یک کلید
-# pizza['name'] = 'Margherita'
-
-# print(pizza['name'])
-
-# # دسترسی با get؛ بدون خطا در صورت نبودن کلید
-# print(pizza.get('name', 'Unknown'))
-# print(pizza.get('unknown_key', 'Default Value'))
-# print(pizza.get('toppings', []))
-
-
-# # ==========================================
-# # 68. KEYS AND VALUES - کلیدها و مقادیر
-# # ==========================================
-
-# pizza = {
-#     'name': 'Margherita Pizza',
-#     'price': 8.9,
-#     'calories_per_slice': 250
+# products = {
+#     'Laptop': 990,
+#     'Smartphone': 600,
+#     'Tablet': 250,
+#     'Headphones': 70,
 # }
 
-# print(pizza.keys())    # نمایش کلیدها
-# print(pizza.values())  # نمایش مقادیر
-# print(pizza.items())   # نمایش زوج‌های کلید و مقدار
+# # دریافت اندیس و کلید به‌صورت یک زوج
+# for product in enumerate(products):
+#     print(product)
+
+# # دریافت اندیس و کلید در متغیرهای جداگانه
+# for index, product in enumerate(products):
+#     print(index, product)
 
 
 # # ==========================================
-# # 69. POP - حذف کلید و دریافت مقدار
+# # 76. ENUMERATE VALUES - شماره‌گذاری مقادیر
 # # ==========================================
 
-# pizza = {
-#     'name': 'Margherita Pizza',
-#     'price': 8.9,
-#     'calories_per_slice': 250
-# }
+# # دریافت اندیس و قیمت به‌صورت یک زوج
+# for price in enumerate(products.values()):
+#     print(price)
 
-# # حذف کلید موجود و برگرداندن مقدار آن
-# print(pizza.pop('price'))
-
-# # اگر کلید وجود نداشته باشد، مقدار پیش‌فرض برگردانده می‌شود
-# print(pizza.pop('total_price', 'Not Found'))
-
-# # بدون مقدار پیش‌فرض، نبودن کلید باعث KeyError می‌شود
-# # pizza.pop('total_price')
+# # دریافت اندیس و قیمت در متغیرهای جداگانه
+# for index, price in enumerate(products.values()):
+#     print(index, price)
 
 
 # # ==========================================
-# # 70. UPDATE - افزودن و به‌روزرسانی
+# # 77. ENUMERATE ITEMS - شماره‌گذاری زوج‌ها
 # # ==========================================
 
-# pizza = {
-#     'name': 'Margherita Pizza',
-#     'price': 8.9,
-#     'calories_per_slice': 250,
-#     'toppings': ['mozzarella', 'basil']
-# }
+# # دریافت اندیس و زوج کلید و مقدار
+# for index, product in enumerate(products.items()):
+#     print(index, product)
 
-# # تغییر قیمت و افزودن کلید جدید
-# pizza.update({
-#     'price': 15,
-#     'total_time': 25
-# })
-
-# print(pizza)
-
-
-# # ==========================================
-# # 71. POPITEM - حذف آخرین زوج
-# # ==========================================
-
-# # حذف و برگرداندن آخرین زوج کلید و مقدار
-# removed_item = pizza.popitem()
-
-# print(removed_item)
-# print(pizza)
-
-
-# # ==========================================
-# # 72. CLEAR - خالی کردن دیکشنری
-# # ==========================================
-
-# pizza.clear()
-
-# print(pizza)  # {}
+# # شروع شماره‌گذاری از 1
+# for index, product in enumerate(products.items(), 1):
+#     print(index, product)
