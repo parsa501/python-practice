@@ -1511,92 +1511,159 @@
 #     # کدهای اصلی برنامه در این بخش قرار می‌گیرند
 #     pass
 
-import re
+# # ==========================================
+# # 93. REGEX - عبارت‌های منظم
+# # ==========================================
+# import re
 
-medical_records = [
-    {
-        'patient_id': 'P1001',
-        'age': 34,
-        'gender': 'Female',
-        'diagnosis': 'Hypertension',
-        'medications': ['Lisinopril'],
-        'last_visit_id': 'V2301',
-    },
-    {
-        'patient_id': 'p1002',
-        'age': 47,
-        'gender': 'male',
-        'diagnosis': 'Type 2 Diabetes',
-        'medications': ['Metformin', 'Insulin'],
-        'last_visit_id': 'v2302',
-    },
-    {
-        'patient_id': 'P1003',
-        'age': 29,
-        'gender': 'female',
-        'diagnosis': 'Asthma',
-        'medications': ['Albuterol'],
-        'last_visit_id': 'v2303',
-    },
-    {
-        'patient_id': 'p1004',
-        'age': 56,
-        'gender': 'Male',
-        'diagnosis': 'Chronic Back Pain',
-        'medications': ['Ibuprofen', 'Physical Therapy'],
-        'last_visit_id': 'V2304',
-    }
-]
+# # re.fullmatch() بررسی می‌کند که کل رشته با الگو مطابقت داشته باشد.
+# # re.IGNORECASE باعث می‌شود بزرگی و کوچکی حروف مهم نباشد.
 
-def find_invalid_records(
-    patient_id, age, gender, diagnosis, medications, last_visit_id
-):
-    constraints = {
-        'patient_id': isinstance(patient_id, str)
-        and re.fullmatch(r'p\d+', patient_id, re.IGNORECASE),
-        'age': isinstance(age, int) and age >= 18,
-        'gender': isinstance(gender, str) and gender.lower() in ('male', 'female'),
-        'diagnosis': isinstance(diagnosis, str) or diagnosis is None,
-        'medications': isinstance(medications, list)
-        and all([isinstance(i, str) for i in medications]),
-        'last_visit_id': isinstance(last_visit_id, str)
-        and re.fullmatch(r'v\d+', last_visit_id, re.IGNORECASE)
-    }
-    return [key for key, value in constraints.items() if not value]
+# # ==========================================
+# # 94. MEDICAL RECORDS - لیست دیکشنری‌ها
+# # ==========================================
+# medical_records = [
+#     {
+#         'patient_id': 'P1001',
+#         'age': 34,
+#         'gender': 'Female',
+#         'diagnosis': 'Hypertension',
+#         'medications': ['Lisinopril'],
+#         'last_visit_id': 'V2301',
+#     },
+#     {
+#         'patient_id': 'p1002',
+#         'age': 47,
+#         'gender': 'male',
+#         'diagnosis': 'Type 2 Diabetes',
+#         'medications': ['Metformin', 'Insulin'],
+#         'last_visit_id': 'v2302',
+#     },
+#     {
+#         'patient_id': 'P1003',
+#         'age': 29,
+#         'gender': 'female',
+#         'diagnosis': 'Asthma',
+#         'medications': ['Albuterol'],
+#         'last_visit_id': 'v2303',
+#     },
+#     {
+#         'patient_id': 'p1004',
+#         'age': 56,
+#         'gender': 'Male',
+#         'diagnosis': 'Chronic Back Pain',
+#         'medications': ['Ibuprofen', 'Physical Therapy'],
+#         'last_visit_id': 'V2304',
+#     }
+# ]
 
-def validate(data):
-    is_sequence = isinstance(data, (list, tuple))
+# # ==========================================
+# # 95. VALIDATION - بررسی اعتبار اطلاعات
+# # ==========================================
+# def find_invalid_records(
+#     patient_id, age, gender, diagnosis, medications, last_visit_id
+# ):
+#     constraints = {
+#         # شناسه باید رشته‌ای مانند P1001 باشد.
+#         'patient_id': isinstance(patient_id, str)
+#         and re.fullmatch(r'p\d+', patient_id, re.IGNORECASE),
 
-    if not is_sequence:
-        print('Invalid format: expected a list or tuple.')
-        return False
-        
-    is_invalid = False
-    key_set = set(
-        ['patient_id', 'age', 'gender', 'diagnosis', 'medications', 'last_visit_id']
-    )
+#         # سن باید عدد صحیح و حداقل 18 باشد.
+#         'age': isinstance(age, int) and age >= 18,
 
-    for index, dictionary in enumerate(data):
-        if not isinstance(dictionary, dict):
-            print(f'Invalid format: expected a dictionary at position {index}.')
-            is_invalid = True
-            continue
+#         # جنسیت باید male یا female باشد.
+#         'gender': isinstance(gender, str)
+#         and gender.lower() in ('male', 'female'),
 
-        if set(dictionary.keys()) != key_set:
-            print(
-                f'Invalid format: {dictionary} at position {index} has missing and/or invalid keys.'
-            )
-            is_invalid = True
-            continue
+#         # تشخیص باید رشته یا None باشد.
+#         'diagnosis': isinstance(diagnosis, str) or diagnosis is None,
 
-        invalid_records = find_invalid_records(**dictionary)
-        for key in invalid_records:
-            print(f"Unexpected format '{key}: {dictionary[key]}' at position {index}.")
-            is_invalid = True
+#         # داروها باید لیستی از رشته‌ها باشند.
+#         'medications': isinstance(medications, list)
+#         and all([isinstance(i, str) for i in medications]),
 
-    if is_invalid:
-        return False
-    print('Valid format.')
-    return True
+#         # شناسه ویزیت باید رشته‌ای مانند V2301 باشد.
+#         'last_visit_id': isinstance(last_visit_id, str)
+#         and re.fullmatch(r'v\d+', last_visit_id, re.IGNORECASE)
+#     }
 
-validate(medical_records)
+#     # برگرداندن نام فیلدهایی که اعتبار ندارند.
+#     return [key for key, value in constraints.items() if not value]
+
+# # ==========================================
+# # 96. ISINSTANCE - بررسی نوع داده
+# # ==========================================
+# # isinstance(value, type) بررسی می‌کند مقدار از نوع موردنظر هست یا نه.
+
+# # isinstance(data, (list, tuple))
+# # بررسی می‌کند داده لیست یا تاپل باشد.
+
+# # isinstance(dictionary, dict)
+# # بررسی می‌کند داده دیکشنری باشد.
+
+# # ==========================================
+# # 97. SET - بررسی کلیدهای دیکشنری
+# # ==========================================
+# key_set = set([
+#     'patient_id', 'age', 'gender',
+#     'diagnosis', 'medications', 'last_visit_id'
+# ])
+
+# # set(dictionary.keys()) مجموعه کلیدهای دیکشنری را می‌سازد.
+# # برای اعتبار، کلیدها باید دقیقاً با key_set برابر باشند.
+
+# # ==========================================
+# # 98. VALIDATE - بررسی ساختار داده‌ها
+# # ==========================================
+# def validate(data):
+#     # داده باید لیست یا تاپل باشد.
+#     is_sequence = isinstance(data, (list, tuple))
+
+#     if not is_sequence:
+#         print('Invalid format: expected a list or tuple.')
+#         return False
+
+#     is_invalid = False
+
+#     key_set = set([
+#         'patient_id', 'age', 'gender',
+#         'diagnosis', 'medications', 'last_visit_id'
+#     ])
+
+#     # enumerate شماره هر رکورد و خود رکورد را می‌دهد.
+#     for index, dictionary in enumerate(data):
+
+#         # هر رکورد باید دیکشنری باشد.
+#         if not isinstance(dictionary, dict):
+#             print(f'Invalid format: expected a dictionary at position {index}.')
+#             is_invalid = True
+#             continue
+
+#         # بررسی وجود تمام کلیدهای موردنیاز و نبود کلید اضافی.
+#         if set(dictionary.keys()) != key_set:
+#             print(
+#                 f'Invalid format: {dictionary} at position {index} has missing and/or invalid keys.'
+#             )
+#             is_invalid = True
+#             continue
+
+#         # **dictionary دیکشنری را به آرگومان‌های نام‌دار تبدیل می‌کند.
+#         invalid_records = find_invalid_records(**dictionary)
+
+#         # نمایش فیلدهای نامعتبر هر رکورد.
+#         for key in invalid_records:
+#             print(f"Unexpected format '{key}: {dictionary[key]}' at position {index}.")
+#             is_invalid = True
+
+#     # اگر خطایی وجود داشته باشد False برمی‌گرداند.
+#     if is_invalid:
+#         return False
+
+#     print('Valid format.')
+#     return True
+
+# # ==========================================
+# # 99. FUNCTION CALL - اجرای تابع اعتبارسنجی
+# # ==========================================
+# validate(medical_records)  # بررسی اعتبار تمام رکوردها
+
