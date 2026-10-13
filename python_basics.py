@@ -1173,6 +1173,12 @@
 # print(number_pattern(True))   # پیام خطا
 # print(number_pattern("5"))    # پیام خطا
 
+
+# ==========================================
+# 65. DICTIONARIES - دیکشنری‌ها
+# ==========================================
+
+# ساخت دیکشنری با کلید و مقدار
 dictionary = {
     'key1': 'value1',
     'key2': 'value2'
@@ -1185,35 +1191,107 @@ pizza = {
     'toppings': ['mozzarella', 'basil']
 }
 
-pizza = dict([('name', 'Margherita Pizza'), ('price', 8.9), ('calories_per_slice', 250), ('toppings', ['mozzarella', 'basil'])])
+
+# ==========================================
+# 66. DICT CONSTRUCTOR - ساخت دیکشنری با dict
+# ==========================================
+
+# ساخت دیکشنری از زوج‌های کلید و مقدار
+pizza = dict([
+    ('name', 'Margherita Pizza'),
+    ('price', 8.9),
+    ('calories_per_slice', 250),
+    ('toppings', ['mozzarella', 'basil'])
+])
+
+
+# ==========================================
+# 67. ACCESS AND MODIFY - دسترسی و تغییر مقادیر
+# ==========================================
+
+# تغییر مقدار یک کلید
 pizza['name'] = 'Margherita'
-print(pizza['name']) # 'Margherita'
 
-#dictionary.get(key, default)
-print(pizza.get('name', 'Unknown')) # 'Margherita'
-print(pizza.get('unknown_key', 'Default Value')) # 'Default Value'
-pizza.get('toppings', []) # ['mozzarella', 'basil']
-pizza.keys()
-# dict_keys(['name', 'price', 'calories_per_slice'])
+print(pizza['name'])
 
-pizza.values()
-# dict_values(['Margherita Pizza', 8.9, 250])
+# دسترسی با get؛ بدون خطا در صورت نبودن کلید
+print(pizza.get('name', 'Unknown'))
+print(pizza.get('unknown_key', 'Default Value'))
+print(pizza.get('toppings', []))
 
-pizza.keys()
-# dict_keys(['name', 'price', 'calories_per_slice'])
-pizza.clear()
-pizza.pop('price', 10)
-pizza.pop('total_price',"Margherita Pizza") # KeyError
 
-pizza.update({ 'price': 15, 'total_time': 25 })
+# ==========================================
+# 68. KEYS AND VALUES - کلیدها و مقادیر
+# ==========================================
 
-{
-    'name': 'Margherita Pizza', 
-    'price': 15, 
-    'calories_per_slice': 250, 
-    'toppings': ['mozzarella', 'basil'], 
+pizza = {
+    'name': 'Margherita Pizza',
+    'price': 8.9,
+    'calories_per_slice': 250
+}
+
+print(pizza.keys())    # نمایش کلیدها
+print(pizza.values())  # نمایش مقادیر
+print(pizza.items())   # نمایش زوج‌های کلید و مقدار
+
+
+# ==========================================
+# 69. POP - حذف کلید و دریافت مقدار
+# ==========================================
+
+pizza = {
+    'name': 'Margherita Pizza',
+    'price': 8.9,
+    'calories_per_slice': 250
+}
+
+# حذف کلید موجود و برگرداندن مقدار آن
+print(pizza.pop('price'))
+
+# اگر کلید وجود نداشته باشد، مقدار پیش‌فرض برگردانده می‌شود
+print(pizza.pop('total_price', 'Not Found'))
+
+# بدون مقدار پیش‌فرض، نبودن کلید باعث KeyError می‌شود
+# pizza.pop('total_price')
+
+
+# ==========================================
+# 70. UPDATE - افزودن و به‌روزرسانی
+# ==========================================
+
+pizza = {
+    'name': 'Margherita Pizza',
+    'price': 8.9,
+    'calories_per_slice': 250,
+    'toppings': ['mozzarella', 'basil']
+}
+
+# تغییر قیمت و افزودن کلید جدید
+pizza.update({
+    'price': 15,
     'total_time': 25
-} 
+})
 
-pizza.popitem()
+print(pizza)
+
+
+# ==========================================
+# 71. POPITEM - حذف آخرین زوج
+# ==========================================
+
+# حذف و برگرداندن آخرین زوج کلید و مقدار
+removed_item = pizza.popitem()
+
+print(removed_item)
+print(pizza)
+
+
+# ==========================================
+# 72. CLEAR - خالی کردن دیکشنری
+# ==========================================
+
+pizza.clear()
+
+print(pizza)  # {}
+
 
