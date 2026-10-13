@@ -1442,40 +1442,73 @@
 # # ==========================================
 # print(5 in my_set)  # True
 
-# import module_name
+
+# ==========================================
+# 85. IMPORT - وارد کردن ماژول
+# ==========================================
 import math
-math.sqrt(36)
 
-import math as m 
-m.sqrt(36)
+math.sqrt(36)  # محاسبه جذر عدد 36
 
-#from module_name import name1, name2
-#from module_name import name1 as alias1, name2 as alias2
+# ==========================================
+# 86. IMPORT AS - نام مستعار برای ماژول
+# ==========================================
+import math as m
 
-from math import radians, sin, cos
+m.sqrt(36)  # استفاده از نام مستعار m
 
+# ==========================================
+# 87. FROM IMPORT - وارد کردن توابع مشخص
+# ==========================================
 from math import radians, sin, cos
 
 angle_degrees = 40
-angle_radians = radians(angle_degrees)
+angle_radians = radians(angle_degrees)  # تبدیل درجه به رادیان
 
-sine_value = sin(angle_radians)
-cos_value = cos(angle_radians)
+sine_value = sin(angle_radians)  # محاسبه سینوس
+cos_value = cos(angle_radians)   # محاسبه کسینوس
 
-print(sine_value) # 0.6427876096865393
-print(cos_value)  # 0.766044443118978
+print(sine_value)  # 0.6427876096865393
+print(cos_value)   # 0.766044443118978
 
-#from module_name import *
+# ==========================================
+# 88. IMPORT AS - نام مستعار برای توابع
+# ==========================================
+# from module_name import name1 as alias1
+# from module_name import name2 as alias2
+
+# ==========================================
+# 89. FROM IMPORT * - وارد کردن تمام نام‌ها
+# ==========================================
 from math import *
-print(sqrt(36))  # 6.0
-print(pow(5, 2)) # 25.0
-print(exp(1))    # 2.718281828459045
 
+print(sqrt(36))  # 6.0؛ محاسبه جذر
+print(pow(5, 2)) # 25.0؛ توان
+print(exp(1))    # 2.718281828459045؛ توان عدد e
+
+# ==========================================
+# 90. MATH MODULE - ثابت‌های ریاضی
+# ==========================================
 import math
-print(math.pi)
+
+print(math.pi)  # عدد پی
+
+# ==========================================
+# 91. DATETIME - کار با تاریخ
+# ==========================================
 import datetime
+
 birthday = datetime.date(1959, 7, 15)
-print(birthday.day)    # 15
-print(birthday.month)  # 7
-print(birthday.year)   # 1959
+
+print(birthday.day)    # 15؛ روز
+print(birthday.month)  # 7؛ ماه
+print(birthday.year)   # 1959؛ سال
+
+# ==========================================
+# 92. __NAME__ - نقطه شروع اجرای برنامه
+# ==========================================
+if __name__ == '__main__':
+    # کدهای اصلی برنامه در این بخش قرار می‌گیرند
+    pass
+
 
