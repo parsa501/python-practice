@@ -1695,17 +1695,32 @@
 
 #     return f"Setting '{key}' does not exist! Cannot update a non-existing setting."
 
-# ==========================================
-# 102. DELETE SETTING - حذف تنظیمات
-# ==========================================
-def delete_setting(settings, key):
-    key = key.lower()
+# # ==========================================
+# # 102. DELETE SETTING - حذف تنظیمات
+# # ==========================================
+# def delete_setting(settings, key):
+#     key = key.lower()
 
-    if key in settings:  # بررسی وجود کلید
-        del settings[key]  # حذف کلید و مقدار آن
-        return f"Setting '{key}' deleted successfully!"
+#     if key in settings:  # بررسی وجود کلید
+#         del settings[key]  # حذف کلید و مقدار آن
+#         return f"Setting '{key}' deleted successfully!"
 
-    return "Setting not found!"  # کلید پیدا نشد
+#     return "Setting not found!"  # کلید پیدا نشد
+
+# ==========================================
+# 103. VIEW SETTINGS - نمایش تنظیمات
+# ==========================================
+def view_settings(settings):
+    if not settings:  # بررسی خالی بودن دیکشنری
+        return "No settings available."
+
+    result = "Current User Settings:\n"
+
+    # پیمایش کلیدها و مقدارهای دیکشنری
+    for key, value in settings.items():
+        result += f"{key.capitalize()}: {value}\n"
+
+    return result  # برگرداندن متن نهایی
 
 
 
