@@ -1828,3 +1828,86 @@
 #     result = 10 / number
 # except (ValueError, ZeroDivisionError) as e:
 #     print(f'Error occurred: {e}')  # نمایش پیام خطای رخ‌داده
+
+# ==========================================
+# 114. RAISE - ایجاد خطای دلخواه
+# ==========================================
+def check_age(age):
+    if age < 0:
+        raise ValueError('Age cannot be negative')  # ایجاد خطا
+    return age
+
+try:
+    check_age(-5)
+except ValueError as e:
+    print(f'Error: {e}')
+    # Error: Age cannot be negative
+
+# ==========================================
+# 115. RAISE - ارسال دوباره خطا
+# ==========================================
+def process_data(data):
+    try:
+        result = int(data)  # تبدیل داده به عدد صحیح
+        return result * 2
+    except ValueError:
+        print('Logging: Invalid data received')
+        raise  # ارسال دوباره همان خطا
+
+try:
+    process_data('abc')
+except ValueError:
+    print('Handled at higher level')
+
+# ==========================================
+# 116. CUSTOM EXCEPTION - ساخت خطای اختصاصی
+# ==========================================
+class InsufficientFundsError(Exception):
+    def __init__(self, balance, amount):
+        self.balance = balance  # موجودی حساب
+        self.amount = amount    # مبلغ درخواستی
+        super().__init__(
+            f'Insufficient funds: ${balance} available, ${amount} requested'
+        )
+
+def withdraw(balance, amount):
+    if amount > balance:
+        raise InsufficientFundsError(balance, amount)  # ایجاد خطای اختصاصی
+    return balance - amount
+
+try:
+    new_balance = withdraw(100, 150)
+except InsufficientFundsError as e:
+    print(f'Transaction failed: {e}')
+
+# ==========================================
+# 117. EXCEPTION CHAINING - زنجیره خطاها
+# ==========================================
+def parse_config(filename):
+    try:
+        with open(filename, 'r') as file:
+            data = file.read()
+            return int(data)  # تبدیل محتوای فایل به عدد
+    except FileNotFoundError:
+        # ایجاد خطای جدید بدون نمایش علت قبلی
+        raise ValueError('Configuration file is missing') from None
+    except ValueError as e:
+        # ایجاد خطای جدید همراه با علت خطای قبلی
+        raise ValueError('Invalid configuration format') from e
+
+config = parse_config('config.txt')
+
+# ==========================================
+# 118. ASSERT - بررسی یک شرط
+# ==========================================
+def calculate_square_root(number):
+    assert number >= 0, 'Cannot calculate square root of negative number'
+    return number ** 0.5  # محاسبه جذر با توان یک‌دوم
+
+try:
+    result = calculate_square_root(-4)
+except AssertionError as e:
+    print(f'Assertion failed: {e}')
+    
+
+
