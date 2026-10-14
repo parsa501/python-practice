@@ -1707,20 +1707,30 @@
 
 #     return "Setting not found!"  # کلید پیدا نشد
 
+# # ==========================================
+# # 103. VIEW SETTINGS - نمایش تنظیمات
+# # ==========================================
+# def view_settings(settings):
+#     if not settings:  # بررسی خالی بودن دیکشنری
+#         return "No settings available."
+
+#     result = "Current User Settings:\n"
+
+#     # پیمایش کلیدها و مقدارهای دیکشنری
+#     for key, value in settings.items():
+#         result += f"{key.capitalize()}: {value}\n"
+
+#     return result  # برگرداندن متن نهایی
+
+
 # ==========================================
-# 103. VIEW SETTINGS - نمایش تنظیمات
+# 104. TEST DICTIONARY - دیکشنری آزمایشی
 # ==========================================
-def view_settings(settings):
-    if not settings:  # بررسی خالی بودن دیکشنری
-        return "No settings available."
-
-    result = "Current User Settings:\n"
-
-    # پیمایش کلیدها و مقدارهای دیکشنری
-    for key, value in settings.items():
-        result += f"{key.capitalize()}: {value}\n"
-
-    return result  # برگرداندن متن نهایی
+test_settings = {
+    "theme": "dark",
+    "language": "english",
+    "notifications": "enabled"
+}
 
 
 
