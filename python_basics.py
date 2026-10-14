@@ -1909,5 +1909,37 @@
 # except AssertionError as e:
 #     print(f'Assertion failed: {e}')
     
+# ==========================================
+# 119. ISBN VALIDATION - اعتبارسنجی کد کتاب
+# ==========================================
+def validate_isbn(isbn, length):
+    # بررسی طول کد ISBN
+    if len(isbn) != length:
+        print(f'ISBN-{length} code should be {length} digits long.')
+        return
+
+    main_digits = isbn[0:length-1]  # جدا کردن ارقام اصلی
+    given_check_digit = isbn[length-1]  # دریافت رقم کنترلی
+
+    try:
+        # تبدیل ارقام اصلی به لیست اعداد صحیح
+        main_digits_list = [int(digit) for digit in main_digits]
+    except ValueError:
+        print('Invalid character was found.')
+        return
+
+    # محاسبه رقم کنترلی بر اساس نوع ISBN
+    if length == 10:
+        expected_check_digit = calculate_check_digit_10(main_digits_list)
+    else:
+        expected_check_digit = calculate_check_digit_13(main_digits_list)
+
+    # مقایسه رقم کنترلی واردشده با مقدار محاسبه‌شده
+    if given_check_digit == expected_check_digit:
+        print('Valid ISBN Code.')
+    else:
+        print('Invalid ISBN Code.')
+
+
 
 
