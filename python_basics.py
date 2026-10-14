@@ -1940,6 +1940,27 @@ def validate_isbn(isbn, length):
     else:
         print('Invalid ISBN Code.')
 
+# ==========================================
+# 120. ISBN-10 - محاسبه رقم کنترلی
+# ==========================================
+def calculate_check_digit_10(main_digits_list):
+    digits_sum = 0
+
+    # ضرب هر رقم در وزن مربوط به خودش
+    for index, digit in enumerate(main_digits_list):
+        digits_sum += digit * (10 - index)
+
+    result = 11 - digits_sum % 11  # محاسبه رقم کنترلی
+
+    if result == 11:
+        expected_check_digit = '0'
+    elif result == 10:
+        expected_check_digit = 'X'
+    else:
+        expected_check_digit = str(result)
+
+    return expected_check_digit  # برگرداندن رقم کنترلی
+
 
 
 
