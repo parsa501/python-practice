@@ -1681,18 +1681,31 @@
 #     settings[key] = value  # اضافه کردن تنظیم جدید
 #     return f"Setting '{key}' added with value '{value}' successfully!"
 
+# # ==========================================
+# # 101. UPDATE SETTING - به‌روزرسانی تنظیمات
+# # ==========================================
+# def update_setting(settings, key_value):
+#     key, value = key_value
+#     key = key.lower()
+#     value = value.lower()
+
+#     if key in settings:  # اگر کلید وجود داشته باشد
+#         settings[key] = value  # تغییر مقدار قبلی
+#         return f"Setting '{key}' updated to '{value}' successfully!"
+
+#     return f"Setting '{key}' does not exist! Cannot update a non-existing setting."
+
 # ==========================================
-# 101. UPDATE SETTING - به‌روزرسانی تنظیمات
+# 102. DELETE SETTING - حذف تنظیمات
 # ==========================================
-def update_setting(settings, key_value):
-    key, value = key_value
+def delete_setting(settings, key):
     key = key.lower()
-    value = value.lower()
 
-    if key in settings:  # اگر کلید وجود داشته باشد
-        settings[key] = value  # تغییر مقدار قبلی
-        return f"Setting '{key}' updated to '{value}' successfully!"
+    if key in settings:  # بررسی وجود کلید
+        del settings[key]  # حذف کلید و مقدار آن
+        return f"Setting '{key}' deleted successfully!"
 
-    return f"Setting '{key}' does not exist! Cannot update a non-existing setting."
+    return "Setting not found!"  # کلید پیدا نشد
+
 
 
