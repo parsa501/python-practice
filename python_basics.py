@@ -1909,106 +1909,106 @@
 # except AssertionError as e:
 #     print(f'Assertion failed: {e}')
     
-# ==========================================
-# 119. ISBN VALIDATION - اعتبارسنجی کد کتاب
-# ==========================================
-def validate_isbn(isbn, length):
-    # بررسی طول کد ISBN
-    if len(isbn) != length:
-        print(f'ISBN-{length} code should be {length} digits long.')
-        return
+# # ==========================================
+# # 119. ISBN VALIDATION - اعتبارسنجی کد کتاب
+# # ==========================================
+# def validate_isbn(isbn, length):
+#     # بررسی طول کد ISBN
+#     if len(isbn) != length:
+#         print(f'ISBN-{length} code should be {length} digits long.')
+#         return
 
-    main_digits = isbn[0:length-1]  # جدا کردن ارقام اصلی
-    given_check_digit = isbn[length-1]  # دریافت رقم کنترلی
+#     main_digits = isbn[0:length-1]  # جدا کردن ارقام اصلی
+#     given_check_digit = isbn[length-1]  # دریافت رقم کنترلی
 
-    try:
-        # تبدیل ارقام اصلی به لیست اعداد صحیح
-        main_digits_list = [int(digit) for digit in main_digits]
-    except ValueError:
-        print('Invalid character was found.')
-        return
+#     try:
+#         # تبدیل ارقام اصلی به لیست اعداد صحیح
+#         main_digits_list = [int(digit) for digit in main_digits]
+#     except ValueError:
+#         print('Invalid character was found.')
+#         return
 
-    # محاسبه رقم کنترلی بر اساس نوع ISBN
-    if length == 10:
-        expected_check_digit = calculate_check_digit_10(main_digits_list)
-    else:
-        expected_check_digit = calculate_check_digit_13(main_digits_list)
+#     # محاسبه رقم کنترلی بر اساس نوع ISBN
+#     if length == 10:
+#         expected_check_digit = calculate_check_digit_10(main_digits_list)
+#     else:
+#         expected_check_digit = calculate_check_digit_13(main_digits_list)
 
-    # مقایسه رقم کنترلی واردشده با مقدار محاسبه‌شده
-    if given_check_digit == expected_check_digit:
-        print('Valid ISBN Code.')
-    else:
-        print('Invalid ISBN Code.')
+#     # مقایسه رقم کنترلی واردشده با مقدار محاسبه‌شده
+#     if given_check_digit == expected_check_digit:
+#         print('Valid ISBN Code.')
+#     else:
+#         print('Invalid ISBN Code.')
 
-# ==========================================
-# 120. ISBN-10 - محاسبه رقم کنترلی
-# ==========================================
-def calculate_check_digit_10(main_digits_list):
-    digits_sum = 0
+# # ==========================================
+# # 120. ISBN-10 - محاسبه رقم کنترلی
+# # ==========================================
+# def calculate_check_digit_10(main_digits_list):
+#     digits_sum = 0
 
-    # ضرب هر رقم در وزن مربوط به خودش
-    for index, digit in enumerate(main_digits_list):
-        digits_sum += digit * (10 - index)
+#     # ضرب هر رقم در وزن مربوط به خودش
+#     for index, digit in enumerate(main_digits_list):
+#         digits_sum += digit * (10 - index)
 
-    result = 11 - digits_sum % 11  # محاسبه رقم کنترلی
+#     result = 11 - digits_sum % 11  # محاسبه رقم کنترلی
 
-    if result == 11:
-        expected_check_digit = '0'
-    elif result == 10:
-        expected_check_digit = 'X'
-    else:
-        expected_check_digit = str(result)
+#     if result == 11:
+#         expected_check_digit = '0'
+#     elif result == 10:
+#         expected_check_digit = 'X'
+#     else:
+#         expected_check_digit = str(result)
 
-    return expected_check_digit  # برگرداندن رقم کنترلی
+#     return expected_check_digit  # برگرداندن رقم کنترلی
 
-# ==========================================
-# 121. ISBN-13 - محاسبه رقم کنترلی
-# ==========================================
-def calculate_check_digit_13(main_digits_list):
-    digits_sum = 0
+# # ==========================================
+# # 121. ISBN-13 - محاسبه رقم کنترلی
+# # ==========================================
+# def calculate_check_digit_13(main_digits_list):
+#     digits_sum = 0
 
-    # وزن ارقام به‌صورت یکی‌درمیان 1 و 3 است
-    for index, digit in enumerate(main_digits_list):
-        if index % 2 == 0:
-            digits_sum += digit * 1
-        else:
-            digits_sum += digit * 3
+#     # وزن ارقام به‌صورت یکی‌درمیان 1 و 3 است
+#     for index, digit in enumerate(main_digits_list):
+#         if index % 2 == 0:
+#             digits_sum += digit * 1
+#         else:
+#             digits_sum += digit * 3
 
-    result = 10 - digits_sum % 10  # محاسبه رقم کنترلی
+#     result = 10 - digits_sum % 10  # محاسبه رقم کنترلی
 
-    if result == 10:
-        expected_check_digit = '0'
-    else:
-        expected_check_digit = str(result)
+#     if result == 10:
+#         expected_check_digit = '0'
+#     else:
+#         expected_check_digit = str(result)
 
-    return expected_check_digit
+#     return expected_check_digit
 
-# ==========================================
-# 122. MAIN - دریافت ورودی و اجرای برنامه
-# ==========================================
-def main():
-    user_input = input('Enter ISBN and length: ')
+# # ==========================================
+# # 122. MAIN - دریافت ورودی و اجرای برنامه
+# # ==========================================
+# def main():
+#     user_input = input('Enter ISBN and length: ')
 
-    try:
-        values = user_input.split(',')  # جدا کردن ورودی با کاما
-        isbn = values[0]
-        length = int(values[1])  # تبدیل طول به عدد صحیح
-    except IndexError:
-        print('Enter comma-separated values.')
-        return
-    except ValueError:
-        print('Length must be a number.')
-        return
+#     try:
+#         values = user_input.split(',')  # جدا کردن ورودی با کاما
+#         isbn = values[0]
+#         length = int(values[1])  # تبدیل طول به عدد صحیح
+#     except IndexError:
+#         print('Enter comma-separated values.')
+#         return
+#     except ValueError:
+#         print('Length must be a number.')
+#         return
 
-    # بررسی طول مجاز ISBN
-    if length == 10 or length == 13:
-        validate_isbn(isbn, length)
-    else:
-        print('Length should be 10 or 13.')
+#     # بررسی طول مجاز ISBN
+#     if length == 10 or length == 13:
+#         validate_isbn(isbn, length)
+#     else:
+#         print('Length should be 10 or 13.')
 
-# ==========================================
-# 123. FUNCTION CALL - اجرای برنامه
-# ==========================================
-# main()  # با حذف کامنت، برنامه اجرا می‌شود
+# # ==========================================
+# # 123. FUNCTION CALL - اجرای برنامه
+# # ==========================================
+# # main()  # با حذف کامنت، برنامه اجرا می‌شود
 
 
