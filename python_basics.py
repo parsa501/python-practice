@@ -1961,6 +1961,28 @@ def calculate_check_digit_10(main_digits_list):
 
     return expected_check_digit  # برگرداندن رقم کنترلی
 
+# ==========================================
+# 121. ISBN-13 - محاسبه رقم کنترلی
+# ==========================================
+def calculate_check_digit_13(main_digits_list):
+    digits_sum = 0
+
+    # وزن ارقام به‌صورت یکی‌درمیان 1 و 3 است
+    for index, digit in enumerate(main_digits_list):
+        if index % 2 == 0:
+            digits_sum += digit * 1
+        else:
+            digits_sum += digit * 3
+
+    result = 10 - digits_sum % 10  # محاسبه رقم کنترلی
+
+    if result == 10:
+        expected_check_digit = '0'
+    else:
+        expected_check_digit = str(result)
+
+    return expected_check_digit
+
 
 
 
