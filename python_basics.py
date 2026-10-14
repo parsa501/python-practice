@@ -1667,18 +1667,32 @@
 # # ==========================================
 # validate(medical_records)  # بررسی اعتبار تمام رکوردها
 
-# ==========================================
-# 100. ADD SETTING - اضافه کردن تنظیمات
-# ==========================================
-def add_setting(settings, key_value):
-    key, value = key_value  # باز کردن تاپل و دریافت کلید و مقدار
-    key = key.lower()      # تبدیل کلید به حروف کوچک
-    value = value.lower()  # تبدیل مقدار به حروف کوچک
+# # ==========================================
+# # 100. ADD SETTING - اضافه کردن تنظیمات
+# # ==========================================
+# def add_setting(settings, key_value):
+#     key, value = key_value  # باز کردن تاپل و دریافت کلید و مقدار
+#     key = key.lower()      # تبدیل کلید به حروف کوچک
+#     value = value.lower()  # تبدیل مقدار به حروف کوچک
 
-    if key in settings:  # بررسی وجود کلید
-        return f"Setting '{key}' already exists! Cannot add a new setting with this name."
+#     if key in settings:  # بررسی وجود کلید
+#         return f"Setting '{key}' already exists! Cannot add a new setting with this name."
 
-    settings[key] = value  # اضافه کردن تنظیم جدید
-    return f"Setting '{key}' added with value '{value}' successfully!"
+#     settings[key] = value  # اضافه کردن تنظیم جدید
+#     return f"Setting '{key}' added with value '{value}' successfully!"
+
+# ==========================================
+# 101. UPDATE SETTING - به‌روزرسانی تنظیمات
+# ==========================================
+def update_setting(settings, key_value):
+    key, value = key_value
+    key = key.lower()
+    value = value.lower()
+
+    if key in settings:  # اگر کلید وجود داشته باشد
+        settings[key] = value  # تغییر مقدار قبلی
+        return f"Setting '{key}' updated to '{value}' successfully!"
+
+    return f"Setting '{key}' does not exist! Cannot update a non-existing setting."
 
 
