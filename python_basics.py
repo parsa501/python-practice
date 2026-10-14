@@ -1723,14 +1723,14 @@
 #     return result  # برگرداندن متن نهایی
 
 
-# ==========================================
-# 104. TEST DICTIONARY - دیکشنری آزمایشی
-# ==========================================
-test_settings = {
-    "theme": "dark",
-    "language": "english",
-    "notifications": "enabled"
-}
+# # ==========================================
+# # 104. TEST DICTIONARY - دیکشنری آزمایشی
+# # ==========================================
+# test_settings = {
+#     "theme": "dark",
+#     "language": "english",
+#     "notifications": "enabled"
+# }
 
 
 
