@@ -1780,3 +1780,52 @@
 
 # print(divide(10, 2))  # 5.0
 # print(divide(15, 3))  # 5.0
+
+
+# ==========================================
+# 109. TRY & EXCEPT - مدیریت خطا
+# ==========================================
+try:
+    x = 10 / 0  # ایجاد خطای تقسیم بر صفر
+except ZeroDivisionError:
+    print("You can't divide by zero!")  # اجرا در صورت وقوع این خطا
+
+# ==========================================
+# 110. ELSE & FINALLY - بخش‌های تکمیلی
+# ==========================================
+try:
+    x = 10 / 2
+except ZeroDivisionError:
+    print("You can't divide by zero!")
+else:
+    print('Division successful:', x)  # فقط در صورت نبود خطا اجرا می‌شود
+finally:
+    print('This block always runs.')  # در حالت عادی همیشه اجرا می‌شود
+
+# ==========================================
+# 111. MULTIPLE EXCEPT - مدیریت چند نوع خطا
+# ==========================================
+try:
+    number = int('abc')  # تبدیل رشته نامعتبر به عدد
+    result = 10 / number
+except ValueError:
+    print('That was not a valid number.')  # خطای تبدیل نوع
+except ZeroDivisionError:
+    print("Can't divide by zero.")  # خطای تقسیم بر صفر
+
+# ==========================================
+# 112. EXCEPT AS - دریافت اطلاعات خطا
+# ==========================================
+try:
+    x = 1 / 0
+except ZeroDivisionError as e:
+    print(f'Error occurred: {e}')  # نمایش پیام خطا
+
+# ==========================================
+# 113. MULTIPLE EXCEPTIONS - مدیریت چند خطا با هم
+# ==========================================
+try:
+    number = int(input('Enter a number: '))
+    result = 10 / number
+except (ValueError, ZeroDivisionError) as e:
+    print(f'Error occurred: {e}')  # نمایش پیام خطای رخ‌داده
