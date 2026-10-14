@@ -1983,6 +1983,28 @@ def calculate_check_digit_13(main_digits_list):
 
     return expected_check_digit
 
+# ==========================================
+# 122. MAIN - دریافت ورودی و اجرای برنامه
+# ==========================================
+def main():
+    user_input = input('Enter ISBN and length: ')
+
+    try:
+        values = user_input.split(',')  # جدا کردن ورودی با کاما
+        isbn = values[0]
+        length = int(values[1])  # تبدیل طول به عدد صحیح
+    except IndexError:
+        print('Enter comma-separated values.')
+        return
+    except ValueError:
+        print('Length must be a number.')
+        return
+
+    # بررسی طول مجاز ISBN
+    if length == 10 or length == 13:
+        validate_isbn(isbn, length)
+    else:
+        print('Length should be 10 or 13.')
 
 
 
