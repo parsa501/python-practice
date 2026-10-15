@@ -1,4 +1,3 @@
-
 # # ==========================================
 # # Python Basics - جزوه جامع مقدماتی پایتون
 # # ==========================================
@@ -449,7 +448,7 @@
 #     )
 
 
-# print(create_character("ren", 4, 2, 1)) 
+# print(create_character("ren", 4, 2, 1))
 
 # #==========================================
 # #24. LIST INDEXING - دسترسی به اعضای لیست
@@ -853,7 +852,7 @@
 #     else:
 #         # فقط وقتی اجرا می‌شود که حلقه داخلی break نشود
 #         print(f"'{word}' has no vowels")
-        
+
 # # ==========================================
 # # 50. RANGE - تولید دنباله‌ای از اعداد
 # # ==========================================
@@ -1908,7 +1907,7 @@
 #     result = calculate_square_root(-4)
 # except AssertionError as e:
 #     print(f'Assertion failed: {e}')
-    
+
 # # ==========================================
 # # 119. ISBN VALIDATION - اعتبارسنجی کد کتاب
 # # ==========================================
@@ -2134,113 +2133,118 @@
 # print(car_2.describe())  # This car is a green Lamborghini Revuelto
 
 
-# ==========================================
-# 131. MAGIC METHODS - متدهای ویژه
-# ==========================================
-class Book:
-    def __init__(self, title, pages):
-        self.title = title
-        self.pages = pages
+# # ==========================================
+# # 131. MAGIC METHODS - متدهای ویژه
+# # ==========================================
+# class Book:
+#     def __init__(self, title, pages):
+#         self.title = title
+#         self.pages = pages
 
-book1 = Book("Built Wealth Like a Boss", 420)
-book2 = Book("Be Your Own Start", 420)
 
-# print(len(book1))  # TypeError؛ متد __len__ تعریف نشده است
-print(str(book1))   # نمایش پیش‌فرض اطلاعات شیء
-print(book1 == book2)  # False؛ دو شیء متفاوت هستند
+# book1 = Book("Built Wealth Like a Boss", 420)
+# book2 = Book("Be Your Own Start", 420)
 
-# ==========================================
-# 132. __LEN__ - تعیین طول شیء
-# ==========================================
-class Book:
-    def __init__(self, title, pages):
-        self.title = title
-        self.pages = pages
+# # print(len(book1))  # TypeError؛ متد __len__ تعریف نشده است
+# print(str(book1))  # نمایش پیش‌فرض اطلاعات شیء
+# print(book1 == book2)  # False؛ دو شیء متفاوت هستند
 
-    def __len__(self):
-        return self.pages  # تعیین مقدار len(book)
 
-    def __str__(self):
-        return f"'{self.title}' has {self.pages} pages"  # نمایش متنی شیء
+# # ==========================================
+# # 132. __LEN__ - تعیین طول شیء
+# # ==========================================
+# class Book:
+#     def __init__(self, title, pages):
+#         self.title = title
+#         self.pages = pages
 
-    def __eq__(self, other):
-        return self.pages == other.pages  # مقایسه تعداد صفحات
+#     def __len__(self):
+#         return self.pages  # تعیین مقدار len(book)
 
-book1 = Book("Built Wealth Like a Boss", 420)
-book2 = Book("Be Your Own Start", 420)
+#     def __str__(self):
+#         return f"'{self.title}' has {self.pages} pages"  # نمایش متنی شیء
 
-print(len(book1))   # 420
-print(len(book2))   # 420
-print(str(book1))   # 'Built Wealth Like a Boss' has 420 pages
-print(str(book2))   # 'Be Your Own Start' has 420 pages
-print(book1 == book2)  # True؛ تعداد صفحات برابر است
+#     def __eq__(self, other):
+#         return self.pages == other.pages  # مقایسه تعداد صفحات
 
-# ==========================================
-# 133. CART CLASS - ساخت سبد خرید
-# ==========================================
-class Cart:
-    def __init__(self):
-        self.items = []  # لیست محصولات سبد خرید
 
-    def add(self, item):
-        self.items.append(item)  # اضافه کردن محصول
+# book1 = Book("Built Wealth Like a Boss", 420)
+# book2 = Book("Be Your Own Start", 420)
 
-    def remove(self, item):
-        if item in self.items:
-            self.items.remove(item)  # حذف محصول
-        else:
-            print(f'{item} is not in cart')  # محصول وجود ندارد
+# print(len(book1))  # 420
+# print(len(book2))  # 420
+# print(str(book1))  # 'Built Wealth Like a Boss' has 420 pages
+# print(str(book2))  # 'Be Your Own Start' has 420 pages
+# print(book1 == book2)  # True؛ تعداد صفحات برابر است
 
-    def list_items(self):
-        return self.items  # برگرداندن لیست محصولات
 
-    # ==========================================
-    # 134. __LEN__ - تعداد محصولات
-    # ==========================================
-    def __len__(self):
-        return len(self.items)  # پشتیبانی از len(cart)
+# # ==========================================
+# # 133. CART CLASS - ساخت سبد خرید
+# # ==========================================
+# class Cart:
+#     def __init__(self):
+#         self.items = []  # لیست محصولات سبد خرید
 
-    # ==========================================
-    # 135. __GETITEM__ - دسترسی با اندیس
-    # ==========================================
-    def __getitem__(self, index):
-        return self.items[index]  # پشتیبانی از cart[index]
+#     def add(self, item):
+#         self.items.append(item)  # اضافه کردن محصول
 
-    # ==========================================
-    # 136. __CONTAINS__ - بررسی وجود محصول
-    # ==========================================
-    def __contains__(self, item):
-        return item in self.items  # پشتیبانی از in
+#     def remove(self, item):
+#         if item in self.items:
+#             self.items.remove(item)  # حذف محصول
+#         else:
+#             print(f"{item} is not in cart")  # محصول وجود ندارد
 
-    # ==========================================
-    # 137. __ITER__ - قابل پیمایش کردن شیء
-    # ==========================================
-    def __iter__(self):
-        return iter(self.items)  # امکان استفاده از حلقه for
+#     def list_items(self):
+#         return self.items  # برگرداندن لیست محصولات
 
-# ==========================================
-# 138. CART OBJECT - استفاده از سبد خرید
-# ==========================================
-cart = Cart()
+#     # ==========================================
+#     # 134. __LEN__ - تعداد محصولات
+#     # ==========================================
+#     def __len__(self):
+#         return len(self.items)  # پشتیبانی از len(cart)
 
-cart.add('Laptop')
-cart.add('Wireless mouse')
-cart.add('Ergo keyboard')
-cart.add('Monitor')
+#     # ==========================================
+#     # 135. __GETITEM__ - دسترسی با اندیس
+#     # ==========================================
+#     def __getitem__(self, index):
+#         return self.items[index]  # پشتیبانی از cart[index]
 
-# پیمایش محصولات با حلقه
-for item in cart:
-    print(item, end=' ')
-# Laptop Wireless mouse Ergo keyboard Monitor
+#     # ==========================================
+#     # 136. __CONTAINS__ - بررسی وجود محصول
+#     # ==========================================
+#     def __contains__(self, item):
+#         return item in self.items  # پشتیبانی از in
 
-print(len(cart))  # 4؛ تعداد محصولات
-print(cart[3])    # Monitor؛ محصول با اندیس 3
+#     # ==========================================
+#     # 137. __ITER__ - قابل پیمایش کردن شیء
+#     # ==========================================
+#     def __iter__(self):
+#         return iter(self.items)  # امکان استفاده از حلقه for
 
-print('Monitor' in cart)  # True
-print('banana' in cart)   # False
 
-cart.remove('Ergo keyboard')  # حذف محصول
+# # ==========================================
+# # 138. CART OBJECT - استفاده از سبد خرید
+# # ==========================================
+# cart = Cart()
 
-print(cart.list_items())  # ['Laptop', 'Wireless mouse', 'Monitor']
+# cart.add("Laptop")
+# cart.add("Wireless mouse")
+# cart.add("Ergo keyboard")
+# cart.add("Monitor")
 
-cart.remove('banana')  # banana is not in cart
+# # پیمایش محصولات با حلقه
+# for item in cart:
+#     print(item, end=" ")
+# # Laptop Wireless mouse Ergo keyboard Monitor
+
+# print(len(cart))  # 4؛ تعداد محصولات
+# print(cart[3])  # Monitor؛ محصول با اندیس 3
+
+# print("Monitor" in cart)  # True
+# print("banana" in cart)  # False
+
+# cart.remove("Ergo keyboard")  # حذف محصول
+
+# print(cart.list_items())  # ['Laptop', 'Wireless mouse', 'Monitor']
+
+# cart.remove("banana")  # banana is not in cart
