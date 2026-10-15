@@ -2175,3 +2175,46 @@ print(str(book1))   # 'Built Wealth Like a Boss' has 420 pages
 print(str(book2))   # 'Be Your Own Start' has 420 pages
 print(book1 == book2)  # True؛ تعداد صفحات برابر است
 
+# ==========================================
+# 133. CART CLASS - ساخت سبد خرید
+# ==========================================
+class Cart:
+    def __init__(self):
+        self.items = []  # لیست محصولات سبد خرید
+
+    def add(self, item):
+        self.items.append(item)  # اضافه کردن محصول
+
+    def remove(self, item):
+        if item in self.items:
+            self.items.remove(item)  # حذف محصول
+        else:
+            print(f'{item} is not in cart')  # محصول وجود ندارد
+
+    def list_items(self):
+        return self.items  # برگرداندن لیست محصولات
+
+    # ==========================================
+    # 134. __LEN__ - تعداد محصولات
+    # ==========================================
+    def __len__(self):
+        return len(self.items)  # پشتیبانی از len(cart)
+
+    # ==========================================
+    # 135. __GETITEM__ - دسترسی با اندیس
+    # ==========================================
+    def __getitem__(self, index):
+        return self.items[index]  # پشتیبانی از cart[index]
+
+    # ==========================================
+    # 136. __CONTAINS__ - بررسی وجود محصول
+    # ==========================================
+    def __contains__(self, item):
+        return item in self.items  # پشتیبانی از in
+
+    # ==========================================
+    # 137. __ITER__ - قابل پیمایش کردن شیء
+    # ==========================================
+    def __iter__(self):
+        return iter(self.items)  # امکان استفاده از حلقه for
+
