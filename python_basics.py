@@ -2115,3 +2115,22 @@ jill = Dog("Jill")
 print(jack.bark())  # Jack says woof woof!
 print(jill.bark())  # Jill says woof woof!
 
+# ==========================================
+# 130. INSTANCE METHOD - متد نمونه
+# ==========================================
+class Car:
+    def __init__(self, color, model):
+        self.color = color  # ویژگی نمونه
+        self.model = model  # ویژگی نمونه
+
+    def describe(self):
+        # ساخت توضیحات با استفاده از ویژگی‌های شیء
+        return f"This car is a {self.color} {self.model}"
+
+car_1 = Car("red", "Toyota Corolla")
+car_2 = Car("green", "Lamborghini Revuelto")
+
+print(car_1.describe())  # This car is a red Toyota Corolla
+print(car_2.describe())  # This car is a green Lamborghini Revuelto
+
+
