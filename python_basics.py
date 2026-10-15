@@ -2097,3 +2097,21 @@ print(car_2.model)  # Lamborghini Revuelto
 print(car_1.color)  # red
 print(car_2.color)  # green
 
+# ==========================================
+# 129. METHOD - تعریف متد در کلاس
+# ==========================================
+class Dog:
+    species = "French Bulldog"
+
+    def __init__(self, name):
+        self.name = name
+
+    def bark(self):
+        return f"{self.name} says woof woof!"  # برگرداندن متن
+
+jack = Dog("Jack")
+jill = Dog("Jill")
+
+print(jack.bark())  # Jack says woof woof!
+print(jill.bark())  # Jill says woof woof!
+
