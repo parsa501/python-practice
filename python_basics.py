@@ -2041,3 +2041,23 @@ class Dog:
 # object_1.method_name()
 # object_2.method_name()
 
+# ==========================================
+# 126. SELF - دسترسی به ویژگی‌های شیء
+# ==========================================
+class Dog:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def bark(self):
+        print(
+            f"{self.name.upper()} says woof woof! "
+            f"I'm {self.age} years old!"
+        )
+
+dog_1 = Dog("Jack", 3)
+dog_2 = Dog("Thatcher", 5)
+
+dog_1.bark()  # JACK says woof woof! I'm 3 years old!
+dog_2.bark()  # THATCHER says woof woof! I'm 5 years old!
+
