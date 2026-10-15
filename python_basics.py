@@ -2248,3 +2248,17 @@
 # print(cart.list_items())  # ['Laptop', 'Wireless mouse', 'Monitor']
 
 # cart.remove("banana")  # banana is not in cart
+
+# ==========================================
+# 139. OBJECT ATTRIBUTES - ویژگی‌های شیء
+# ==========================================
+class Car:
+    def __init__(self, brand, model):
+        self.brand = brand  # برند خودرو
+        self.model = model  # مدل خودرو
+
+my_car = Car('Lamborghini', 'Gallardo')
+
+print(my_car.brand)  # Lamborghini
+print(my_car.model)  # Gallardo
+
