@@ -2218,3 +2218,29 @@ class Cart:
     def __iter__(self):
         return iter(self.items)  # امکان استفاده از حلقه for
 
+# ==========================================
+# 138. CART OBJECT - استفاده از سبد خرید
+# ==========================================
+cart = Cart()
+
+cart.add('Laptop')
+cart.add('Wireless mouse')
+cart.add('Ergo keyboard')
+cart.add('Monitor')
+
+# پیمایش محصولات با حلقه
+for item in cart:
+    print(item, end=' ')
+# Laptop Wireless mouse Ergo keyboard Monitor
+
+print(len(cart))  # 4؛ تعداد محصولات
+print(cart[3])    # Monitor؛ محصول با اندیس 3
+
+print('Monitor' in cart)  # True
+print('banana' in cart)   # False
+
+cart.remove('Ergo keyboard')  # حذف محصول
+
+print(cart.list_items())  # ['Laptop', 'Wireless mouse', 'Monitor']
+
+cart.remove('banana')  # banana is not in cart
