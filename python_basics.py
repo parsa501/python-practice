@@ -2011,126 +2011,126 @@
 # # ==========================================
 # # main()  # با حذف کامنت، برنامه اجرا می‌شود
 
-# ==========================================
-# 124. CLASS - ساخت کلاس
-# ==========================================
-class ClassName:
-    def __init__(self, name, age):
-        self.name = name  # ویژگی نام
-        self.age = age    # ویژگی سن
+# # ==========================================
+# # 124. CLASS - ساخت کلاس
+# # ==========================================
+# class ClassName:
+#     def __init__(self, name, age):
+#         self.name = name  # ویژگی نام
+#         self.age = age    # ویژگی سن
 
-    def sample_method(self):
-        print(self.name.upper())  # تبدیل نام به حروف بزرگ
+#     def sample_method(self):
+#         print(self.name.upper())  # تبدیل نام به حروف بزرگ
 
-# ==========================================
-# 125. OBJECT - ساخت شیء و متد
-# ==========================================
-class Dog:
-    def __init__(self, name, age):
-        self.name = name
-        self.age = age
+# # ==========================================
+# # 125. OBJECT - ساخت شیء و متد
+# # ==========================================
+# class Dog:
+#     def __init__(self, name, age):
+#         self.name = name
+#         self.age = age
 
-    def bark(self):
-        print(f"{self.name.upper()} says woof woof!")
+#     def bark(self):
+#         print(f"{self.name.upper()} says woof woof!")
 
-# ساخت اشیا از روی کلاس
-# object_1 = ClassName(attribute_1, attribute_2)
-# object_2 = ClassName(attribute_1, attribute_2)
+# # ساخت اشیا از روی کلاس
+# # object_1 = ClassName(attribute_1, attribute_2)
+# # object_2 = ClassName(attribute_1, attribute_2)
 
-# فراخوانی متدهای اشیا
-# object_1.method_name()
-# object_2.method_name()
+# # فراخوانی متدهای اشیا
+# # object_1.method_name()
+# # object_2.method_name()
 
-# ==========================================
-# 126. SELF - دسترسی به ویژگی‌های شیء
-# ==========================================
-class Dog:
-    def __init__(self, name, age):
-        self.name = name
-        self.age = age
+# # ==========================================
+# # 126. SELF - دسترسی به ویژگی‌های شیء
+# # ==========================================
+# class Dog:
+#     def __init__(self, name, age):
+#         self.name = name
+#         self.age = age
 
-    def bark(self):
-        print(
-            f"{self.name.upper()} says woof woof! "
-            f"I'm {self.age} years old!"
-        )
+#     def bark(self):
+#         print(
+#             f"{self.name.upper()} says woof woof! "
+#             f"I'm {self.age} years old!"
+#         )
 
-dog_1 = Dog("Jack", 3)
-dog_2 = Dog("Thatcher", 5)
+# dog_1 = Dog("Jack", 3)
+# dog_2 = Dog("Thatcher", 5)
 
-dog_1.bark()  # JACK says woof woof! I'm 3 years old!
-dog_2.bark()  # THATCHER says woof woof! I'm 5 years old!
+# dog_1.bark()  # JACK says woof woof! I'm 3 years old!
+# dog_2.bark()  # THATCHER says woof woof! I'm 5 years old!
 
-# ==========================================
-# 127. CLASS ATTRIBUTE - ویژگی کلاس
-# ==========================================
-class Dog:
-    species = "French Bulldog"  # ویژگی مشترک کلاس
+# # ==========================================
+# # 127. CLASS ATTRIBUTE - ویژگی کلاس
+# # ==========================================
+# class Dog:
+#     species = "French Bulldog"  # ویژگی مشترک کلاس
 
-    def __init__(self, name):
-        self.name = name  # ویژگی اختصاصی هر شیء
+#     def __init__(self, name):
+#         self.name = name  # ویژگی اختصاصی هر شیء
 
-print(Dog.species)  # French Bulldog
+# print(Dog.species)  # French Bulldog
 
-dog1 = Dog("Jack")
-print(dog1.name)     # Jack
-print(dog1.species)  # French Bulldog
+# dog1 = Dog("Jack")
+# print(dog1.name)     # Jack
+# print(dog1.species)  # French Bulldog
 
-dog2 = Dog("Tom")
-print(dog2.name)     # Tom
-print(dog2.species)  # French Bulldog
+# dog2 = Dog("Tom")
+# print(dog2.name)     # Tom
+# print(dog2.species)  # French Bulldog
 
-# ==========================================
-# 128. INSTANCE ATTRIBUTE - ویژگی‌های نمونه
-# ==========================================
-class Car:
-    def __init__(self, color, model):
-        self.color = color  # رنگ خودرو
-        self.model = model  # مدل خودرو
+# # ==========================================
+# # 128. INSTANCE ATTRIBUTE - ویژگی‌های نمونه
+# # ==========================================
+# class Car:
+#     def __init__(self, color, model):
+#         self.color = color  # رنگ خودرو
+#         self.model = model  # مدل خودرو
 
-car_1 = Car("red", "Toyota Corolla")
-car_2 = Car("green", "Lamborghini Revuelto")
+# car_1 = Car("red", "Toyota Corolla")
+# car_2 = Car("green", "Lamborghini Revuelto")
 
-print(car_1.model)  # Toyota Corolla
-print(car_2.model)  # Lamborghini Revuelto
+# print(car_1.model)  # Toyota Corolla
+# print(car_2.model)  # Lamborghini Revuelto
 
-print(car_1.color)  # red
-print(car_2.color)  # green
+# print(car_1.color)  # red
+# print(car_2.color)  # green
 
-# ==========================================
-# 129. METHOD - تعریف متد در کلاس
-# ==========================================
-class Dog:
-    species = "French Bulldog"
+# # ==========================================
+# # 129. METHOD - تعریف متد در کلاس
+# # ==========================================
+# class Dog:
+#     species = "French Bulldog"
 
-    def __init__(self, name):
-        self.name = name
+#     def __init__(self, name):
+#         self.name = name
 
-    def bark(self):
-        return f"{self.name} says woof woof!"  # برگرداندن متن
+#     def bark(self):
+#         return f"{self.name} says woof woof!"  # برگرداندن متن
 
-jack = Dog("Jack")
-jill = Dog("Jill")
+# jack = Dog("Jack")
+# jill = Dog("Jill")
 
-print(jack.bark())  # Jack says woof woof!
-print(jill.bark())  # Jill says woof woof!
+# print(jack.bark())  # Jack says woof woof!
+# print(jill.bark())  # Jill says woof woof!
 
-# ==========================================
-# 130. INSTANCE METHOD - متد نمونه
-# ==========================================
-class Car:
-    def __init__(self, color, model):
-        self.color = color  # ویژگی نمونه
-        self.model = model  # ویژگی نمونه
+# # ==========================================
+# # 130. INSTANCE METHOD - متد نمونه
+# # ==========================================
+# class Car:
+#     def __init__(self, color, model):
+#         self.color = color  # ویژگی نمونه
+#         self.model = model  # ویژگی نمونه
 
-    def describe(self):
-        # ساخت توضیحات با استفاده از ویژگی‌های شیء
-        return f"This car is a {self.color} {self.model}"
+#     def describe(self):
+#         # ساخت توضیحات با استفاده از ویژگی‌های شیء
+#         return f"This car is a {self.color} {self.model}"
 
-car_1 = Car("red", "Toyota Corolla")
-car_2 = Car("green", "Lamborghini Revuelto")
+# car_1 = Car("red", "Toyota Corolla")
+# car_2 = Car("green", "Lamborghini Revuelto")
 
-print(car_1.describe())  # This car is a red Toyota Corolla
-print(car_2.describe())  # This car is a green Lamborghini Revuelto
+# print(car_1.describe())  # This car is a red Toyota Corolla
+# print(car_2.describe())  # This car is a green Lamborghini Revuelto
 
 
