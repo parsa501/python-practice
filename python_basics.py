@@ -2465,137 +2465,136 @@
 # print(planet_2.orbit())
 # print(planet_3.orbit())
 
-
-# ==========================================
-# 148. EMAIL SYSTEM - سیستم مدیریت ایمیل
-# ==========================================
-import datetime
-
-
-# کلاس ایمیل
-class Email:
-    def __init__(self, sender, receiver, subject, body):
-        self.sender = sender
-        self.receiver = receiver
-        self.subject = subject
-        self.body = body
-        self.timestamp = datetime.datetime.now()
-        self.read = False
-
-    # علامت‌گذاری ایمیل به‌عنوان خوانده‌شده
-    def mark_as_read(self):
-        self.read = True
-
-    # نمایش کامل ایمیل
-    def display_full_email(self):
-        self.mark_as_read()
-        print('\n--- Email ---')
-        print(f'From: {self.sender.name}')
-        print(f'To: {self.receiver.name}')
-        print(f'Subject: {self.subject}')
-        print(f"Received: {self.timestamp.strftime('%Y-%m-%d %H:%M')}")
-        print(f'Body: {self.body}')
-        print('------------\n')
-
-    # نمایش خلاصه ایمیل
-    def __str__(self):
-        status = 'Read' if self.read else 'Unread'
-        return f"[{status}] From: {self.sender.name} | Subject: {self.subject} | Time: {self.timestamp.strftime('%Y-%m-%d %H:%M')}"
+# # ==========================================
+# # 148. EMAIL SYSTEM - سیستم مدیریت ایمیل
+# # ==========================================
+# import datetime
 
 
-# کلاس کاربر
-class User:
-    def __init__(self, name):
-        self.name = name
-        self.inbox = Inbox()
+# # کلاس ایمیل
+# class Email:
+#     def __init__(self, sender, receiver, subject, body):
+#         self.sender = sender
+#         self.receiver = receiver
+#         self.subject = subject
+#         self.body = body
+#         self.timestamp = datetime.datetime.now()
+#         self.read = False
 
-    # ارسال ایمیل به کاربر دیگر
-    def send_email(self, receiver, subject, body):
-        email = Email(sender=self, receiver=receiver, subject=subject, body=body)
-        receiver.inbox.receive_email(email)
-        print(f'Email sent from {self.name} to {receiver.name}!\n')
+#     # علامت‌گذاری ایمیل به‌عنوان خوانده‌شده
+#     def mark_as_read(self):
+#         self.read = True
 
-    # نمایش صندوق ورودی
-    def check_inbox(self):
-        print(f"\n{self.name}'s Inbox:")
-        self.inbox.list_emails()
+#     # نمایش کامل ایمیل
+#     def display_full_email(self):
+#         self.mark_as_read()
+#         print('\n--- Email ---')
+#         print(f'From: {self.sender.name}')
+#         print(f'To: {self.receiver.name}')
+#         print(f'Subject: {self.subject}')
+#         print(f"Received: {self.timestamp.strftime('%Y-%m-%d %H:%M')}")
+#         print(f'Body: {self.body}')
+#         print('------------\n')
 
-    # خواندن ایمیل با شماره
-    def read_email(self, index):
-        self.inbox.read_email(index)
-
-    # حذف ایمیل با شماره
-    def delete_email(self, index):
-        self.inbox.delete_email(index)
-
-
-# کلاس صندوق ورودی
-class Inbox:
-    def __init__(self):
-        self.emails = []
-
-    # دریافت و ذخیره ایمیل
-    def receive_email(self, email):
-        self.emails.append(email)
-
-    # نمایش فهرست ایمیل‌ها
-    def list_emails(self):
-        if not self.emails:
-            print('Your inbox is empty.\n')
-            return
-
-        print('\nYour Emails:')
-        for i, email in enumerate(self.emails, start=1):
-            print(f'{i}. {email}')
-
-    # خواندن ایمیل بر اساس شماره
-    def read_email(self, index):
-        if not self.emails:
-            print('Inbox is empty.\n')
-            return
-
-        # تبدیل شماره کاربر به اندیس لیست
-        actual_index = index - 1
-
-        # بررسی معتبر بودن شماره
-        if actual_index < 0 or actual_index >= len(self.emails):
-            print('Invalid email number.\n')
-            return
-
-        self.emails[actual_index].display_full_email()
-
-    # حذف ایمیل بر اساس شماره
-    def delete_email(self, index):
-        if not self.emails:
-            print('Inbox is empty.\n')
-            return
-
-        actual_index = index - 1
-
-        if actual_index < 0 or actual_index >= len(self.emails):
-            print('Invalid email number.\n')
-            return
-
-        del self.emails[actual_index]
-        print('Email deleted.\n')
+#     # نمایش خلاصه ایمیل
+#     def __str__(self):
+#         status = 'Read' if self.read else 'Unread'
+#         return f"[{status}] From: {self.sender.name} | Subject: {self.subject} | Time: {self.timestamp.strftime('%Y-%m-%d %H:%M')}"
 
 
-# تابع اصلی برنامه
-def main():
-    tory = User('Tory')
-    ramy = User('Ramy')
+# # کلاس کاربر
+# class User:
+#     def __init__(self, name):
+#         self.name = name
+#         self.inbox = Inbox()
 
-    # ارسال ایمیل
-    tory.send_email(ramy, 'Hello', 'Hi Ramy, just saying hello!')
-    ramy.send_email(tory, 'Re: Hello', 'Hi Tory, hope you are fine.')
+#     # ارسال ایمیل به کاربر دیگر
+#     def send_email(self, receiver, subject, body):
+#         email = Email(sender=self, receiver=receiver, subject=subject, body=body)
+#         receiver.inbox.receive_email(email)
+#         print(f'Email sent from {self.name} to {receiver.name}!\n')
 
-    # مشاهده، خواندن و حذف ایمیل
-    ramy.check_inbox()
-    ramy.read_email(1)
-    ramy.delete_email(1)
-    ramy.check_inbox()
+#     # نمایش صندوق ورودی
+#     def check_inbox(self):
+#         print(f"\n{self.name}'s Inbox:")
+#         self.inbox.list_emails()
+
+#     # خواندن ایمیل با شماره
+#     def read_email(self, index):
+#         self.inbox.read_email(index)
+
+#     # حذف ایمیل با شماره
+#     def delete_email(self, index):
+#         self.inbox.delete_email(index)
 
 
-# اجرای برنامه فقط هنگام اجرای مستقیم فایل
-if __name__ == '__main__':
-    main()
+# # کلاس صندوق ورودی
+# class Inbox:
+#     def __init__(self):
+#         self.emails = []
+
+#     # دریافت و ذخیره ایمیل
+#     def receive_email(self, email):
+#         self.emails.append(email)
+
+#     # نمایش فهرست ایمیل‌ها
+#     def list_emails(self):
+#         if not self.emails:
+#             print('Your inbox is empty.\n')
+#             return
+
+#         print('\nYour Emails:')
+#         for i, email in enumerate(self.emails, start=1):
+#             print(f'{i}. {email}')
+
+#     # خواندن ایمیل بر اساس شماره
+#     def read_email(self, index):
+#         if not self.emails:
+#             print('Inbox is empty.\n')
+#             return
+
+#         # تبدیل شماره کاربر به اندیس لیست
+#         actual_index = index - 1
+
+#         # بررسی معتبر بودن شماره
+#         if actual_index < 0 or actual_index >= len(self.emails):
+#             print('Invalid email number.\n')
+#             return
+
+#         self.emails[actual_index].display_full_email()
+
+#     # حذف ایمیل بر اساس شماره
+#     def delete_email(self, index):
+#         if not self.emails:
+#             print('Inbox is empty.\n')
+#             return
+
+#         actual_index = index - 1
+
+#         if actual_index < 0 or actual_index >= len(self.emails):
+#             print('Invalid email number.\n')
+#             return
+
+#         del self.emails[actual_index]
+#         print('Email deleted.\n')
+
+
+# # تابع اصلی برنامه
+# def main():
+#     tory = User('Tory')
+#     ramy = User('Ramy')
+
+#     # ارسال ایمیل
+#     tory.send_email(ramy, 'Hello', 'Hi Ramy, just saying hello!')
+#     ramy.send_email(tory, 'Re: Hello', 'Hi Tory, hope you are fine.')
+
+#     # مشاهده، خواندن و حذف ایمیل
+#     ramy.check_inbox()
+#     ramy.read_email(1)
+#     ramy.delete_email(1)
+#     ramy.check_inbox()
+
+
+# # اجرای برنامه فقط هنگام اجرای مستقیم فایل
+# if __name__ == '__main__':
+#     main()
