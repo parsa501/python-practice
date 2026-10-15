@@ -2425,42 +2425,42 @@
 # instrument_1.play()
 # print(instrument_1.get_fact())
 
-# ==========================================
-# 147. CLASS VALIDATION - اعتبارسنجی کلاس
-# ==========================================
-class Planet:
-    def __init__(self, name, planet_type, star):
-        # بررسی رشته بودن تمام ورودی‌ها
-        if not all(isinstance(value, str) for value in [name, planet_type, star]):
-            raise TypeError("name, planet type, and star must be strings")
+# # ==========================================
+# # 147. CLASS VALIDATION - اعتبارسنجی کلاس
+# # ==========================================
+# class Planet:
+#     def __init__(self, name, planet_type, star):
+#         # بررسی رشته بودن تمام ورودی‌ها
+#         if not all(isinstance(value, str) for value in [name, planet_type, star]):
+#             raise TypeError("name, planet type, and star must be strings")
 
-        # بررسی خالی نبودن ورودی‌ها
-        if not all(value.strip() for value in [name, planet_type, star]):
-            raise ValueError("name, planet_type, and star must be non-empty strings")
+#         # بررسی خالی نبودن ورودی‌ها
+#         if not all(value.strip() for value in [name, planet_type, star]):
+#             raise ValueError("name, planet_type, and star must be non-empty strings")
 
-        self.name = name
-        self.planet_type = planet_type
-        self.star = star
+#         self.name = name
+#         self.planet_type = planet_type
+#         self.star = star
 
-    # برگرداندن اطلاعات گردش سیاره
-    def orbit(self):
-        return f"{self.name} is orbiting around {self.star}..."
+#     # برگرداندن اطلاعات گردش سیاره
+#     def orbit(self):
+#         return f"{self.name} is orbiting around {self.star}..."
 
-    # تعیین نمایش متنی شیء
-    def __str__(self):
-        return f"Planet: {self.name} | Type: {self.planet_type} | Star: {self.star}"
+#     # تعیین نمایش متنی شیء
+#     def __str__(self):
+#         return f"Planet: {self.name} | Type: {self.planet_type} | Star: {self.star}"
 
 
-planet_1 = Planet("Earth", "Terrestrial", "Sun")
-planet_2 = Planet("Jupiter", "Gas Giant", "Sun")
-planet_3 = Planet("Neptune", "Ice Giant", "Sun")
+# planet_1 = Planet("Earth", "Terrestrial", "Sun")
+# planet_2 = Planet("Jupiter", "Gas Giant", "Sun")
+# planet_3 = Planet("Neptune", "Ice Giant", "Sun")
 
-# چاپ اطلاعات اشیا
-print(planet_1)
-print(planet_2)
-print(planet_3)
+# # چاپ اطلاعات اشیا
+# print(planet_1)
+# print(planet_2)
+# print(planet_3)
 
-# اجرای متد orbit
-print(planet_1.orbit())
-print(planet_2.orbit())
-print(planet_3.orbit())
+# # اجرای متد orbit
+# print(planet_1.orbit())
+# print(planet_2.orbit())
+# print(planet_3.orbit())
