@@ -2022,4 +2022,22 @@ class ClassName:
     def sample_method(self):
         print(self.name.upper())  # تبدیل نام به حروف بزرگ
 
+# ==========================================
+# 125. OBJECT - ساخت شیء و متد
+# ==========================================
+class Dog:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def bark(self):
+        print(f"{self.name.upper()} says woof woof!")
+
+# ساخت اشیا از روی کلاس
+# object_1 = ClassName(attribute_1, attribute_2)
+# object_2 = ClassName(attribute_1, attribute_2)
+
+# فراخوانی متدهای اشیا
+# object_1.method_name()
+# object_2.method_name()
 
