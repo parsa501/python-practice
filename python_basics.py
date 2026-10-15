@@ -2401,3 +2401,26 @@
 # #
 # # Final attributes remaining:
 # #  - user_id: 101
+
+# # ==========================================
+# # 146. CLASS METHODS - متدهای کلاس
+# # ==========================================
+# class MusicalInstrument:
+#     def __init__(self, name, instrument_type):
+#         self.name = name
+#         self.instrument_type = instrument_type
+
+#     # متدی برای اجرای یک عمل
+#     def play(self):
+#         print(f'The {self.name} is fun to play!')
+
+#     # متدی برای برگرداندن اطلاعات
+#     def get_fact(self):
+#         return f'The {self.name} is part of the {self.instrument_type} family of instruments.'
+
+
+# instrument_1 = MusicalInstrument('Oboe', 'woodwind')
+# instrument_2 = MusicalInstrument('Trumpet', 'brass')
+
+# instrument_1.play()
+# print(instrument_1.get_fact())
