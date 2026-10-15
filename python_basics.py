@@ -2080,3 +2080,20 @@ dog2 = Dog("Tom")
 print(dog2.name)     # Tom
 print(dog2.species)  # French Bulldog
 
+# ==========================================
+# 128. INSTANCE ATTRIBUTE - ویژگی‌های نمونه
+# ==========================================
+class Car:
+    def __init__(self, color, model):
+        self.color = color  # رنگ خودرو
+        self.model = model  # مدل خودرو
+
+car_1 = Car("red", "Toyota Corolla")
+car_2 = Car("green", "Lamborghini Revuelto")
+
+print(car_1.model)  # Toyota Corolla
+print(car_2.model)  # Lamborghini Revuelto
+
+print(car_1.color)  # red
+print(car_2.color)  # green
+
