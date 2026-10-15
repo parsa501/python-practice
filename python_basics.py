@@ -2249,155 +2249,155 @@
 
 # cart.remove("banana")  # banana is not in cart
 
-# ==========================================
-# 139. OBJECT ATTRIBUTES - ویژگی‌های شیء
-# ==========================================
-class Car:
-    def __init__(self, brand, model):
-        self.brand = brand  # برند خودرو
-        self.model = model  # مدل خودرو
+# # ==========================================
+# # 139. OBJECT ATTRIBUTES - ویژگی‌های شیء
+# # ==========================================
+# class Car:
+#     def __init__(self, brand, model):
+#         self.brand = brand  # برند خودرو
+#         self.model = model  # مدل خودرو
 
-my_car = Car('Lamborghini', 'Gallardo')
+# my_car = Car('Lamborghini', 'Gallardo')
 
-print(my_car.brand)  # Lamborghini
-print(my_car.model)  # Gallardo
+# print(my_car.brand)  # Lamborghini
+# print(my_car.model)  # Gallardo
 
-# ==========================================
-# 140. GETATTR - دریافت ویژگی به‌صورت پویا
-# ==========================================
-# getattr(object, attribute_name, default_value)
-# دریافت مقدار ویژگی؛ در صورت نبودن، مقدار پیش‌فرض برگردانده می‌شود.
+# # ==========================================
+# # 140. GETATTR - دریافت ویژگی به‌صورت پویا
+# # ==========================================
+# # getattr(object, attribute_name, default_value)
+# # دریافت مقدار ویژگی؛ در صورت نبودن، مقدار پیش‌فرض برگردانده می‌شود.
 
-class Person:
-    def __init__(self, name, age):
-        self.name = name
-        self.age = age
+# class Person:
+#     def __init__(self, name, age):
+#         self.name = name
+#         self.age = age
 
-person = Person('John Doe', 30)
+# person = Person('John Doe', 30)
 
-print(getattr(person, 'name'))  # John Doe
-print(getattr(person, 'age'))   # 30
-print(getattr(person, 'city', 'Milano'))  # Milano
+# print(getattr(person, 'name'))  # John Doe
+# print(getattr(person, 'age'))   # 30
+# print(getattr(person, 'city', 'Milano'))  # Milano
 
-# ==========================================
-# 141. GETATTR WITH INPUT - دریافت ویژگی از ورودی
-# ==========================================
-class Person:
-    def __init__(self, name, age):
-        self.name = name
-        self.age = age
+# # ==========================================
+# # 141. GETATTR WITH INPUT - دریافت ویژگی از ورودی
+# # ==========================================
+# class Person:
+#     def __init__(self, name, age):
+#         self.name = name
+#         self.age = age
 
-person = Person('John Doe', 30)
+# person = Person('John Doe', 30)
 
-attr_name = input('Enter the attribute you want to see: ')
-print(getattr(person, attr_name, 'Attribute not found'))
+# attr_name = input('Enter the attribute you want to see: ')
+# print(getattr(person, attr_name, 'Attribute not found'))
 
-# ==========================================
-# 142. DIR - مشاهده ویژگی‌های شیء
-# ==========================================
-class Person:
-    def __init__(self, name, age):
-        self.name = name
-        self.age = age
+# # ==========================================
+# # 142. DIR - مشاهده ویژگی‌های شیء
+# # ==========================================
+# class Person:
+#     def __init__(self, name, age):
+#         self.name = name
+#         self.age = age
 
-person = Person('John Doe', 30)
+# person = Person('John Doe', 30)
 
-# پیمایش نام ویژگی‌های شیء با dir()
-for attr in dir(person):
-    # نادیده گرفتن متدهای ویژه و متدهای قابل فراخوانی
-    if not attr.startswith('__') and not callable(getattr(person, attr)):
-        value = getattr(person, attr)
-        print(f'{attr}: {value}')
+# # پیمایش نام ویژگی‌های شیء با dir()
+# for attr in dir(person):
+#     # نادیده گرفتن متدهای ویژه و متدهای قابل فراخوانی
+#     if not attr.startswith('__') and not callable(getattr(person, attr)):
+#         value = getattr(person, attr)
+#         print(f'{attr}: {value}')
 
-# Output:
-# age: 30
-# name: John Doe
+# # Output:
+# # age: 30
+# # name: John Doe
 
-# ==========================================
-# 143. SETATTR - ایجاد یا تغییر ویژگی پویا
-# ==========================================
-# setattr(object, attribute_name, value)
-# ایجاد ویژگی جدید یا تغییر مقدار ویژگی موجود
+# # ==========================================
+# # 143. SETATTR - ایجاد یا تغییر ویژگی پویا
+# # ==========================================
+# # setattr(object, attribute_name, value)
+# # ایجاد ویژگی جدید یا تغییر مقدار ویژگی موجود
 
-class Configuration:
-    pass
+# class Configuration:
+#     pass
 
-# داده‌های دریافت‌شده در زمان اجرا
-settings_data = {
-    'server_url': 'https://api.example.com',
-    'timeout_sec': 30,
-    'max_retries': 5
-}
+# # داده‌های دریافت‌شده در زمان اجرا
+# settings_data = {
+#     'server_url': 'https://api.example.com',
+#     'timeout_sec': 30,
+#     'max_retries': 5
+# }
 
-config_obj = Configuration()
+# config_obj = Configuration()
 
-# ساخت ویژگی‌ها با استفاده از کلیدها و مقادیر دیکشنری
-for attr_name, attr_value in settings_data.items():
-    setattr(config_obj, attr_name, attr_value)
+# # ساخت ویژگی‌ها با استفاده از کلیدها و مقادیر دیکشنری
+# for attr_name, attr_value in settings_data.items():
+#     setattr(config_obj, attr_name, attr_value)
 
-print(config_obj.server_url)   # https://api.example.com
-print(config_obj.timeout_sec)  # 30
+# print(config_obj.server_url)   # https://api.example.com
+# print(config_obj.timeout_sec)  # 30
 
-# ==========================================
-# 144. HASATTR - بررسی وجود ویژگی
-# ==========================================
-# hasattr(object, attribute_name)
-# اگر ویژگی وجود داشته باشد True و در غیر این صورت False
+# # ==========================================
+# # 144. HASATTR - بررسی وجود ویژگی
+# # ==========================================
+# # hasattr(object, attribute_name)
+# # اگر ویژگی وجود داشته باشد True و در غیر این صورت False
 
-class Product:
-    def __init__(self, name, price):
-        self.name = name
-        self.price = price
+# class Product:
+#     def __init__(self, name, price):
+#         self.name = name
+#         self.price = price
 
-product_a = Product('T-Shirt', 25)
+# product_a = Product('T-Shirt', 25)
 
-required_attributes = ['name', 'price', 'inventory_id']
+# required_attributes = ['name', 'price', 'inventory_id']
 
-for attr in required_attributes:
-    if not hasattr(product_a, attr):
-        print(f"ERROR: Product is missing the required attribute: '{attr}'")
-    else:
-        # دریافت ویژگی پس از بررسی وجود آن
-        print(f'{attr}: {getattr(product_a, attr)}')
+# for attr in required_attributes:
+#     if not hasattr(product_a, attr):
+#         print(f"ERROR: Product is missing the required attribute: '{attr}'")
+#     else:
+#         # دریافت ویژگی پس از بررسی وجود آن
+#         print(f'{attr}: {getattr(product_a, attr)}')
 
-# Output:
-# name: T-Shirt
-# price: 25
-# ERROR: Product is missing the required attribute: 'inventory_id'
+# # Output:
+# # name: T-Shirt
+# # price: 25
+# # ERROR: Product is missing the required attribute: 'inventory_id'
 
-# ==========================================
-# 145. DELATTR - حذف ویژگی پویا
-# ==========================================
-# delattr(object, attribute_name)
-# حذف ویژگی مشخص‌شده از شیء
+# # ==========================================
+# # 145. DELATTR - حذف ویژگی پویا
+# # ==========================================
+# # delattr(object, attribute_name)
+# # حذف ویژگی مشخص‌شده از شیء
 
-class UserSession:
-    def __init__(self, user_id, token):
-        self.user_id = user_id
-        self.auth_token = token  # اطلاعات حساس
-        self.temp_counter = 0    # ویژگی موقت
+# class UserSession:
+#     def __init__(self, user_id, token):
+#         self.user_id = user_id
+#         self.auth_token = token  # اطلاعات حساس
+#         self.temp_counter = 0    # ویژگی موقت
 
-session = UserSession(101, 'a1b2c3d4e5')
+# session = UserSession(101, 'a1b2c3d4e5')
 
-# ویژگی‌هایی که باید حذف شوند
-attributes_to_clean = ['auth_token', 'temp_counter']
+# # ویژگی‌هایی که باید حذف شوند
+# attributes_to_clean = ['auth_token', 'temp_counter']
 
-# حذف ویژگی‌ها در صورت وجود
-for attr in attributes_to_clean:
-    if hasattr(session, attr):
-        delattr(session, attr)
-        print(f'Removed attribute: {attr}')
+# # حذف ویژگی‌ها در صورت وجود
+# for attr in attributes_to_clean:
+#     if hasattr(session, attr):
+#         delattr(session, attr)
+#         print(f'Removed attribute: {attr}')
 
-print('\nFinal attributes remaining:')
+# print('\nFinal attributes remaining:')
 
-# نمایش ویژگی‌های باقی‌مانده
-for attr in dir(session):
-    if not attr.startswith('__') and not callable(getattr(session, attr)):
-        print(f' - {attr}: {getattr(session, attr)}')
+# # نمایش ویژگی‌های باقی‌مانده
+# for attr in dir(session):
+#     if not attr.startswith('__') and not callable(getattr(session, attr)):
+#         print(f' - {attr}: {getattr(session, attr)}')
 
-# Output:
-# Removed attribute: auth_token
-# Removed attribute: temp_counter
-#
-# Final attributes remaining:
-#  - user_id: 101
+# # Output:
+# # Removed attribute: auth_token
+# # Removed attribute: temp_counter
+# #
+# # Final attributes remaining:
+# #  - user_id: 101
