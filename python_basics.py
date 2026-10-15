@@ -2134,3 +2134,18 @@
 # print(car_2.describe())  # This car is a green Lamborghini Revuelto
 
 
+# ==========================================
+# 131. MAGIC METHODS - متدهای ویژه
+# ==========================================
+class Book:
+    def __init__(self, title, pages):
+        self.title = title
+        self.pages = pages
+
+book1 = Book("Built Wealth Like a Boss", 420)
+book2 = Book("Be Your Own Start", 420)
+
+# print(len(book1))  # TypeError؛ متد __len__ تعریف نشده است
+print(str(book1))   # نمایش پیش‌فرض اطلاعات شیء
+print(book1 == book2)  # False؛ دو شیء متفاوت هستند
+
