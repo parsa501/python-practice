@@ -2598,3 +2598,120 @@
 # # اجرای برنامه فقط هنگام اجرای مستقیم فایل
 # if __name__ == '__main__':
 #     main()
+
+# ==========================================
+# 149. BUDGET APP - برنامه مدیریت بودجه
+# ==========================================
+
+# کلاس دسته‌بندی هزینه‌ها
+class Category:
+    def __init__(self, name):
+        self.name = name
+        self.ledger = []
+
+    # واریز مبلغ به دسته‌بندی
+    def deposit(self, amount, description=""):
+        self.ledger.append({
+            "amount": amount,
+            "description": description
+        })
+
+    # برداشت مبلغ از دسته‌بندی
+    def withdraw(self, amount, description=""):
+        if not self.check_funds(amount):
+            return False
+
+        self.ledger.append({
+            "amount": -amount,
+            "description": description
+        })
+        return True
+
+    # محاسبه موجودی
+    def get_balance(self):
+        return sum(item["amount"] for item in self.ledger)
+
+    # انتقال پول بین دسته‌بندی‌ها
+    def transfer(self, amount, category):
+        if not self.check_funds(amount):
+            return False
+
+        self.withdraw(amount, f"Transfer to {category.name}")
+        category.deposit(amount, f"Transfer from {self.name}")
+        return True
+
+    # بررسی کافی بودن موجودی
+    def check_funds(self, amount):
+        return amount <= self.get_balance()
+
+    # نمایش اطلاعات دسته‌بندی
+    def __str__(self):
+        title = self.name.center(30, "*")
+        lines = [title]
+
+        for item in self.ledger:
+            description = item["description"][:23]
+            amount = f"{item['amount']:.2f}"
+            lines.append(f"{description:<23}{amount:>7}")
+
+        lines.append(f"Total: {self.get_balance():.2f}")
+        return "\n".join(lines)
+
+
+# رسم نمودار درصد هزینه‌های دسته‌بندی‌ها
+def create_spend_chart(categories):
+    chart = "Percentage spent by category\n"
+
+    # محاسبه مجموع برداشت‌ها
+    total_spent = sum(
+        -item["amount"]
+        for category in categories
+        for item in category.ledger
+        if item["amount"] < 0
+    )
+
+    percentages = []
+
+    # محاسبه درصد هزینه هر دسته‌بندی
+    for category in categories:
+        spent = sum(
+            -item["amount"]
+            for item in category.ledger
+            if item["amount"] < 0
+        )
+
+        if total_spent == 0:
+            percentage = 0
+        else:
+            percentage = int(spent / total_spent * 100)
+
+        # گرد کردن درصد به پایین‌ترین مضرب ۱۰
+        percentage = percentage // 10 * 10
+        percentages.append(percentage)
+
+    # رسم محور عمودی نمودار از ۱۰۰ تا صفر
+    for value in range(100, -1, -10):
+        chart += f"{value:>3}| "
+
+        for percentage in percentages:
+            chart += "o  " if percentage >= value else "   "
+
+        chart += "\n"
+
+    # رسم خط افقی نمودار
+    chart += "    " + "-" * (len(categories) * 3 + 1)
+
+    # پیدا کردن طولانی‌ترین نام دسته‌بندی
+    max_length = max(len(category.name) for category in categories)
+
+    # نمایش عمودی حروف نام دسته‌بندی‌ها
+    for index in range(max_length):
+        chart += "\n     "
+
+        for category in categories:
+            if index < len(category.name):
+                chart += category.name[index] + "  "
+            else:
+                chart += "   "
+
+    return chart
