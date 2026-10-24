@@ -2713,5 +2713,22 @@
 #                 chart += category.name[index] + "  "
 #             else:
 #                 chart += "   "
+# return chart 
 
-#     return chart
+
+# ==========================================
+# 150. ENCAPSULATION - کپسوله‌سازی در کلاس‌ها
+# ==========================================
+
+
+# الگوی کلی تعریف کلاس
+class ClassName:
+    def __init__(self, parameters):
+        self.attribute = value
+
+    def method_name(self):
+        # منطق متد
+        pass
+
+
+
