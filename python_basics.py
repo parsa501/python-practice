@@ -2822,3 +2822,50 @@
 # acct_two.deposit(150)
 # print(acct_two.get_balance())  # 572
 
+# ==========================================
+# 151. PRIVATE METHODS - متدهای خصوصی
+# ==========================================
+class Wallet:
+    def __init__(self):
+        self.__balance = 0
+
+    # اعتبارسنجی مبلغ با متد خصوصی
+    def __validate(self, amount):
+        if amount < 0:
+            raise ValueError('Amount must be positive')
+
+    # واریز مبلغ
+    def deposit(self, amount):
+        self.__validate(amount)
+        self.__balance += amount
+
+    # برداشت مبلغ
+    def withdraw(self, amount):
+        self.__validate(amount)
+
+        if amount > self.__balance:
+            raise ValueError('Insufficient funds')
+
+        self.__balance -= amount
+
+    # دریافت موجودی
+    def get_balance(self):
+        return self.__balance
+
+
+acct_one = Wallet()
+
+acct_one.deposit(3)
+print(acct_one.get_balance())  # 3
+
+acct_one.deposit(50)
+print(acct_one.get_balance())  # 53
+
+# خطا: مبلغ منفی است
+# acct_one.deposit(-4)
+
+# خطا: مبلغ منفی است
+# acct_one.withdraw(-8)
+
+# خطا: موجودی کافی نیست
+# acct_one.withdraw(58)
