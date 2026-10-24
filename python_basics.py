@@ -2770,3 +2770,25 @@ class Wallet:
             self._balance -= amount
 
 
+# ==========================================
+# 150.3 PRIVATE ATTRIBUTES - ویژگی‌های خصوصی
+# ==========================================
+class Wallet:
+    def __init__(self, balance):
+        self.__balance = balance  # ویژگی خصوصی
+
+    def deposit(self, amount):
+        if amount > 0:
+            self.__balance += amount
+
+    def withdraw(self, amount):
+        if 0 < amount <= self.__balance:
+            self.__balance -= amount
+
+
+account = Wallet(500)
+
+# خطای AttributeError؛ دسترسی مستقیم با این نام ممکن نیست
+# print(account.__balance)
+
+
