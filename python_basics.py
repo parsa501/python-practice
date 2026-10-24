@@ -2732,3 +2732,23 @@ class ClassName:
 
 
 
+# ==========================================
+# 150.1 INSTANCE ATTRIBUTES - ویژگی‌های نمونه
+# ==========================================
+class Car:
+    def __init__(self, brand, color):
+        self.brand = brand
+        self.color = color
+
+
+# ساخت دو شیء از کلاس Car
+car1 = Car('Toyota', 'red')
+car2 = Car('Lambo', 'green')
+
+print('Car 1 Brand:', car1.brand)
+print('Car 1 Color:', car1.color)
+
+print('Car 2 Brand:', car2.brand)
+print('Car 2 Color:', car2.color)
+
+
