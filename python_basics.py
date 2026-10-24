@@ -2870,103 +2870,103 @@
 # # خطا: موجودی کافی نیست
 # # acct_one.withdraw(58)
 
-# ==========================================
-# 152. PROPERTY - مدیریت ویژگی‌های کلاس
-# ==========================================
+# # ==========================================
+# # 152. PROPERTY - مدیریت ویژگی‌های کلاس
+# # ==========================================
 
 
-# ==========================================
-# 152.1 GETTER - دریافت ویژگی و محاسبه مقدار
-# ==========================================
-class Circle:
-    def __init__(self, radius):
-        self._radius = radius
+# # ==========================================
+# # 152.1 GETTER - دریافت ویژگی و محاسبه مقدار
+# # ==========================================
+# class Circle:
+#     def __init__(self, radius):
+#         self._radius = radius
 
-    @property
-    def radius(self):
-        # دریافت شعاع
-        return self._radius
+#     @property
+#     def radius(self):
+#         # دریافت شعاع
+#         return self._radius
 
-    @property
-    def area(self):
-        # محاسبه مساحت دایره
-        return 3.14 * (self._radius ** 2)
-
-
-my_circle = Circle(3)
-
-print(my_circle.radius)  # 3
-print(my_circle.area)    # 28.26
+#     @property
+#     def area(self):
+#         # محاسبه مساحت دایره
+#         return 3.14 * (self._radius ** 2)
 
 
-# ==========================================
-# 152.2 SETTER - تغییر کنترل‌شده ویژگی
-# ==========================================
-class Circle:
-    def __init__(self, radius):
-        self.radius = radius  # فراخوانی Setter
+# my_circle = Circle(3)
 
-    @property
-    def radius(self):
-        # Getter
-        return self._radius
-
-    @radius.setter
-    def radius(self, value):
-        # بررسی معتبر بودن شعاع
-        if value <= 0:
-            raise ValueError('Radius must be positive')
-
-        self._radius = value
+# print(my_circle.radius)  # 3
+# print(my_circle.area)    # 28.26
 
 
-my_circle = Circle(3)
-print('Initial radius:', my_circle.radius)  # 3
+# # ==========================================
+# # 152.2 SETTER - تغییر کنترل‌شده ویژگی
+# # ==========================================
+# class Circle:
+#     def __init__(self, radius):
+#         self.radius = radius  # فراخوانی Setter
 
-my_circle.radius = 8  # فراخوانی Setter
-print('After modifying the radius:', my_circle.radius)  # 8
+#     @property
+#     def radius(self):
+#         # Getter
+#         return self._radius
 
-my_circle.radius       # فراخوانی Getter
-my_circle.radius = 4   # فراخوانی Setter
+#     @radius.setter
+#     def radius(self, value):
+#         # بررسی معتبر بودن شعاع
+#         if value <= 0:
+#             raise ValueError('Radius must be positive')
 
-
-# ==========================================
-# 152.3 DELETER - حذف ویژگی
-# ==========================================
-class Circle:
-    def __init__(self, radius):
-        self.radius = radius
-
-    # Getter
-    @property
-    def radius(self):
-        return self._radius
-
-    # Setter
-    @radius.setter
-    def radius(self, value):
-        if value <= 0:
-            raise ValueError("Radius must be positive")
-
-        self._radius = value
-
-    # Deleter
-    @radius.deleter
-    def radius(self):
-        print("Deleting radius...")
-        del self._radius
+#         self._radius = value
 
 
-# ساخت شیء دایره
-my_circle = Circle(33)
-print("Initial radius:", my_circle.radius)  # 33
+# my_circle = Circle(3)
+# print('Initial radius:', my_circle.radius)  # 3
 
-# حذف ویژگی radius
-del my_circle.radius  # Deleting radius...
-print("Radius deleted!")
+# my_circle.radius = 8  # فراخوانی Setter
+# print('After modifying the radius:', my_circle.radius)  # 8
 
-# دسترسی به شعاع پس از حذف، باعث خطا می‌شود
-try:
-    print(my_circle.radius)
-except AttributeError as e:
-    print("Error:", e)
+# my_circle.radius       # فراخوانی Getter
+# my_circle.radius = 4   # فراخوانی Setter
+
+
+# # ==========================================
+# # 152.3 DELETER - حذف ویژگی
+# # ==========================================
+# class Circle:
+#     def __init__(self, radius):
+#         self.radius = radius
+
+#     # Getter
+#     @property
+#     def radius(self):
+#         return self._radius
+
+#     # Setter
+#     @radius.setter
+#     def radius(self, value):
+#         if value <= 0:
+#             raise ValueError("Radius must be positive")
+
+#         self._radius = value
+
+#     # Deleter
+#     @radius.deleter
+#     def radius(self):
+#         print("Deleting radius...")
+#         del self._radius
+
+
+# # ساخت شیء دایره
+# my_circle = Circle(33)
+# print("Initial radius:", my_circle.radius)  # 33
+
+# # حذف ویژگی radius
+# del my_circle.radius  # Deleting radius...
+# print("Radius deleted!")
+
+# # دسترسی به شعاع پس از حذف، باعث خطا می‌شود
+# try:
+#     print(my_circle.radius)
+# except AttributeError as e:
+#     print("Error:", e)
