@@ -2716,108 +2716,109 @@
 # return chart 
 
 
-# ==========================================
-# 150. ENCAPSULATION - کپسوله‌سازی در کلاس‌ها
-# ==========================================
+# # ==========================================
+# # 150. ENCAPSULATION - کپسوله‌سازی در کلاس‌ها
+# # ==========================================
 
 
-# الگوی کلی تعریف کلاس
-class ClassName:
-    def __init__(self, parameters):
-        self.attribute = value
+# # الگوی کلی تعریف کلاس
+# class ClassName:
+#     def __init__(self, parameters):
+#         self.attribute = value
 
-    def method_name(self):
-        # منطق متد
-        pass
-
-
-
-# ==========================================
-# 150.1 INSTANCE ATTRIBUTES - ویژگی‌های نمونه
-# ==========================================
-class Car:
-    def __init__(self, brand, color):
-        self.brand = brand
-        self.color = color
+#     def method_name(self):
+#         # منطق متد
+#         pass
 
 
-# ساخت دو شیء از کلاس Car
-car1 = Car('Toyota', 'red')
-car2 = Car('Lambo', 'green')
 
-print('Car 1 Brand:', car1.brand)
-print('Car 1 Color:', car1.color)
-
-print('Car 2 Brand:', car2.brand)
-print('Car 2 Color:', car2.color)
-
-
-# ==========================================
-# 150.2 PROTECTED ATTRIBUTES - ویژگی‌های محافظت‌شده
-# ==========================================
-class Wallet:
-    def __init__(self, balance):
-        self._balance = balance  # قرارداد: استفاده داخلی
-
-    # واریز مبلغ مثبت
-    def deposit(self, amount):
-        if amount > 0:
-            self._balance += amount
-
-    # برداشت در صورت کافی بودن موجودی
-    def withdraw(self, amount):
-        if 0 < amount <= self._balance:
-            self._balance -= amount
+# # ==========================================
+# # 150.1 INSTANCE ATTRIBUTES - ویژگی‌های نمونه
+# # ==========================================
+# class Car:
+#     def __init__(self, brand, color):
+#         self.brand = brand
+#         self.color = color
 
 
-# ==========================================
-# 150.3 PRIVATE ATTRIBUTES - ویژگی‌های خصوصی
-# ==========================================
-class Wallet:
-    def __init__(self, balance):
-        self.__balance = balance  # ویژگی خصوصی
+# # ساخت دو شیء از کلاس Car
+# car1 = Car('Toyota', 'red')
+# car2 = Car('Lambo', 'green')
 
-    def deposit(self, amount):
-        if amount > 0:
-            self.__balance += amount
+# print('Car 1 Brand:', car1.brand)
+# print('Car 1 Color:', car1.color)
 
-    def withdraw(self, amount):
-        if 0 < amount <= self.__balance:
-            self.__balance -= amount
+# print('Car 2 Brand:', car2.brand)
+# print('Car 2 Color:', car2.color)
 
 
-account = Wallet(500)
+# # ==========================================
+# # 150.2 PROTECTED ATTRIBUTES - ویژگی‌های محافظت‌شده
+# # ==========================================
+# class Wallet:
+#     def __init__(self, balance):
+#         self._balance = balance  # قرارداد: استفاده داخلی
 
-# خطای AttributeError؛ دسترسی مستقیم با این نام ممکن نیست
-# print(account.__balance)
+#     # واریز مبلغ مثبت
+#     def deposit(self, amount):
+#         if amount > 0:
+#             self._balance += amount
 
-# ==========================================
-# 150.4 GETTER METHOD - دریافت ویژگی خصوصی
-# ==========================================
-class Wallet:
-    def __init__(self, balance):
-        self.__balance = balance
-
-    def deposit(self, amount):
-        if amount > 0:
-            self.__balance += amount
-
-    def withdraw(self, amount):
-        if 0 < amount <= self.__balance:
-            self.__balance -= amount
-
-    # دریافت موجودی از طریق متد
-    def get_balance(self):
-        return self.__balance
+#     # برداشت در صورت کافی بودن موجودی
+#     def withdraw(self, amount):
+#         if 0 < amount <= self._balance:
+#             self._balance -= amount
 
 
-acct_one = Wallet(100)
-acct_one.deposit(50)
-print(acct_one.get_balance())  # 150
+# # ==========================================
+# # 150.3 PRIVATE ATTRIBUTES - ویژگی‌های خصوصی
+# # ==========================================
+# class Wallet:
+#     def __init__(self, balance):
+#         self.__balance = balance  # ویژگی خصوصی
 
-acct_two = Wallet(450)
-acct_two.withdraw(28)
-print(acct_two.get_balance())  # 422
+#     def deposit(self, amount):
+#         if amount > 0:
+#             self.__balance += amount
 
-acct_two.deposit(150)
-print(acct_two.get_balance())  # 572
+#     def withdraw(self, amount):
+#         if 0 < amount <= self.__balance:
+#             self.__balance -= amount
+
+
+# account = Wallet(500)
+
+# # خطای AttributeError؛ دسترسی مستقیم با این نام ممکن نیست
+# # print(account.__balance)
+
+# # ==========================================
+# # 150.4 GETTER METHOD - دریافت ویژگی خصوصی
+# # ==========================================
+# class Wallet:
+#     def __init__(self, balance):
+#         self.__balance = balance
+
+#     def deposit(self, amount):
+#         if amount > 0:
+#             self.__balance += amount
+
+#     def withdraw(self, amount):
+#         if 0 < amount <= self.__balance:
+#             self.__balance -= amount
+
+#     # دریافت موجودی از طریق متد
+#     def get_balance(self):
+#         return self.__balance
+
+
+# acct_one = Wallet(100)
+# acct_one.deposit(50)
+# print(acct_one.get_balance())  # 150
+
+# acct_two = Wallet(450)
+# acct_two.withdraw(28)
+# print(acct_two.get_balance())  # 422
+
+# acct_two.deposit(150)
+# print(acct_two.get_balance())  # 572
+
