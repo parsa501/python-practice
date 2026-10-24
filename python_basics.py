@@ -2899,3 +2899,34 @@ print(my_circle.radius)  # 3
 print(my_circle.area)    # 28.26
 
 
+# ==========================================
+# 152.2 SETTER - تغییر کنترل‌شده ویژگی
+# ==========================================
+class Circle:
+    def __init__(self, radius):
+        self.radius = radius  # فراخوانی Setter
+
+    @property
+    def radius(self):
+        # Getter
+        return self._radius
+
+    @radius.setter
+    def radius(self, value):
+        # بررسی معتبر بودن شعاع
+        if value <= 0:
+            raise ValueError('Radius must be positive')
+
+        self._radius = value
+
+
+my_circle = Circle(3)
+print('Initial radius:', my_circle.radius)  # 3
+
+my_circle.radius = 8  # فراخوانی Setter
+print('After modifying the radius:', my_circle.radius)  # 8
+
+my_circle.radius       # فراخوانی Getter
+my_circle.radius = 4   # فراخوانی Setter
+
+
