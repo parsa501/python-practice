@@ -2752,3 +2752,21 @@ print('Car 2 Brand:', car2.brand)
 print('Car 2 Color:', car2.color)
 
 
+# ==========================================
+# 150.2 PROTECTED ATTRIBUTES - ویژگی‌های محافظت‌شده
+# ==========================================
+class Wallet:
+    def __init__(self, balance):
+        self._balance = balance  # قرارداد: استفاده داخلی
+
+    # واریز مبلغ مثبت
+    def deposit(self, amount):
+        if amount > 0:
+            self._balance += amount
+
+    # برداشت در صورت کافی بودن موجودی
+    def withdraw(self, amount):
+        if 0 < amount <= self._balance:
+            self._balance -= amount
+
+
