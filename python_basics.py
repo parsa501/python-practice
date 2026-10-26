@@ -3724,3 +3724,52 @@ for animal in animals:
 # TypeError: Can't instantiate abstract class Bird
 # without an implementation for abstract method 'make_sound'
 
+# ==========================================
+# 171. ABSTRACT BASE CLASS WITH ATTRIBUTES - کلاس انتزاعی با ویژگی
+# ==========================================
+
+from abc import ABC, abstractmethod
+
+# الگوی مشترک برای اسباب‌بازی‌هایی که صحبت می‌کنند
+class TalkingToy(ABC):
+
+    def __init__(self, name):
+        self.name = name
+
+    @abstractmethod
+    def speak(self):
+        pass
+
+
+# هر کلاس فرزند باید متد speak را پیاده‌سازی کند.
+class RobotToy(TalkingToy):
+    def speak(self):
+        print(f'{self.name} says beep boop! I am a robot!')
+
+
+class TeddyBearToy(TalkingToy):
+    def speak(self):
+        print(f"{self.name} says hug me! I'm cuddly!")
+
+
+class DinosaurToy(TalkingToy):
+    def speak(self):
+        print(f'{self.name} says ROOOOAR!')
+
+
+# ساخت نمونه از کلاس‌های فرزند
+rusty = RobotToy('Rusty')
+fluffy = TeddyBearToy('Fluffy')
+rex = DinosaurToy('Rex')
+
+toys = [rusty, fluffy, rex]
+
+# اجرای متد مشترک برای هر اسباب‌بازی
+for toy in toys:
+    toy.speak()
+
+# Output:
+# Rusty says beep boop! I am a robot!
+# Fluffy says hug me! I'm cuddly!
+# Rex says ROOOOAR!
+
