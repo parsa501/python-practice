@@ -2713,7 +2713,7 @@
 #                 chart += category.name[index] + "  "
 #             else:
 #                 chart += "   "
-# return chart 
+# return chart
 
 
 # # ==========================================
@@ -2729,7 +2729,6 @@
 #     def method_name(self):
 #         # منطق متد
 #         pass
-
 
 
 # # ==========================================
@@ -3462,144 +3461,147 @@
 # print(c.__dict__)
 # # {'data': 'Child data'}
 
-# ==========================================
-# 164. CUSTOM EXCEPTIONS AND INHERITANCE - خطاهای سفارشی و وراثت
-# ==========================================
-
-# ساخت خطای سفارشی برای خطاهای مربوط به رسانه
-class MediaError(Exception):
-    def __init__(self, message, obj):
-        super().__init__(message)
-        self.obj = obj  # ذخیره شیئی که باعث خطا شده است
+# # ==========================================
+# # 164. CUSTOM EXCEPTIONS AND INHERITANCE - خطاهای سفارشی و وراثت
+# # ==========================================
 
 
-# ==========================================
-# 165. MOVIE CLASS - کلاس فیلم با اعتبارسنجی
-# ==========================================
-
-class Movie:
-    def __init__(self, title, year, director, duration):
-        # بررسی معتبر بودن اطلاعات فیلم
-        if not title.strip():
-            raise ValueError('Title cannot be empty')
-        if year < 1895:
-            raise ValueError('Year must be 1895 or later')
-        if not director.strip():
-            raise ValueError('Director cannot be empty')
-        if duration <= 0:
-            raise ValueError('Duration must be positive')
-
-        self.title = title
-        self.year = year
-        self.director = director
-        self.duration = duration
-
-    # نمایش متنی اطلاعات فیلم
-    def __str__(self):
-        return f'{self.title} ({self.year}) - {self.duration} min, {self.director}'
-
-# ==========================================
-# 166. TV SERIES CLASS - کلاس سریال با وراثت
-# ==========================================
-
-class TVSeries(Movie):
-    def __init__(self, title, year, director, duration, seasons, total_episodes):
-        # اجرای اعتبارسنجی و سازنده کلاس والد
-        super().__init__(title, year, director, duration)
-
-        if seasons < 1:
-            raise ValueError('Seasons must be 1 or greater')
-        if total_episodes < 1:
-            raise ValueError('Total episodes must be 1 or greater')
-
-        self.seasons = seasons
-        self.total_episodes = total_episodes
-
-    # بازنویسی نمایش متنی برای سریال
-    def __str__(self):
-        return (
-            f'{self.title} ({self.year}) - {self.seasons} seasons, '
-            f'{self.total_episodes} episodes, {self.duration} min avg, '
-            f'{self.director}'
-        )
+# # ساخت خطای سفارشی برای خطاهای مربوط به رسانه
+# class MediaError(Exception):
+#     def __init__(self, message, obj):
+#         super().__init__(message)
+#         self.obj = obj  # ذخیره شیئی که باعث خطا شده است
 
 
-# ==========================================
-# 167. MEDIA CATALOGUE - مدیریت مجموعه رسانه‌ها
-# ==========================================
-
-class MediaCatalogue:
-    def __init__(self):
-        self.items = []
-
-    def add(self, media_item):
-        # فقط اشیای Movie یا کلاس‌های فرزند آن پذیرفته می‌شوند
-        if not isinstance(media_item, Movie):
-            raise MediaError(
-                'Only Movie or TVSeries instances can be added',
-                media_item
-            )
-
-        self.items.append(media_item)
-
-    def get_movies(self):
-        # فقط نمونه‌هایی که دقیقاً از کلاس Movie هستند
-        return [item for item in self.items if type(item) is Movie]
-
-    def get_tv_series(self):
-        # بررسی می‌کند شیء نمونه‌ای از TVSeries یا زیرکلاس آن باشد
-        return [item for item in self.items if isinstance(item, TVSeries)]
-
-    def __str__(self):
-        if not self.items:
-            return 'Media Catalogue (empty)'
-
-        movies = self.get_movies()
-        series = self.get_tv_series()
-
-        result = f'Media Catalogue ({len(self.items)} items):\n\n'
-
-        if movies:
-            result += '=== MOVIES ===\n'
-            for i, movie in enumerate(movies, 1):
-                result += f'{i}. {movie}\n'
-
-        if series:
-            result += '=== TV SERIES ===\n'
-            for i, tv_series in enumerate(series, 1):
-                result += f'{i}. {tv_series}\n'
-
-        return result
+# # ==========================================
+# # 165. MOVIE CLASS - کلاس فیلم با اعتبارسنجی
+# # ==========================================
 
 
-# ==========================================
-# 168. TRY AND EXCEPT - مدیریت خطاها و اجرای برنامه
-# ==========================================
+# class Movie:
+#     def __init__(self, title, year, director, duration):
+#         # بررسی معتبر بودن اطلاعات فیلم
+#         if not title.strip():
+#             raise ValueError("Title cannot be empty")
+#         if year < 1895:
+#             raise ValueError("Year must be 1895 or later")
+#         if not director.strip():
+#             raise ValueError("Director cannot be empty")
+#         if duration <= 0:
+#             raise ValueError("Duration must be positive")
 
-catalogue = MediaCatalogue()
+#         self.title = title
+#         self.year = year
+#         self.director = director
+#         self.duration = duration
 
-try:
-    # ساخت فیلم‌ها و اضافه کردن آن‌ها به فهرست
-    movie1 = Movie('The Matrix', 1999, 'The Wachowskis', 136)
-    catalogue.add(movie1)
+#     # نمایش متنی اطلاعات فیلم
+#     def __str__(self):
+#         return f"{self.title} ({self.year}) - {self.duration} min, {self.director}"
 
-    movie2 = Movie('Inception', 2010, 'Christopher Nolan', 148)
-    catalogue.add(movie2)
 
-    # ساخت سریال‌ها و اضافه کردن آن‌ها به فهرست
-    series1 = TVSeries('Scrubs', 2001, 'Bill Lawrence', 24, 9, 182)
-    catalogue.add(series1)
+# # ==========================================
+# # 166. TV SERIES CLASS - کلاس سریال با وراثت
+# # ==========================================
 
-    series2 = TVSeries('Breaking Bad', 2008, 'Vince Gilligan', 47, 5, 62)
-    catalogue.add(series2)
 
-    # چاپ فهرست رسانه‌ها
-    print(catalogue)
+# class TVSeries(Movie):
+#     def __init__(self, title, year, director, duration, seasons, total_episodes):
+#         # اجرای اعتبارسنجی و سازنده کلاس والد
+#         super().__init__(title, year, director, duration)
 
-except ValueError as e:
-    print(f'Validation Error: {e}')
+#         if seasons < 1:
+#             raise ValueError("Seasons must be 1 or greater")
+#         if total_episodes < 1:
+#             raise ValueError("Total episodes must be 1 or greater")
 
-except MediaError as e:
-    print(f'Media Error: {e}')
-    print(f'Unable to add {e.obj}: {type(e.obj)}')
+#         self.seasons = seasons
+#         self.total_episodes = total_episodes
 
+#     # بازنویسی نمایش متنی برای سریال
+#     def __str__(self):
+#         return (
+#             f"{self.title} ({self.year}) - {self.seasons} seasons, "
+#             f"{self.total_episodes} episodes, {self.duration} min avg, "
+#             f"{self.director}"
+#         )
+
+
+# # ==========================================
+# # 167. MEDIA CATALOGUE - مدیریت مجموعه رسانه‌ها
+# # ==========================================
+
+
+# class MediaCatalogue:
+#     def __init__(self):
+#         self.items = []
+
+#     def add(self, media_item):
+#         # فقط اشیای Movie یا کلاس‌های فرزند آن پذیرفته می‌شوند
+#         if not isinstance(media_item, Movie):
+#             raise MediaError(
+#                 "Only Movie or TVSeries instances can be added", media_item
+#             )
+
+#         self.items.append(media_item)
+
+#     def get_movies(self):
+#         # فقط نمونه‌هایی که دقیقاً از کلاس Movie هستند
+#         return [item for item in self.items if type(item) is Movie]
+
+#     def get_tv_series(self):
+#         # بررسی می‌کند شیء نمونه‌ای از TVSeries یا زیرکلاس آن باشد
+#         return [item for item in self.items if isinstance(item, TVSeries)]
+
+#     def __str__(self):
+#         if not self.items:
+#             return "Media Catalogue (empty)"
+
+#         movies = self.get_movies()
+#         series = self.get_tv_series()
+
+#         result = f"Media Catalogue ({len(self.items)} items):\n\n"
+
+#         if movies:
+#             result += "=== MOVIES ===\n"
+#             for i, movie in enumerate(movies, 1):
+#                 result += f"{i}. {movie}\n"
+
+#         if series:
+#             result += "=== TV SERIES ===\n"
+#             for i, tv_series in enumerate(series, 1):
+#                 result += f"{i}. {tv_series}\n"
+
+#         return result
+
+
+# # ==========================================
+# # 168. TRY AND EXCEPT - مدیریت خطاها و اجرای برنامه
+# # ==========================================
+
+# catalogue = MediaCatalogue()
+
+# try:
+#     # ساخت فیلم‌ها و اضافه کردن آن‌ها به فهرست
+#     movie1 = Movie("The Matrix", 1999, "The Wachowskis", 136)
+#     catalogue.add(movie1)
+
+#     movie2 = Movie("Inception", 2010, "Christopher Nolan", 148)
+#     catalogue.add(movie2)
+
+#     # ساخت سریال‌ها و اضافه کردن آن‌ها به فهرست
+#     series1 = TVSeries("Scrubs", 2001, "Bill Lawrence", 24, 9, 182)
+#     catalogue.add(series1)
+
+#     series2 = TVSeries("Breaking Bad", 2008, "Vince Gilligan", 47, 5, 62)
+#     catalogue.add(series2)
+
+#     # چاپ فهرست رسانه‌ها
+#     print(catalogue)
+
+# except ValueError as e:
+#     print(f"Validation Error: {e}")
+
+# except MediaError as e:
+#     print(f"Media Error: {e}")
+#     print(f"Unable to add {e.obj}: {type(e.obj)}")
