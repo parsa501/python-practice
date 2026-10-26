@@ -3650,3 +3650,29 @@
 # except MediaError as e:
 #     print(f"Media Error: {e}")
 #     print(f"Unable to add {e.obj}: {type(e.obj)}")
+
+# ==========================================
+# 169. ABSTRACT CLASSES - کلاس‌های انتزاعی
+# ==========================================
+
+from abc import ABC, abstractmethod
+
+# کلاس انتزاعی؛ مستقیماً نباید از آن نمونه بسازیم.
+class AbstractClass(ABC):
+
+    @abstractmethod
+    def abstract_method(self):
+        pass
+
+
+# کلاس فرزند باید متد انتزاعی را پیاده‌سازی کند.
+class ConcreteClassOne(AbstractClass):
+    def abstract_method(self):
+        print('Implementation in ConcreteClassOne')
+
+
+class ConcreteClassTwo(AbstractClass):
+    def abstract_method(self):
+        print('Implementation in ConcreteClassTwo')
+
+
