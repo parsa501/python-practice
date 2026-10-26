@@ -3376,3 +3376,21 @@ print(obj._internal)
 # دسترسی مستقیم به ویژگی خصوصی باعث AttributeError می‌شود.
 # print(obj.__private)
 
+# ==========================================
+# 160. OBJECT DICTIONARY - دیکشنری ویژگی‌های شیء
+# ==========================================
+
+class Example:
+    def __init__(self, internal, private):
+        self._internal = internal
+        self.__private = private
+
+example1 = Example(
+    'I can be accessed from outside the class, but should not',
+    'I cannot be accessed directly from outside the class'
+)
+
+# __dict__ ویژگی‌های ذخیره‌شده در شیء را نمایش می‌دهد.
+# نام ویژگی خصوصی در این دیکشنری تغییر کرده است.
+print(example1.__dict__)
+
