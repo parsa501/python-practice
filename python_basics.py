@@ -3498,4 +3498,29 @@ class Movie:
     def __str__(self):
         return f'{self.title} ({self.year}) - {self.duration} min, {self.director}'
 
+# ==========================================
+# 166. TV SERIES CLASS - کلاس سریال با وراثت
+# ==========================================
+
+class TVSeries(Movie):
+    def __init__(self, title, year, director, duration, seasons, total_episodes):
+        # اجرای اعتبارسنجی و سازنده کلاس والد
+        super().__init__(title, year, director, duration)
+
+        if seasons < 1:
+            raise ValueError('Seasons must be 1 or greater')
+        if total_episodes < 1:
+            raise ValueError('Total episodes must be 1 or greater')
+
+        self.seasons = seasons
+        self.total_episodes = total_episodes
+
+    # بازنویسی نمایش متنی برای سریال
+    def __str__(self):
+        return (
+            f'{self.title} ({self.year}) - {self.seasons} seasons, '
+            f'{self.total_episodes} episodes, {self.duration} min avg, '
+            f'{self.director}'
+        )
+
 
