@@ -3675,4 +3675,52 @@ class ConcreteClassTwo(AbstractClass):
     def abstract_method(self):
         print('Implementation in ConcreteClassTwo')
 
+# ==========================================
+# 170. ABSTRACT METHODS AND POLYMORPHISM - متد انتزاعی و چندریختی
+# ==========================================
+
+from abc import ABC, abstractmethod
+
+class Animal(ABC):
+
+    @abstractmethod
+    def make_sound(self):
+        pass
+
+
+# پیاده‌سازی متد انتزاعی در کلاس‌های فرزند
+class Dog(Animal):
+    def make_sound(self):
+        print('Woof!')
+
+
+class Cat(Animal):
+    def make_sound(self):
+        print('Meow!')
+
+
+class Monkey(Animal):
+    def make_sound(self):
+        print('Ooh ooh aah aah!')
+
+
+# چندریختی: فراخوانی یک متد مشترک برای انواع مختلف
+animals = [Dog(), Cat(), Monkey()]
+
+for animal in animals:
+    animal.make_sound()
+
+# Output:
+# Woof!
+# Meow!
+# Ooh ooh aah aah!
+
+
+# اگر متد انتزاعی پیاده‌سازی نشود، نمونه‌سازی ممکن نیست.
+# class Bird(Animal):
+#     pass
+#
+# bird = Bird()
+# TypeError: Can't instantiate abstract class Bird
+# without an implementation for abstract method 'make_sound'
 
