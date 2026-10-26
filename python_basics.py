@@ -3173,4 +3173,26 @@
 # print(jack.sound())  # Jack makes a sound
 # print(jack.bark)     # woof! woof!! woof!!!
 
+# ==========================================
+# 155.1 METHOD OVERRIDING - بازنویسی متد
+# ==========================================
+class Animal:
+    def __init__(self, name):
+        self.name = name
+
+    def sound(self):
+        return f'{self.name} makes a sound.'
+
+
+class Dog(Animal):
+    bark = 'woof! woof!! woof!!!'
+
+    # بازنویسی متد کلاس والد
+    def sound(self):
+        return f'{self.name} barks {self.bark}'
+
+
+jack = Dog('Jack')
+print(jack.sound())
+# Jack barks woof! woof!! woof!!!
 
