@@ -3196,3 +3196,27 @@ jack = Dog('Jack')
 print(jack.sound())
 # Jack barks woof! woof!! woof!!!
 
+# ==========================================
+# 155.2 SUPER() - استفاده از متد کلاس والد
+# ==========================================
+class Animal:
+    def __init__(self, name):
+        self.name = name
+
+    def sound(self):
+        return f'{self.name} makes a sound'
+
+
+class Dog(Animal):
+    bark = 'woof! woof!! woof!!!'
+
+    def sound(self):
+        # اجرای متد کلاس والد
+        base = super().sound()
+        return f'{base}, then {self.name} barks {self.bark}'
+
+
+jack = Dog('Jack')
+print(jack.sound())
+# Jack makes a sound, then Jack barks woof! woof!! woof!!!
+
