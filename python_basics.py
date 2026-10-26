@@ -2971,112 +2971,112 @@
 # except AttributeError as e:
 #     print("Error:", e)
 
-# ==========================================
-# 153. EMPLOYEE CLASS - مدیریت کارمندان
-# ==========================================
-class Employee:
-    # ویژگی کلاس: حقوق پایه هر سطح
-    _base_salaries = {
-        'trainee': 1000,
-        'junior': 2000,
-        'mid-level': 3000,
-        'senior': 4000,
-    }
+# # ==========================================
+# # 153. EMPLOYEE CLASS - مدیریت کارمندان
+# # ==========================================
+# class Employee:
+#     # ویژگی کلاس: حقوق پایه هر سطح
+#     _base_salaries = {
+#         'trainee': 1000,
+#         'junior': 2000,
+#         'mid-level': 3000,
+#         'senior': 4000,
+#     }
 
-    def __init__(self, name, level):
-        self.name = name
-        self.level = level
-        self.salary = Employee._base_salaries[level]
+#     def __init__(self, name, level):
+#         self.name = name
+#         self.level = level
+#         self.salary = Employee._base_salaries[level]
 
-    # نمایش خوانای شیء
-    def __str__(self):
-        return f'{self.name}: {self.level}'
+#     # نمایش خوانای شیء
+#     def __str__(self):
+#         return f'{self.name}: {self.level}'
 
-    # نمایش رسمی شیء
-    def __repr__(self):
-        return f"Employee('{self.name}', '{self.level}')"
+#     # نمایش رسمی شیء
+#     def __repr__(self):
+#         return f"Employee('{self.name}', '{self.level}')"
 
-    # ==========================================
-    # NAME PROPERTY - مدیریت نام
-    # ==========================================
-    @property
-    def name(self):
-        return self._name
+#     # ==========================================
+#     # NAME PROPERTY - مدیریت نام
+#     # ==========================================
+#     @property
+#     def name(self):
+#         return self._name
 
-    @name.setter
-    def name(self, new_name):
-        if not isinstance(new_name, str):
-            raise TypeError("'name' must be a string.")
+#     @name.setter
+#     def name(self, new_name):
+#         if not isinstance(new_name, str):
+#             raise TypeError("'name' must be a string.")
 
-        self._name = new_name
-        print(f"'name' updated to '{self.name}'.")
+#         self._name = new_name
+#         print(f"'name' updated to '{self.name}'.")
 
-    # ==========================================
-    # LEVEL PROPERTY - مدیریت سطح شغلی
-    # ==========================================
-    @property
-    def level(self):
-        return self._level
-    @level.setter
-    def level(self, new_level):
-        # بررسی نوع ورودی
-        if not isinstance(new_level, str):
-            raise TypeError("'level' must be a string.")
+#     # ==========================================
+#     # LEVEL PROPERTY - مدیریت سطح شغلی
+#     # ==========================================
+#     @property
+#     def level(self):
+#         return self._level
+#     @level.setter
+#     def level(self, new_level):
+#         # بررسی نوع ورودی
+#         if not isinstance(new_level, str):
+#             raise TypeError("'level' must be a string.")
 
-        # بررسی معتبر بودن سطح شغلی
-        if new_level not in Employee._base_salaries:
-            raise ValueError(
-                f"Invalid value '{new_level}' for 'level' attribute."
-            )
+#         # بررسی معتبر بودن سطح شغلی
+#         if new_level not in Employee._base_salaries:
+#             raise ValueError(
+#                 f"Invalid value '{new_level}' for 'level' attribute."
+#             )
 
-        # جلوگیری از انتخاب مجدد سطح فعلی
-        if hasattr(self, '_level') and new_level == self.level:
-            raise ValueError(
-                f"'{self.level}' is already the selected level."
-            )
+#         # جلوگیری از انتخاب مجدد سطح فعلی
+#         if hasattr(self, '_level') and new_level == self.level:
+#             raise ValueError(
+#                 f"'{self.level}' is already the selected level."
+#             )
 
-        # جلوگیری از تنزل سطح شغلی
-        if (
-            hasattr(self, '_level')
-            and Employee._base_salaries[new_level]
-            < Employee._base_salaries[self.level]
-        ):
-            raise ValueError("Cannot change to lower level.")
+#         # جلوگیری از تنزل سطح شغلی
+#         if (
+#             hasattr(self, '_level')
+#             and Employee._base_salaries[new_level]
+#             < Employee._base_salaries[self.level]
+#         ):
+#             raise ValueError("Cannot change to lower level.")
 
-        print(f"'{self.name}' promoted to '{new_level}'.")
+#         print(f"'{self.name}' promoted to '{new_level}'.")
 
-        # به‌روزرسانی حقوق و سطح
-        self.salary = Employee._base_salaries[new_level]
-        self._level = new_level
+#         # به‌روزرسانی حقوق و سطح
+#         self.salary = Employee._base_salaries[new_level]
+#         self._level = new_level
 
-    # ==========================================
-    # SALARY PROPERTY - مدیریت حقوق
-    # ==========================================
-    @property
-    def salary(self):
-        return self._salary
+#     # ==========================================
+#     # SALARY PROPERTY - مدیریت حقوق
+#     # ==========================================
+#     @property
+#     def salary(self):
+#         return self._salary
 
-    @salary.setter
-    def salary(self, new_salary):
-        # بررسی عدد بودن حقوق
-        if not isinstance(new_salary, (int, float)):
-            raise TypeError("'salary' must be a number.")
+#     @salary.setter
+#     def salary(self, new_salary):
+#         # بررسی عدد بودن حقوق
+#         if not isinstance(new_salary, (int, float)):
+#             raise TypeError("'salary' must be a number.")
 
-        # بررسی حداقل حقوق سطح فعلی
-        if (
-            hasattr(self, '_level')
-            and new_salary < Employee._base_salaries[self.level]
-        ):
-            raise ValueError(
-                f'Salary must be higher than minimum salary '
-                f'${Employee._base_salaries[self.level]}.'
-            )
+#         # بررسی حداقل حقوق سطح فعلی
+#         if (
+#             hasattr(self, '_level')
+#             and new_salary < Employee._base_salaries[self.level]
+#         ):
+#             raise ValueError(
+#                 f'Salary must be higher than minimum salary '
+#                 f'${Employee._base_salaries[self.level]}.'
+#             )
 
-        self._salary = new_salary
-        print(f'Salary updated to ${self.salary}.')
-# ساخت شیء کارمند
-charlie_brown = Employee('Charlie Brown', 'trainee')
-print(charlie_brown)
-print(f'Base salary: ${charlie_brown.salary}')
-# ارتقای سطح شغلی
-charlie_brown.level = 'junior'
+#         self._salary = new_salary
+#         print(f'Salary updated to ${self.salary}.')
+# # ساخت شیء کارمند
+# charlie_brown = Employee('Charlie Brown', 'trainee')
+# print(charlie_brown)
+# print(f'Base salary: ${charlie_brown.salary}')
+# # ارتقای سطح شغلی
+# charlie_brown.level = 'junior'
