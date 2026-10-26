@@ -3321,3 +3321,39 @@ start(tweet)
 start(photo)
 start(article)
 
+# ==========================================
+# 158. INHERITANCE + POLYMORPHISM
+# ارث‌بری همراه با چندریختی
+# ==========================================
+class Animal:
+    def speak(self):
+        return 'Some generic sound'
+
+
+class Cat(Animal):
+    def speak(self):
+        return 'A cat meow'
+
+
+class Dog(Animal):
+    def speak(self):
+        return 'A dog barks woof woof'
+
+
+class Monkey(Animal):
+    def speak(self):
+        return 'A monkey ooh ooh aah aah ooh ooh aah aah'
+
+
+print(Cat().speak())
+print(Dog().speak())
+print(Monkey().speak())
+print(Animal().speak())
+
+# نگهداری اشیای متفاوت در یک لیست
+animals = [Cat(), Dog(), Monkey()]
+
+# اجرای متد یکسان برای همه اشیا
+for animal in animals:
+    print(animal.speak())
+
