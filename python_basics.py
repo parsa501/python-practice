@@ -3173,187 +3173,187 @@
 # print(jack.sound())  # Jack makes a sound
 # print(jack.bark)     # woof! woof!! woof!!!
 
-# ==========================================
-# 155.1 METHOD OVERRIDING - بازنویسی متد
-# ==========================================
-class Animal:
-    def __init__(self, name):
-        self.name = name
+# # ==========================================
+# # 155.1 METHOD OVERRIDING - بازنویسی متد
+# # ==========================================
+# class Animal:
+#     def __init__(self, name):
+#         self.name = name
 
-    def sound(self):
-        return f'{self.name} makes a sound.'
-
-
-class Dog(Animal):
-    bark = 'woof! woof!! woof!!!'
-
-    # بازنویسی متد کلاس والد
-    def sound(self):
-        return f'{self.name} barks {self.bark}'
+#     def sound(self):
+#         return f'{self.name} makes a sound.'
 
 
-jack = Dog('Jack')
-print(jack.sound())
-# Jack barks woof! woof!! woof!!!
+# class Dog(Animal):
+#     bark = 'woof! woof!! woof!!!'
 
-# ==========================================
-# 155.2 SUPER() - استفاده از متد کلاس والد
-# ==========================================
-class Animal:
-    def __init__(self, name):
-        self.name = name
-
-    def sound(self):
-        return f'{self.name} makes a sound'
+#     # بازنویسی متد کلاس والد
+#     def sound(self):
+#         return f'{self.name} barks {self.bark}'
 
 
-class Dog(Animal):
-    bark = 'woof! woof!! woof!!!'
+# jack = Dog('Jack')
+# print(jack.sound())
+# # Jack barks woof! woof!! woof!!!
 
-    def sound(self):
-        # اجرای متد کلاس والد
-        base = super().sound()
-        return f'{base}, then {self.name} barks {self.bark}'
+# # ==========================================
+# # 155.2 SUPER() - استفاده از متد کلاس والد
+# # ==========================================
+# class Animal:
+#     def __init__(self, name):
+#         self.name = name
 
-
-jack = Dog('Jack')
-print(jack.sound())
-# Jack makes a sound, then Jack barks woof! woof!! woof!!!
-
-# ==========================================
-# 156. MULTIPLE INHERITANCE - ارث‌بری چندگانه
-# ==========================================
-class Walker:
-    def walk(self):
-        return 'I can walk on land'
+#     def sound(self):
+#         return f'{self.name} makes a sound'
 
 
-class Swimmer:
-    def swim(self):
-        return 'I can swim in water'
+# class Dog(Animal):
+#     bark = 'woof! woof!! woof!!!'
+
+#     def sound(self):
+#         # اجرای متد کلاس والد
+#         base = super().sound()
+#         return f'{base}, then {self.name} barks {self.bark}'
 
 
-# ارث‌بری از دو کلاس والد
-class Amphibian(Walker, Swimmer):
-    def __init__(self, name):
-        self.name = name
+# jack = Dog('Jack')
+# print(jack.sound())
+# # Jack makes a sound, then Jack barks woof! woof!! woof!!!
 
-    def introduce(self):
-        return (
-            f"I'm {self.name} the frog. "
-            f"{self.walk()} and {self.swim()}."
-        )
-
-
-frog = Amphibian('Freddy')
-print(frog.introduce())
-# I'm Freddy the frog. I can walk on land and I can swim in water.
+# # ==========================================
+# # 156. MULTIPLE INHERITANCE - ارث‌بری چندگانه
+# # ==========================================
+# class Walker:
+#     def walk(self):
+#         return 'I can walk on land'
 
 
-# ==========================================
-# 157. POLYMORPHISM - چندریختی
-# ==========================================
-
-# کلاس‌های مستقل با متد هم‌نام
-class Cat:
-    def speak(self):
-        return "A cat meow"
+# class Swimmer:
+#     def swim(self):
+#         return 'I can swim in water'
 
 
-class Bird:
-    def speak(self):
-        return "A bird tweet"
+# # ارث‌بری از دو کلاس والد
+# class Amphibian(Walker, Swimmer):
+#     def __init__(self, name):
+#         self.name = name
+
+#     def introduce(self):
+#         return (
+#             f"I'm {self.name} the frog. "
+#             f"{self.walk()} and {self.swim()}."
+#         )
 
 
-class Monkey:
-    def speak(self):
-        return "A monkey ooh ooh aah aah ooh ooh aah aah"
+# frog = Amphibian('Freddy')
+# print(frog.introduce())
+# # I'm Freddy the frog. I can walk on land and I can swim in water.
 
 
-# یک تابع برای اشیای مختلف
-def animal_sound(animal):
-    print(animal.speak())
+# # ==========================================
+# # 157. POLYMORPHISM - چندریختی
+# # ==========================================
+
+# # کلاس‌های مستقل با متد هم‌نام
+# class Cat:
+#     def speak(self):
+#         return "A cat meow"
 
 
-animal_sound(Cat())
-animal_sound(Bird())
-animal_sound(Monkey())
+# class Bird:
+#     def speak(self):
+#         return "A bird tweet"
 
 
-# ==========================================
-# 157.1 POLYMORPHISM IN PRACTICE
-# چندریختی در شبکه‌های اجتماعی
-# ==========================================
-class Twitter:
-    def __init__(self, content):
-        self.content = content
-
-    def post(self):
-        return f"Tweet: '{self.content}' (280 chars max)"
+# class Monkey:
+#     def speak(self):
+#         return "A monkey ooh ooh aah aah ooh ooh aah aah"
 
 
-class Instagram:
-    def __init__(self, content):
-        self.content = content
-
-    def post(self):
-        return f"Instagram Post: '{self.content}' + filters"
+# # یک تابع برای اشیای مختلف
+# def animal_sound(animal):
+#     print(animal.speak())
 
 
-class LinkedIn:
-    def __init__(self, content):
-        self.content = content
-
-    def post(self):
-        return f"LinkedIn Article: '{self.content}' (Professional Mode)"
+# animal_sound(Cat())
+# animal_sound(Bird())
+# animal_sound(Monkey())
 
 
-# اجرای متد post برای هر شیء
-def start(social_media):
-    print(social_media.post())
+# # ==========================================
+# # 157.1 POLYMORPHISM IN PRACTICE
+# # چندریختی در شبکه‌های اجتماعی
+# # ==========================================
+# class Twitter:
+#     def __init__(self, content):
+#         self.content = content
+
+#     def post(self):
+#         return f"Tweet: '{self.content}' (280 chars max)"
 
 
-tweet = Twitter('Just learned Python polymorphism!')
-photo = Instagram('Sunset vibes')
-article = LinkedIn('Why OOP matters')
+# class Instagram:
+#     def __init__(self, content):
+#         self.content = content
 
-start(tweet)
-start(photo)
-start(article)
-
-# ==========================================
-# 158. INHERITANCE + POLYMORPHISM
-# ارث‌بری همراه با چندریختی
-# ==========================================
-class Animal:
-    def speak(self):
-        return 'Some generic sound'
+#     def post(self):
+#         return f"Instagram Post: '{self.content}' + filters"
 
 
-class Cat(Animal):
-    def speak(self):
-        return 'A cat meow'
+# class LinkedIn:
+#     def __init__(self, content):
+#         self.content = content
+
+#     def post(self):
+#         return f"LinkedIn Article: '{self.content}' (Professional Mode)"
 
 
-class Dog(Animal):
-    def speak(self):
-        return 'A dog barks woof woof'
+# # اجرای متد post برای هر شیء
+# def start(social_media):
+#     print(social_media.post())
 
 
-class Monkey(Animal):
-    def speak(self):
-        return 'A monkey ooh ooh aah aah ooh ooh aah aah'
+# tweet = Twitter('Just learned Python polymorphism!')
+# photo = Instagram('Sunset vibes')
+# article = LinkedIn('Why OOP matters')
+
+# start(tweet)
+# start(photo)
+# start(article)
+
+# # ==========================================
+# # 158. INHERITANCE + POLYMORPHISM
+# # ارث‌بری همراه با چندریختی
+# # ==========================================
+# class Animal:
+#     def speak(self):
+#         return 'Some generic sound'
 
 
-print(Cat().speak())
-print(Dog().speak())
-print(Monkey().speak())
-print(Animal().speak())
+# class Cat(Animal):
+#     def speak(self):
+#         return 'A cat meow'
 
-# نگهداری اشیای متفاوت در یک لیست
-animals = [Cat(), Dog(), Monkey()]
 
-# اجرای متد یکسان برای همه اشیا
-for animal in animals:
-    print(animal.speak())
+# class Dog(Animal):
+#     def speak(self):
+#         return 'A dog barks woof woof'
+
+
+# class Monkey(Animal):
+#     def speak(self):
+#         return 'A monkey ooh ooh aah aah ooh ooh aah aah'
+
+
+# print(Cat().speak())
+# print(Dog().speak())
+# print(Monkey().speak())
+# print(Animal().speak())
+
+# # نگهداری اشیای متفاوت در یک لیست
+# animals = [Cat(), Dog(), Monkey()]
+
+# # اجرای متد یکسان برای همه اشیا
+# for animal in animals:
+#     print(animal.speak())
 
