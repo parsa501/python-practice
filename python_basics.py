@@ -3524,3 +3524,51 @@ class TVSeries(Movie):
         )
 
 
+# ==========================================
+# 167. MEDIA CATALOGUE - مدیریت مجموعه رسانه‌ها
+# ==========================================
+
+class MediaCatalogue:
+    def __init__(self):
+        self.items = []
+
+    def add(self, media_item):
+        # فقط اشیای Movie یا کلاس‌های فرزند آن پذیرفته می‌شوند
+        if not isinstance(media_item, Movie):
+            raise MediaError(
+                'Only Movie or TVSeries instances can be added',
+                media_item
+            )
+
+        self.items.append(media_item)
+
+    def get_movies(self):
+        # فقط نمونه‌هایی که دقیقاً از کلاس Movie هستند
+        return [item for item in self.items if type(item) is Movie]
+
+    def get_tv_series(self):
+        # بررسی می‌کند شیء نمونه‌ای از TVSeries یا زیرکلاس آن باشد
+        return [item for item in self.items if isinstance(item, TVSeries)]
+
+    def __str__(self):
+        if not self.items:
+            return 'Media Catalogue (empty)'
+
+        movies = self.get_movies()
+        series = self.get_tv_series()
+
+        result = f'Media Catalogue ({len(self.items)} items):\n\n'
+
+        if movies:
+            result += '=== MOVIES ===\n'
+            for i, movie in enumerate(movies, 1):
+                result += f'{i}. {movie}\n'
+
+        if series:
+            result += '=== TV SERIES ===\n'
+            for i, tv_series in enumerate(series, 1):
+                result += f'{i}. {tv_series}\n'
+
+        return result
+
+
