@@ -3357,107 +3357,107 @@
 # for animal in animals:
 #     print(animal.speak())
 
-# ==========================================
-# 159. PROTECTED AND PRIVATE ATTRIBUTES - ویژگی‌های محافظت‌شده و خصوصی
-# ==========================================
+# # ==========================================
+# # 159. PROTECTED AND PRIVATE ATTRIBUTES - ویژگی‌های محافظت‌شده و خصوصی
+# # ==========================================
 
-# ویژگی محافظت‌شده با یک زیرخط (_) شروع می‌شود.
-# این فقط یک قرارداد است و دسترسی مستقیم را مسدود نمی‌کند.
-class Example:
-    def __init__(self):
-        self._internal = 'I can be accessed from outside the class, but should not'
-        self.__private = 'You cannot access me directly from outside the class'
+# # ویژگی محافظت‌شده با یک زیرخط (_) شروع می‌شود.
+# # این فقط یک قرارداد است و دسترسی مستقیم را مسدود نمی‌کند.
+# class Example:
+#     def __init__(self):
+#         self._internal = 'I can be accessed from outside the class, but should not'
+#         self.__private = 'You cannot access me directly from outside the class'
 
-obj = Example()
+# obj = Example()
 
-print(obj._internal)
-# I can be accessed from outside the class, but should not
+# print(obj._internal)
+# # I can be accessed from outside the class, but should not
 
-# دسترسی مستقیم به ویژگی خصوصی باعث AttributeError می‌شود.
-# print(obj.__private)
+# # دسترسی مستقیم به ویژگی خصوصی باعث AttributeError می‌شود.
+# # print(obj.__private)
 
-# ==========================================
-# 160. OBJECT DICTIONARY - دیکشنری ویژگی‌های شیء
-# ==========================================
+# # ==========================================
+# # 160. OBJECT DICTIONARY - دیکشنری ویژگی‌های شیء
+# # ==========================================
 
-class Example:
-    def __init__(self, internal, private):
-        self._internal = internal
-        self.__private = private
+# class Example:
+#     def __init__(self, internal, private):
+#         self._internal = internal
+#         self.__private = private
 
-example1 = Example(
-    'I can be accessed from outside the class, but should not',
-    'I cannot be accessed directly from outside the class'
-)
+# example1 = Example(
+#     'I can be accessed from outside the class, but should not',
+#     'I cannot be accessed directly from outside the class'
+# )
 
-# __dict__ ویژگی‌های ذخیره‌شده در شیء را نمایش می‌دهد.
-# نام ویژگی خصوصی در این دیکشنری تغییر کرده است.
-print(example1.__dict__)
+# # __dict__ ویژگی‌های ذخیره‌شده در شیء را نمایش می‌دهد.
+# # نام ویژگی خصوصی در این دیکشنری تغییر کرده است.
+# print(example1.__dict__)
 
-# ==========================================
-# 161. NAME MANGLING - تغییر نام ویژگی خصوصی
-# ==========================================
+# # ==========================================
+# # 161. NAME MANGLING - تغییر نام ویژگی خصوصی
+# # ==========================================
 
-class Example:
-    def __init__(self, internal, private):
-        self._internal = internal
-        self.__private = private
+# class Example:
+#     def __init__(self, internal, private):
+#         self._internal = internal
+#         self.__private = private
 
-example1 = Example(
-    'I can be accessed from outside the class, but should not',
-    'I cannot be accessed directly from outside the class'
-)
+# example1 = Example(
+#     'I can be accessed from outside the class, but should not',
+#     'I cannot be accessed directly from outside the class'
+# )
 
-example2 = Example(
-    'I should not be accessed from outside the class',
-    'But I can be accessed from outside the class with name mangling'
-)
+# example2 = Example(
+#     'I should not be accessed from outside the class',
+#     'But I can be accessed from outside the class with name mangling'
+# )
 
-# پایتون نام ویژگی __private را به _Example__private تبدیل می‌کند.
-# این کار دسترسی را غیرممکن نمی‌کند؛ فقط نام را تغییر می‌دهد.
-print(example1._Example__private)
-# I cannot be accessed directly from outside the class
+# # پایتون نام ویژگی __private را به _Example__private تبدیل می‌کند.
+# # این کار دسترسی را غیرممکن نمی‌کند؛ فقط نام را تغییر می‌دهد.
+# print(example1._Example__private)
+# # I cannot be accessed directly from outside the class
 
-print(example2._Example__private)
-# But I can be accessed from outside the class with name mangling
-
-
-# ==========================================
-# 162. PRIVATE ATTRIBUTES IN INHERITANCE - ویژگی خصوصی در وراثت
-# ==========================================
-
-class Parent:
-    def __init__(self):
-        self.__data = 'Parent data'
-
-class Child(Parent):
-    def __init__(self):
-        super().__init__()
-        self.__data = 'Child data'
-
-c = Child()
-
-# هر کلاس نام ویژگی خصوصی خودش را جداگانه تغییر می‌دهد.
-print(c.__dict__)
-# {'_Parent__data': 'Parent data', '_Child__data': 'Child data'}
+# print(example2._Example__private)
+# # But I can be accessed from outside the class with name mangling
 
 
-# ==========================================
-# 163. ATTRIBUTE OVERRIDING - بازنویسی ویژگی در کلاس فرزند
-# ==========================================
+# # ==========================================
+# # 162. PRIVATE ATTRIBUTES IN INHERITANCE - ویژگی خصوصی در وراثت
+# # ==========================================
 
-class Parent:
-    def __init__(self):
-        self.data = 'Parent data'
+# class Parent:
+#     def __init__(self):
+#         self.__data = 'Parent data'
 
-class Child(Parent):
-    def __init__(self):
-        super().__init__()
-        self.data = 'Child data'
+# class Child(Parent):
+#     def __init__(self):
+#         super().__init__()
+#         self.__data = 'Child data'
 
-c = Child()
+# c = Child()
 
-# چون data خصوصی نیست، هر دو کلاس از یک نام استفاده می‌کنند.
-# مقدار جدید، مقدار قبلی را بازنویسی می‌کند.
-print(c.__dict__)
-# {'data': 'Child data'}
+# # هر کلاس نام ویژگی خصوصی خودش را جداگانه تغییر می‌دهد.
+# print(c.__dict__)
+# # {'_Parent__data': 'Parent data', '_Child__data': 'Child data'}
+
+
+# # ==========================================
+# # 163. ATTRIBUTE OVERRIDING - بازنویسی ویژگی در کلاس فرزند
+# # ==========================================
+
+# class Parent:
+#     def __init__(self):
+#         self.data = 'Parent data'
+
+# class Child(Parent):
+#     def __init__(self):
+#         super().__init__()
+#         self.data = 'Child data'
+
+# c = Child()
+
+# # چون data خصوصی نیست، هر دو کلاس از یک نام استفاده می‌کنند.
+# # مقدار جدید، مقدار قبلی را بازنویسی می‌کند.
+# print(c.__dict__)
+# # {'data': 'Child data'}
