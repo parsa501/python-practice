@@ -3422,3 +3422,42 @@ print(example2._Example__private)
 # But I can be accessed from outside the class with name mangling
 
 
+# ==========================================
+# 162. PRIVATE ATTRIBUTES IN INHERITANCE - ویژگی خصوصی در وراثت
+# ==========================================
+
+class Parent:
+    def __init__(self):
+        self.__data = 'Parent data'
+
+class Child(Parent):
+    def __init__(self):
+        super().__init__()
+        self.__data = 'Child data'
+
+c = Child()
+
+# هر کلاس نام ویژگی خصوصی خودش را جداگانه تغییر می‌دهد.
+print(c.__dict__)
+# {'_Parent__data': 'Parent data', '_Child__data': 'Child data'}
+
+
+# ==========================================
+# 163. ATTRIBUTE OVERRIDING - بازنویسی ویژگی در کلاس فرزند
+# ==========================================
+
+class Parent:
+    def __init__(self):
+        self.data = 'Parent data'
+
+class Child(Parent):
+    def __init__(self):
+        super().__init__()
+        self.data = 'Child data'
+
+c = Child()
+
+# چون data خصوصی نیست، هر دو کلاس از یک نام استفاده می‌کنند.
+# مقدار جدید، مقدار قبلی را بازنویسی می‌کند.
+print(c.__dict__)
+# {'data': 'Child data'}
