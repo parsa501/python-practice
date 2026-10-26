@@ -3572,3 +3572,34 @@ class MediaCatalogue:
         return result
 
 
+# ==========================================
+# 168. TRY AND EXCEPT - مدیریت خطاها و اجرای برنامه
+# ==========================================
+
+catalogue = MediaCatalogue()
+
+try:
+    # ساخت فیلم‌ها و اضافه کردن آن‌ها به فهرست
+    movie1 = Movie('The Matrix', 1999, 'The Wachowskis', 136)
+    catalogue.add(movie1)
+
+    movie2 = Movie('Inception', 2010, 'Christopher Nolan', 148)
+    catalogue.add(movie2)
+
+    # ساخت سریال‌ها و اضافه کردن آن‌ها به فهرست
+    series1 = TVSeries('Scrubs', 2001, 'Bill Lawrence', 24, 9, 182)
+    catalogue.add(series1)
+
+    series2 = TVSeries('Breaking Bad', 2008, 'Vince Gilligan', 47, 5, 62)
+    catalogue.add(series2)
+
+    # چاپ فهرست رسانه‌ها
+    print(catalogue)
+
+except ValueError as e:
+    print(f'Validation Error: {e}')
+
+except MediaError as e:
+    print(f'Media Error: {e}')
+    print(f'Unable to add {e.obj}: {type(e.obj)}')
+
