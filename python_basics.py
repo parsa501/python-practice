@@ -3357,3 +3357,22 @@
 # for animal in animals:
 #     print(animal.speak())
 
+# ==========================================
+# 159. PROTECTED AND PRIVATE ATTRIBUTES - ویژگی‌های محافظت‌شده و خصوصی
+# ==========================================
+
+# ویژگی محافظت‌شده با یک زیرخط (_) شروع می‌شود.
+# این فقط یک قرارداد است و دسترسی مستقیم را مسدود نمی‌کند.
+class Example:
+    def __init__(self):
+        self._internal = 'I can be accessed from outside the class, but should not'
+        self.__private = 'You cannot access me directly from outside the class'
+
+obj = Example()
+
+print(obj._internal)
+# I can be accessed from outside the class, but should not
+
+# دسترسی مستقیم به ویژگی خصوصی باعث AttributeError می‌شود.
+# print(obj.__private)
+
