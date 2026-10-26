@@ -3461,3 +3461,15 @@
 # # مقدار جدید، مقدار قبلی را بازنویسی می‌کند.
 # print(c.__dict__)
 # # {'data': 'Child data'}
+
+# ==========================================
+# 164. CUSTOM EXCEPTIONS AND INHERITANCE - خطاهای سفارشی و وراثت
+# ==========================================
+
+# ساخت خطای سفارشی برای خطاهای مربوط به رسانه
+class MediaError(Exception):
+    def __init__(self, message, obj):
+        super().__init__(message)
+        self.obj = obj  # ذخیره شیئی که باعث خطا شده است
+
+
