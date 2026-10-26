@@ -3473,3 +3473,29 @@ class MediaError(Exception):
         self.obj = obj  # ذخیره شیئی که باعث خطا شده است
 
 
+# ==========================================
+# 165. MOVIE CLASS - کلاس فیلم با اعتبارسنجی
+# ==========================================
+
+class Movie:
+    def __init__(self, title, year, director, duration):
+        # بررسی معتبر بودن اطلاعات فیلم
+        if not title.strip():
+            raise ValueError('Title cannot be empty')
+        if year < 1895:
+            raise ValueError('Year must be 1895 or later')
+        if not director.strip():
+            raise ValueError('Director cannot be empty')
+        if duration <= 0:
+            raise ValueError('Duration must be positive')
+
+        self.title = title
+        self.year = year
+        self.director = director
+        self.duration = duration
+
+    # نمایش متنی اطلاعات فیلم
+    def __str__(self):
+        return f'{self.title} ({self.year}) - {self.duration} min, {self.director}'
+
+
