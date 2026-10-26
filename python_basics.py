@@ -3776,3 +3776,23 @@
 # # Rusty says beep boop! I am a robot!
 # # Fluffy says hug me! I'm cuddly!
 # # Rex says ROOOOAR!
+
+
+# ==========================================
+# 172. PRODUCT CLASS AND TYPE HINTS - کلاس محصول و راهنمای نوع داده
+# ==========================================
+
+from abc import ABC, abstractmethod
+
+class Product:
+    # name از نوع str و price از نوع float است.
+    # -> None یعنی سازنده مقدار بازگشتی ندارد.
+    def __init__(self, name: str, price: float) -> None:
+        self.name = name
+        self.price = price
+
+    # تعیین نمایش متنی محصول
+    def __str__(self) -> str:
+        return f'{self.name} - ${self.price}'
+
+
