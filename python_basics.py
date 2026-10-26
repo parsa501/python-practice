@@ -3220,3 +3220,104 @@ jack = Dog('Jack')
 print(jack.sound())
 # Jack makes a sound, then Jack barks woof! woof!! woof!!!
 
+# ==========================================
+# 156. MULTIPLE INHERITANCE - ارث‌بری چندگانه
+# ==========================================
+class Walker:
+    def walk(self):
+        return 'I can walk on land'
+
+
+class Swimmer:
+    def swim(self):
+        return 'I can swim in water'
+
+
+# ارث‌بری از دو کلاس والد
+class Amphibian(Walker, Swimmer):
+    def __init__(self, name):
+        self.name = name
+
+    def introduce(self):
+        return (
+            f"I'm {self.name} the frog. "
+            f"{self.walk()} and {self.swim()}."
+        )
+
+
+frog = Amphibian('Freddy')
+print(frog.introduce())
+# I'm Freddy the frog. I can walk on land and I can swim in water.
+
+
+# ==========================================
+# 157. POLYMORPHISM - چندریختی
+# ==========================================
+
+# کلاس‌های مستقل با متد هم‌نام
+class Cat:
+    def speak(self):
+        return "A cat meow"
+
+
+class Bird:
+    def speak(self):
+        return "A bird tweet"
+
+
+class Monkey:
+    def speak(self):
+        return "A monkey ooh ooh aah aah ooh ooh aah aah"
+
+
+# یک تابع برای اشیای مختلف
+def animal_sound(animal):
+    print(animal.speak())
+
+
+animal_sound(Cat())
+animal_sound(Bird())
+animal_sound(Monkey())
+
+
+# ==========================================
+# 157.1 POLYMORPHISM IN PRACTICE
+# چندریختی در شبکه‌های اجتماعی
+# ==========================================
+class Twitter:
+    def __init__(self, content):
+        self.content = content
+
+    def post(self):
+        return f"Tweet: '{self.content}' (280 chars max)"
+
+
+class Instagram:
+    def __init__(self, content):
+        self.content = content
+
+    def post(self):
+        return f"Instagram Post: '{self.content}' + filters"
+
+
+class LinkedIn:
+    def __init__(self, content):
+        self.content = content
+
+    def post(self):
+        return f"LinkedIn Article: '{self.content}' (Professional Mode)"
+
+
+# اجرای متد post برای هر شیء
+def start(social_media):
+    print(social_media.post())
+
+
+tweet = Twitter('Just learned Python polymorphism!')
+photo = Instagram('Sunset vibes')
+article = LinkedIn('Why OOP matters')
+
+start(tweet)
+start(photo)
+start(article)
+
