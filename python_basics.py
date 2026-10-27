@@ -4305,3 +4305,97 @@ print(merge_sort(numbers))
 # [1, 2, 3, 4, 5, 7, 8, 9]
 
 
+# ==========================================
+# 190. BINARY SEARCH - جست‌وجوی دودویی
+# ==========================================
+
+def binary_search(search_list, value):
+    # ثبت مسیر بررسی عناصر تا رسیدن به هدف
+    path_to_target = []
+
+    # تعیین محدوده جست‌وجو
+    low = 0
+    high = len(search_list) - 1
+
+    # ادامه جست‌وجو تا زمانی که محدوده معتبر باشد
+    while low <= high:
+        # محاسبه اندیس عنصر وسط
+        mid = (low + high) // 2
+        value_at_middle = search_list[mid]
+
+        # ثبت عنصر بررسی‌شده
+        path_to_target.append(value_at_middle)
+
+        if value == value_at_middle:
+            # هدف پیدا شده است؛ مسیر و اندیس را برمی‌گردانیم.
+            return path_to_target, f'Value found at index {mid}'
+
+        elif value > value_at_middle:
+            # هدف بزرگ‌تر است؛ نیمه چپ حذف می‌شود.
+            low = mid + 1
+
+        else:
+            # هدف کوچک‌تر است؛ نیمه راست حذف می‌شود.
+            high = mid - 1
+
+    # اگر محدوده تمام شود، هدف پیدا نشده است.
+    return [], "Value not found"
+
+
+# ==========================================
+# 191. TESTING BINARY SEARCH - آزمایش جست‌وجوی دودویی
+# ==========================================
+
+print(binary_search([1, 2, 3, 4, 5], 3))
+# ([3], 'Value found at index 2')
+
+print(binary_search([1, 2, 3, 4, 5, 9], 4))
+# ([3, 5, 4], 'Value found at index 3')
+
+print(binary_search([1, 3, 5, 9, 14, 22], 10))
+# ([], 'Value not found')
+
+
+# ==========================================
+# 192. SQUARE ROOT BISECTION - محاسبه جذر با نصف‌کردن بازه
+# ==========================================
+
+def square_root_bisection(square_target, tolerance=1e-7, max_iterations=100):
+    # بررسی منفی نبودن عدد ورودی
+    if square_target < 0:
+        raise ValueError(
+            'Square root of negative number is not defined in real numbers'
+        )
+
+    # جذر صفر و یک برابر با خودشان است.
+    if square_target == 0 or square_target == 1:
+        print(f'The square root of {square_target} is {square_target}')
+        return square_target
+
+    # تعیین بازه اولیه جست‌وجو
+    low = 0
+    high = max(1, square_target)
+
+    # تکرار الگوریتم تا رسیدن به دقت مطلوب
+    for _ in range(max_iterations):
+        # محاسبه نقطه وسط بازه
+        mid = (low + high) / 2
+        square_mid = mid * mid
+
+        # اگر عرض بازه به حد دقت برسد، تقریب را برمی‌گردانیم.
+        if high - low <= tolerance:
+            print(f'The square root of {square_target} is approximately {mid}')
+            return mid
+
+        elif square_mid < square_target:
+            # جذر بزرگ‌تر از mid است؛ نیمه پایین حذف می‌شود.
+            low = mid
+
+        else:
+            # جذر کوچک‌تر از mid است؛ نیمه بالا حذف می‌شود.
+            high = mid
+
+    # اگر تعداد تکرارها کافی نباشد، الگوریتم شکست می‌خورد.
+    print(f'Failed to converge within {max_iterations} iterations')
+    return None
+
