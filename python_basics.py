@@ -3778,6 +3778,8 @@
 # # Rex says ROOOOAR!
 
 
+
+
 # ==========================================
 # 172. PRODUCT CLASS AND TYPE HINTS - کلاس محصول و راهنمای نوع داده
 # ==========================================
@@ -3794,5 +3796,22 @@ class Product:
     # تعیین نمایش متنی محصول
     def __str__(self) -> str:
         return f'{self.name} - ${self.price}'
+
+
+# ==========================================
+# 173. DISCOUNT STRATEGY - کلاس انتزاعی روش تخفیف
+# ==========================================
+
+class DiscountStrategy(ABC):
+
+    # بررسی امکان استفاده از تخفیف
+    @abstractmethod
+    def is_applicable(self, product: Product, user_tier: str) -> bool:
+        pass
+
+    # محاسبه قیمت پس از تخفیف
+    @abstractmethod
+    def apply_discount(self, product: Product) -> float:
+        pass
 
 
