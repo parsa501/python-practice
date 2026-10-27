@@ -3832,3 +3832,20 @@ class PercentageDiscount(DiscountStrategy):
         return product.price * (1 - self.percent / 100)
 
 
+# ==========================================
+# 175. FIXED AMOUNT DISCOUNT - تخفیف مبلغ ثابت
+# ==========================================
+
+class FixedAmountDiscount(DiscountStrategy):
+    def __init__(self, amount: int) -> None:
+        self.amount = amount
+
+    def is_applicable(self, product: Product, user_tier: str) -> bool:
+        # تخفیف زمانی مجاز است که مبلغ آن کمتر از ۹۰٪ قیمت باشد.
+        return product.price * 0.9 > self.amount
+
+    def apply_discount(self, product: Product) -> float:
+        # کم کردن مبلغ ثابت از قیمت محصول
+        return product.price - self.amount
+
+
