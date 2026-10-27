@@ -3864,3 +3864,26 @@ class PremiumUserDiscount(DiscountStrategy):
         return product.price * 0.8
 
 
+# ==========================================
+# 177. DISCOUNT ENGINE - موتور محاسبه بهترین قیمت
+# ==========================================
+
+class DiscountEngine:
+    def __init__(self, strategies: list[DiscountStrategy]) -> None:
+        # دریافت فهرست روش‌های تخفیف
+        self.strategies = strategies
+
+    def calculate_best_price(self, product: Product, user_tier: str) -> float:
+        # قیمت اولیه هم یکی از گزینه‌هاست.
+        prices = [product.price]
+
+        for strategy in self.strategies:
+            # بررسی قابل‌استفاده بودن هر تخفیف
+            if strategy.is_applicable(product, user_tier):
+                discounted = strategy.apply_discount(product)
+                prices.append(discounted)
+
+        # برگرداندن کمترین قیمت از بین گزینه‌ها
+        return min(prices)
+
+
