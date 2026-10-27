@@ -4400,6 +4400,7 @@
 # 193. MERGE SORT - مرتب‌سازی ادغامی
 # ==========================================
 
+
 def merge_sort(array):
     # اگر طول آرایه صفر یا یک باشد، از قبل مرتب است
     if len(array) <= 1:
@@ -4445,14 +4446,45 @@ def merge_sort(array):
 
 
 # اجرای برنامه فقط در صورت اجرای مستقیم فایل
-if __name__ == '__main__':
+if __name__ == "__main__":
     numbers = [4, 10, 6, 14, 2, 1, 8, 5]
 
-    print('Unsorted array: ')
+    print("Unsorted array: ")
     print(numbers)
 
     # مرتب‌سازی آرایه اصلی
     merge_sort(numbers)
 
-    print('Sorted array: ')
+    print("Sorted array: ")
     print(numbers)
+
+
+# ==========================================
+# 194. QUICK SORT - مرتب‌سازی سریع
+# ==========================================
+
+
+def quick_sort(arr):
+    # اگر آرایه صفر یا یک عنصر داشته باشد، مرتب است
+    if len(arr) <= 1:
+        return arr[:]
+
+    # انتخاب اولین عنصر به‌عنوان محور
+    pivot = arr[0]
+
+    # ساخت سه لیست برای دسته‌بندی عناصر
+    less = []
+    equal = []
+    greater = []
+
+    # تقسیم عناصر بر اساس مقدار محور
+    for num in arr:
+        if num < pivot:
+            less.append(num)  # عناصر کوچک‌تر از محور
+        elif num > pivot:
+            greater.append(num)  # عناصر بزرگ‌تر از محور
+        else:
+            equal.append(num)  # عناصر برابر با محور
+
+    # مرتب‌سازی بازگشتی و ترکیب سه بخش
+    return quick_sort(less) + equal + quick_sort(greater)
