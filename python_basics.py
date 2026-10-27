@@ -3815,3 +3815,20 @@ class DiscountStrategy(ABC):
         pass
 
 
+# ==========================================
+# 174. PERCENTAGE DISCOUNT - تخفیف درصدی
+# ==========================================
+
+class PercentageDiscount(DiscountStrategy):
+    def __init__(self, percent: int) -> None:
+        self.percent = percent
+
+    def is_applicable(self, product: Product, user_tier: str) -> bool:
+        # تخفیف‌های حداکثر ۷۰ درصدی مجاز هستند.
+        return self.percent <= 70
+
+    def apply_discount(self, product: Product) -> float:
+        # قیمت نهایی = قیمت اولیه × (۱ - درصد تخفیف)
+        return product.price * (1 - self.percent / 100)
+
+
