@@ -4019,3 +4019,32 @@ class Rectangle:
         return f"Rectangle(width={self.width}, height={self.height})"
 
 
+# ==========================================
+# 182. SQUARE CLASS - کلاس مربع با وراثت
+# ==========================================
+
+class Square(Rectangle):
+    def __init__(self, side):
+        # مربع از کلاس مستطیل ارث‌بری می‌کند.
+        # طول و عرض مربع برابر با side هستند.
+        super().__init__(side, side)
+
+    # تغییر عرض باعث تغییر ارتفاع هم می‌شود.
+    def set_width(self, width):
+        self.width = width
+        self.height = width
+
+    # تغییر ارتفاع باعث تغییر عرض هم می‌شود.
+    def set_height(self, height):
+        self.width = height
+        self.height = height
+
+    # تغییر هم‌زمان طول ضلع‌های مربع
+    def set_side(self, side):
+        self.width = side
+        self.height = side
+
+    # بازنویسی نمایش متنی برای مربع
+    def __str__(self):
+        return f"Square(side={self.width})"
+
