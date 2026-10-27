@@ -4514,3 +4514,42 @@ def selection_sort(arr):
 
     # برگرداندن آرایه مرتب‌شده
     return arr
+
+# ==========================================
+# 196. LUHN ALGORITHM - اعتبارسنجی شماره کارت
+# ==========================================
+
+def verify_card_number(card_number):
+    # حذف خط تیره‌ها و فاصله‌ها از شماره کارت
+    cleaned = ''
+    for char in card_number:
+        if char != '-' and char != ' ':
+            cleaned += char
+
+    # پردازش ارقام از راست به چپ و دوبرابر کردن یک‌درمیان آن‌ها
+    total = 0
+    double = False
+
+    for i in range(len(cleaned) - 1, -1, -1):
+        # تبدیل کاراکتر رقم به عدد صحیح
+        digit = int(cleaned[i])
+
+        if double:
+            # دوبرابر کردن رقم‌های یک‌درمیان
+            digit *= 2
+
+            # اگر حاصل دوبرابر کردن بیشتر از ۹ شد، ۹ را کم می‌کنیم
+            if digit > 9:
+                digit -= 9
+
+        # افزودن رقم پردازش‌شده به مجموع
+        total += digit
+
+        # تغییر وضعیت برای رقم بعدی
+        double = not double
+
+    # اگر مجموع بر ۱۰ بخش‌پذیر باشد، شماره معتبر است
+    if total % 10 == 0:
+        return 'VALID!'
+
+    return 'INVALID!'
