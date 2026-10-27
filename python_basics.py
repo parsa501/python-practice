@@ -4209,3 +4209,28 @@ class HashTable:
         return None
 
 
+# ==========================================
+# 186. RECURSION - بازگشت (تابع بازگشتی)
+# ==========================================
+
+def countup(number):
+    # شرط پایه: اگر عدد کمتر از ۱ باشد، لیست خالی برگردانده می‌شود.
+    if number < 1:
+        return []
+
+    # فراخوانی دوباره تابع با عدد کوچک‌تر
+    count_list = countup(number - 1)
+
+    # اضافه کردن عدد فعلی به انتهای لیست
+    count_list.append(number)
+
+    return count_list
+
+
+# اجرای تابع
+print(countup(5))
+
+# Output:
+# [1, 2, 3, 4, 5]
+
+
