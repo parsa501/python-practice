@@ -4601,3 +4601,27 @@ def hanoi_solver(n):
 
     # تبدیل وضعیت‌ها به یک رشته چندخطی
     return "\n".join(moves)
+
+# ==========================================
+# 198. ADJACENCY LIST TO MATRIX - تبدیل لیست مجاورت به ماتریس
+# ==========================================
+
+def adjacency_list_to_matrix(adj_list):
+    # تعداد گره‌های گراف
+    n = len(adj_list)
+
+    # ساخت ماتریس مجاورت با مقدار اولیه صفر
+    matrix = [[0] * n for _ in range(n)]
+
+    # پیمایش گره‌ها و همسایه‌های هر گره
+    for node, neighbors in adj_list.items():
+        for neighbor in neighbors:
+            # ثبت وجود یال بین دو گره
+            matrix[node][neighbor] = 1
+
+    # نمایش سطرهای ماتریس
+    for row in matrix:
+        print(row)
+
+    # برگرداندن ماتریس مجاورت
+    return matrix
