@@ -3849,3 +3849,18 @@ class FixedAmountDiscount(DiscountStrategy):
         return product.price - self.amount
 
 
+# ==========================================
+# 176. PREMIUM USER DISCOUNT - تخفیف کاربر ویژه
+# ==========================================
+
+class PremiumUserDiscount(DiscountStrategy):
+
+    def is_applicable(self, product: Product, user_tier: str) -> bool:
+        # lower() حروف را کوچک می‌کند تا مقایسه راحت‌تر شود.
+        return user_tier.lower() == 'premium'
+
+    def apply_discount(self, product: Product) -> float:
+        # کاربر ویژه ۲۰٪ تخفیف می‌گیرد.
+        return product.price * 0.8
+
+
