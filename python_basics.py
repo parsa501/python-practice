@@ -4396,389 +4396,389 @@
 #     return None
 
 
-# ==========================================
-# 193. MERGE SORT - مرتب‌سازی ادغامی
-# ==========================================
+# # ==========================================
+# # 193. MERGE SORT - مرتب‌سازی ادغامی
+# # ==========================================
 
 
-def merge_sort(array):
-    # اگر طول آرایه صفر یا یک باشد، از قبل مرتب است
-    if len(array) <= 1:
-        return
+# def merge_sort(array):
+#     # اگر طول آرایه صفر یا یک باشد، از قبل مرتب است
+#     if len(array) <= 1:
+#         return
 
-    # تقسیم آرایه به دو نیمه
-    middle_point = len(array) // 2
-    left_part = array[:middle_point]
-    right_part = array[middle_point:]
+#     # تقسیم آرایه به دو نیمه
+#     middle_point = len(array) // 2
+#     left_part = array[:middle_point]
+#     right_part = array[middle_point:]
 
-    # مرتب‌سازی بازگشتی هر نیمه
-    merge_sort(left_part)
-    merge_sort(right_part)
+#     # مرتب‌سازی بازگشتی هر نیمه
+#     merge_sort(left_part)
+#     merge_sort(right_part)
 
-    # اندیس‌های پیمایش دو نیمه و آرایه اصلی
-    left_array_index = 0
-    right_array_index = 0
-    sorted_index = 0
+#     # اندیس‌های پیمایش دو نیمه و آرایه اصلی
+#     left_array_index = 0
+#     right_array_index = 0
+#     sorted_index = 0
 
-    # ادغام دو نیمه مرتب‌شده
-    while left_array_index < len(left_part) and right_array_index < len(right_part):
-        # انتخاب عنصر کوچک‌تر
-        if left_part[left_array_index] < right_part[right_array_index]:
-            array[sorted_index] = left_part[left_array_index]
-            left_array_index += 1
-        else:
-            array[sorted_index] = right_part[right_array_index]
-            right_array_index += 1
+#     # ادغام دو نیمه مرتب‌شده
+#     while left_array_index < len(left_part) and right_array_index < len(right_part):
+#         # انتخاب عنصر کوچک‌تر
+#         if left_part[left_array_index] < right_part[right_array_index]:
+#             array[sorted_index] = left_part[left_array_index]
+#             left_array_index += 1
+#         else:
+#             array[sorted_index] = right_part[right_array_index]
+#             right_array_index += 1
 
-        sorted_index += 1
+#         sorted_index += 1
 
-    # انتقال عناصر باقی‌مانده از نیمه چپ
-    while left_array_index < len(left_part):
-        array[sorted_index] = left_part[left_array_index]
-        left_array_index += 1
-        sorted_index += 1
+#     # انتقال عناصر باقی‌مانده از نیمه چپ
+#     while left_array_index < len(left_part):
+#         array[sorted_index] = left_part[left_array_index]
+#         left_array_index += 1
+#         sorted_index += 1
 
-    # انتقال عناصر باقی‌مانده از نیمه راست
-    while right_array_index < len(right_part):
-        array[sorted_index] = right_part[right_array_index]
-        right_array_index += 1
-        sorted_index += 1
+#     # انتقال عناصر باقی‌مانده از نیمه راست
+#     while right_array_index < len(right_part):
+#         array[sorted_index] = right_part[right_array_index]
+#         right_array_index += 1
+#         sorted_index += 1
 
 
-# اجرای برنامه فقط در صورت اجرای مستقیم فایل
-if __name__ == "__main__":
-    numbers = [4, 10, 6, 14, 2, 1, 8, 5]
+# # اجرای برنامه فقط در صورت اجرای مستقیم فایل
+# if __name__ == "__main__":
+#     numbers = [4, 10, 6, 14, 2, 1, 8, 5]
 
-    print("Unsorted array: ")
-    print(numbers)
+#     print("Unsorted array: ")
+#     print(numbers)
 
-    # مرتب‌سازی آرایه اصلی
-    merge_sort(numbers)
+#     # مرتب‌سازی آرایه اصلی
+#     merge_sort(numbers)
 
-    print("Sorted array: ")
-    print(numbers)
+#     print("Sorted array: ")
+#     print(numbers)
 
 
-# ==========================================
-# 194. QUICK SORT - مرتب‌سازی سریع
-# ==========================================
+# # ==========================================
+# # 194. QUICK SORT - مرتب‌سازی سریع
+# # ==========================================
 
 
-def quick_sort(arr):
-    # اگر آرایه صفر یا یک عنصر داشته باشد، مرتب است
-    if len(arr) <= 1:
-        return arr[:]
+# def quick_sort(arr):
+#     # اگر آرایه صفر یا یک عنصر داشته باشد، مرتب است
+#     if len(arr) <= 1:
+#         return arr[:]
 
-    # انتخاب اولین عنصر به‌عنوان محور
-    pivot = arr[0]
+#     # انتخاب اولین عنصر به‌عنوان محور
+#     pivot = arr[0]
 
-    # ساخت سه لیست برای دسته‌بندی عناصر
-    less = []
-    equal = []
-    greater = []
+#     # ساخت سه لیست برای دسته‌بندی عناصر
+#     less = []
+#     equal = []
+#     greater = []
 
-    # تقسیم عناصر بر اساس مقدار محور
-    for num in arr:
-        if num < pivot:
-            less.append(num)  # عناصر کوچک‌تر از محور
-        elif num > pivot:
-            greater.append(num)  # عناصر بزرگ‌تر از محور
-        else:
-            equal.append(num)  # عناصر برابر با محور
+#     # تقسیم عناصر بر اساس مقدار محور
+#     for num in arr:
+#         if num < pivot:
+#             less.append(num)  # عناصر کوچک‌تر از محور
+#         elif num > pivot:
+#             greater.append(num)  # عناصر بزرگ‌تر از محور
+#         else:
+#             equal.append(num)  # عناصر برابر با محور
 
-    # مرتب‌سازی بازگشتی و ترکیب سه بخش
-    return quick_sort(less) + equal + quick_sort(greater)
+#     # مرتب‌سازی بازگشتی و ترکیب سه بخش
+#     return quick_sort(less) + equal + quick_sort(greater)
 
 
-# ==========================================
-# 195. SELECTION SORT - مرتب‌سازی انتخابی
-# ==========================================
+# # ==========================================
+# # 195. SELECTION SORT - مرتب‌سازی انتخابی
+# # ==========================================
 
 
-def selection_sort(arr):
-    # تعداد عناصر آرایه
-    n = len(arr)
+# def selection_sort(arr):
+#     # تعداد عناصر آرایه
+#     n = len(arr)
 
-    # پیمایش هر موقعیت از آرایه
-    for i in range(n):
-        # فرض می‌کنیم عنصر فعلی کوچک‌ترین است
-        min_idx = i
+#     # پیمایش هر موقعیت از آرایه
+#     for i in range(n):
+#         # فرض می‌کنیم عنصر فعلی کوچک‌ترین است
+#         min_idx = i
 
-        # جست‌وجوی کوچک‌ترین عنصر در بخش باقی‌مانده
-        for j in range(i + 1, n):
-            if arr[j] < arr[min_idx]:
-                min_idx = j
+#         # جست‌وجوی کوچک‌ترین عنصر در بخش باقی‌مانده
+#         for j in range(i + 1, n):
+#             if arr[j] < arr[min_idx]:
+#                 min_idx = j
 
-        # جابه‌جایی عنصر فعلی با کوچک‌ترین عنصر پیدا‌شده
-        if min_idx != i:
-            arr[i], arr[min_idx] = arr[min_idx], arr[i]
+#         # جابه‌جایی عنصر فعلی با کوچک‌ترین عنصر پیدا‌شده
+#         if min_idx != i:
+#             arr[i], arr[min_idx] = arr[min_idx], arr[i]
 
-    # برگرداندن آرایه مرتب‌شده
-    return arr
+#     # برگرداندن آرایه مرتب‌شده
+#     return arr
 
 
-# ==========================================
-# 196. LUHN ALGORITHM - اعتبارسنجی شماره کارت
-# ==========================================
+# # ==========================================
+# # 196. LUHN ALGORITHM - اعتبارسنجی شماره کارت
+# # ==========================================
 
 
-def verify_card_number(card_number):
-    # حذف خط تیره‌ها و فاصله‌ها از شماره کارت
-    cleaned = ""
-    for char in card_number:
-        if char != "-" and char != " ":
-            cleaned += char
+# def verify_card_number(card_number):
+#     # حذف خط تیره‌ها و فاصله‌ها از شماره کارت
+#     cleaned = ""
+#     for char in card_number:
+#         if char != "-" and char != " ":
+#             cleaned += char
 
-    # پردازش ارقام از راست به چپ و دوبرابر کردن یک‌درمیان آن‌ها
-    total = 0
-    double = False
+#     # پردازش ارقام از راست به چپ و دوبرابر کردن یک‌درمیان آن‌ها
+#     total = 0
+#     double = False
 
-    for i in range(len(cleaned) - 1, -1, -1):
-        # تبدیل کاراکتر رقم به عدد صحیح
-        digit = int(cleaned[i])
+#     for i in range(len(cleaned) - 1, -1, -1):
+#         # تبدیل کاراکتر رقم به عدد صحیح
+#         digit = int(cleaned[i])
 
-        if double:
-            # دوبرابر کردن رقم‌های یک‌درمیان
-            digit *= 2
+#         if double:
+#             # دوبرابر کردن رقم‌های یک‌درمیان
+#             digit *= 2
 
-            # اگر حاصل دوبرابر کردن بیشتر از ۹ شد، ۹ را کم می‌کنیم
-            if digit > 9:
-                digit -= 9
+#             # اگر حاصل دوبرابر کردن بیشتر از ۹ شد، ۹ را کم می‌کنیم
+#             if digit > 9:
+#                 digit -= 9
 
-        # افزودن رقم پردازش‌شده به مجموع
-        total += digit
+#         # افزودن رقم پردازش‌شده به مجموع
+#         total += digit
 
-        # تغییر وضعیت برای رقم بعدی
-        double = not double
+#         # تغییر وضعیت برای رقم بعدی
+#         double = not double
 
-    # اگر مجموع بر ۱۰ بخش‌پذیر باشد، شماره معتبر است
-    if total % 10 == 0:
-        return "VALID!"
+#     # اگر مجموع بر ۱۰ بخش‌پذیر باشد، شماره معتبر است
+#     if total % 10 == 0:
+#         return "VALID!"
 
-    return "INVALID!"
+#     return "INVALID!"
 
 
-# ==========================================
-# 197. TOWER OF HANOI - حل برج هانوی با بازگشت
-# ==========================================
+# # ==========================================
+# # 197. TOWER OF HANOI - حل برج هانوی با بازگشت
+# # ==========================================
 
 
-def hanoi_solver(n):
-    # ساخت سه میله؛ دیسک بزرگ‌تر عدد بزرگ‌تری دارد
-    rods = [list(range(n, 0, -1)), [], []]
-    moves = []
+# def hanoi_solver(n):
+#     # ساخت سه میله؛ دیسک بزرگ‌تر عدد بزرگ‌تری دارد
+#     rods = [list(range(n, 0, -1)), [], []]
+#     moves = []
 
-    # ثبت وضعیت فعلی هر سه میله
-    def record():
-        moves.append(f"{rods[0]} {rods[1]} {rods[2]}")
+#     # ثبت وضعیت فعلی هر سه میله
+#     def record():
+#         moves.append(f"{rods[0]} {rods[1]} {rods[2]}")
 
-    # انتقال یک دیسک از میله مبدأ به میله مقصد
-    def move_disk(source, target):
-        disk = rods[source].pop()
-        rods[target].append(disk)
-        record()
+#     # انتقال یک دیسک از میله مبدأ به میله مقصد
+#     def move_disk(source, target):
+#         disk = rods[source].pop()
+#         rods[target].append(disk)
+#         record()
 
-    # حل بازگشتی مسئله برج هانوی
-    def solve(num_disks, source, auxiliary, target):
-        # حالت پایه: دیسکی برای انتقال باقی نمانده است
-        if num_disks == 0:
-            return
+#     # حل بازگشتی مسئله برج هانوی
+#     def solve(num_disks, source, auxiliary, target):
+#         # حالت پایه: دیسکی برای انتقال باقی نمانده است
+#         if num_disks == 0:
+#             return
 
-        # انتقال دیسک‌های بالایی به میله کمکی
-        solve(num_disks - 1, source, target, auxiliary)
+#         # انتقال دیسک‌های بالایی به میله کمکی
+#         solve(num_disks - 1, source, target, auxiliary)
 
-        # انتقال بزرگ‌ترین دیسک این مرحله به مقصد
-        move_disk(source, target)
+#         # انتقال بزرگ‌ترین دیسک این مرحله به مقصد
+#         move_disk(source, target)
 
-        # انتقال دیسک‌های کمکی روی دیسک منتقل‌شده
-        solve(num_disks - 1, auxiliary, source, target)
+#         # انتقال دیسک‌های کمکی روی دیسک منتقل‌شده
+#         solve(num_disks - 1, auxiliary, source, target)
 
-    # ثبت وضعیت اولیه میله‌ها
-    record()
+#     # ثبت وضعیت اولیه میله‌ها
+#     record()
 
-    # انتقال همه دیسک‌ها از میله اول به میله سوم
-    solve(n, 0, 1, 2)
+#     # انتقال همه دیسک‌ها از میله اول به میله سوم
+#     solve(n, 0, 1, 2)
 
-    # تبدیل وضعیت‌ها به یک رشته چندخطی
-    return "\n".join(moves)
+#     # تبدیل وضعیت‌ها به یک رشته چندخطی
+#     return "\n".join(moves)
 
 
-# ==========================================
-# 198. ADJACENCY LIST TO MATRIX - تبدیل لیست مجاورت به ماتریس
-# ==========================================
+# # ==========================================
+# # 198. ADJACENCY LIST TO MATRIX - تبدیل لیست مجاورت به ماتریس
+# # ==========================================
 
 
-def adjacency_list_to_matrix(adj_list):
-    # تعداد گره‌های گراف
-    n = len(adj_list)
+# def adjacency_list_to_matrix(adj_list):
+#     # تعداد گره‌های گراف
+#     n = len(adj_list)
 
-    # ساخت ماتریس مجاورت با مقدار اولیه صفر
-    matrix = [[0] * n for _ in range(n)]
+#     # ساخت ماتریس مجاورت با مقدار اولیه صفر
+#     matrix = [[0] * n for _ in range(n)]
 
-    # پیمایش گره‌ها و همسایه‌های هر گره
-    for node, neighbors in adj_list.items():
-        for neighbor in neighbors:
-            # ثبت وجود یال بین دو گره
-            matrix[node][neighbor] = 1
+#     # پیمایش گره‌ها و همسایه‌های هر گره
+#     for node, neighbors in adj_list.items():
+#         for neighbor in neighbors:
+#             # ثبت وجود یال بین دو گره
+#             matrix[node][neighbor] = 1
 
-    # نمایش سطرهای ماتریس
-    for row in matrix:
-        print(row)
+#     # نمایش سطرهای ماتریس
+#     for row in matrix:
+#         print(row)
 
-    # برگرداندن ماتریس مجاورت
-    return matrix
+#     # برگرداندن ماتریس مجاورت
+#     return matrix
 
 
-# ==========================================
-# 199. GENERATE PARENTHESES - تولید پرانتزهای معتبر با BFS
-# ==========================================
+# # ==========================================
+# # 199. GENERATE PARENTHESES - تولید پرانتزهای معتبر با BFS
+# # ==========================================
 
 
-def gen_parentheses(pairs):
-    # بررسی صحیح بودن نوع ورودی
-    if not isinstance(pairs, int):
-        return "The number of pairs should be an integer"
+# def gen_parentheses(pairs):
+#     # بررسی صحیح بودن نوع ورودی
+#     if not isinstance(pairs, int):
+#         return "The number of pairs should be an integer"
 
-    # بررسی مثبت بودن تعداد جفت‌ها
-    if pairs < 1:
-        return "The number of pairs should be at least 1"
+#     # بررسی مثبت بودن تعداد جفت‌ها
+#     if pairs < 1:
+#         return "The number of pairs should be at least 1"
 
-    # صف شامل رشته فعلی، تعداد پرانتزهای باز و تعداد پرانتزهای بسته است
-    queue = [("", 0, 0)]
-    result = []
+#     # صف شامل رشته فعلی، تعداد پرانتزهای باز و تعداد پرانتزهای بسته است
+#     queue = [("", 0, 0)]
+#     result = []
 
-    # پیمایش حالت‌ها با الگوریتم جست‌وجوی سطح‌به‌سطح
-    while queue:
-        current, opens_used, closes_used = queue.pop(0)
+#     # پیمایش حالت‌ها با الگوریتم جست‌وجوی سطح‌به‌سطح
+#     while queue:
+#         current, opens_used, closes_used = queue.pop(0)
 
-        # اگر طول رشته به تعداد موردنیاز رسیده باشد، آن را ذخیره می‌کنیم
-        if len(current) == 2 * pairs:
-            result.append(current)
-        else:
-            # افزودن پرانتز باز، تا زمانی که از تعداد مجاز بیشتر نشود
-            if opens_used < pairs:
-                queue.append((current + "(", opens_used + 1, closes_used))
+#         # اگر طول رشته به تعداد موردنیاز رسیده باشد، آن را ذخیره می‌کنیم
+#         if len(current) == 2 * pairs:
+#             result.append(current)
+#         else:
+#             # افزودن پرانتز باز، تا زمانی که از تعداد مجاز بیشتر نشود
+#             if opens_used < pairs:
+#                 queue.append((current + "(", opens_used + 1, closes_used))
 
-            # افزودن پرانتز بسته فقط در صورت وجود پرانتز بازِ جفت‌نشده
-            if closes_used < opens_used:
-                queue.append((current + ")", opens_used, closes_used + 1))
+#             # افزودن پرانتز بسته فقط در صورت وجود پرانتز بازِ جفت‌نشده
+#             if closes_used < opens_used:
+#                 queue.append((current + ")", opens_used, closes_used + 1))
 
-    # برگرداندن فهرست تمام حالت‌های معتبر
-    return result
+#     # برگرداندن فهرست تمام حالت‌های معتبر
+#     return result
 
 
-# آزمایش تابع با دو و سه جفت پرانتز
-print(gen_parentheses(2))
-print(gen_parentheses(3))
+# # آزمایش تابع با دو و سه جفت پرانتز
+# print(gen_parentheses(2))
+# print(gen_parentheses(3))
 
 
-# ==========================================
-# 200. DEPTH-FIRST SEARCH (DFS) - جست‌وجوی عمق‌اول در گراف
-# ==========================================
+# # ==========================================
+# # 200. DEPTH-FIRST SEARCH (DFS) - جست‌وجوی عمق‌اول در گراف
+# # ==========================================
 
 
-def dfs(matrix, start_node):
-    # تعداد گره‌های گراف
-    n = len(matrix)
+# def dfs(matrix, start_node):
+#     # تعداد گره‌های گراف
+#     n = len(matrix)
 
-    # مشخص کردن وضعیت بازدید گره‌ها
-    visited = [False] * n
+#     # مشخص کردن وضعیت بازدید گره‌ها
+#     visited = [False] * n
 
-    # پشته برای نگهداری گره‌های در انتظار بررسی
-    stack = [start_node]
+#     # پشته برای نگهداری گره‌های در انتظار بررسی
+#     stack = [start_node]
 
-    # ذخیره ترتیب بازدید گره‌ها
-    result = []
+#     # ذخیره ترتیب بازدید گره‌ها
+#     result = []
 
-    # ادامه جست‌وجو تا خالی شدن پشته
-    while stack:
-        # برداشتن آخرین گره از پشته
-        node = stack.pop()
+#     # ادامه جست‌وجو تا خالی شدن پشته
+#     while stack:
+#         # برداشتن آخرین گره از پشته
+#         node = stack.pop()
 
-        # بررسی گره در صورتی که قبلاً بازدید نشده باشد
-        if not visited[node]:
-            visited[node] = True
-            result.append(node)
+#         # بررسی گره در صورتی که قبلاً بازدید نشده باشد
+#         if not visited[node]:
+#             visited[node] = True
+#             result.append(node)
 
-            # پیمایش همسایه‌ها از اندیس بزرگ به کوچک
-            for neighbor in range(n - 1, -1, -1):
-                # بررسی وجود یال و بازدیدنشدن همسایه
-                if matrix[node][neighbor] == 1 and not visited[neighbor]:
-                    stack.append(neighbor)
+#             # پیمایش همسایه‌ها از اندیس بزرگ به کوچک
+#             for neighbor in range(n - 1, -1, -1):
+#                 # بررسی وجود یال و بازدیدنشدن همسایه
+#                 if matrix[node][neighbor] == 1 and not visited[neighbor]:
+#                     stack.append(neighbor)
 
-    # برگرداندن ترتیب بازدید گره‌ها
-    return result
+#     # برگرداندن ترتیب بازدید گره‌ها
+#     return result
 
 
-# ==========================================
-# 201. DFS N-QUEENS - حل مسئله وزیرها با جست‌وجوی عمق‌اول
-# ==========================================
+# # ==========================================
+# # 201. DFS N-QUEENS - حل مسئله وزیرها با جست‌وجوی عمق‌اول
+# # ==========================================
 
 
-def dfs_n_queens(n):
-    # اگر اندازه صفحه کمتر از یک باشد، راه‌حلی وجود ندارد
-    if n < 1:
-        return []
+# def dfs_n_queens(n):
+#     # اگر اندازه صفحه کمتر از یک باشد، راه‌حلی وجود ندارد
+#     if n < 1:
+#         return []
 
-    # ذخیره تمام راه‌حل‌ها
-    solutions = []
+#     # ذخیره تمام راه‌حل‌ها
+#     solutions = []
 
-    # نگهداری موقعیت ستون وزیر هر سطر
-    board = []
+#     # نگهداری موقعیت ستون وزیر هر سطر
+#     board = []
 
-    # بررسی امن بودن محل قرارگیری وزیر
-    def is_safe(row, col):
-        # بررسی وزیرهای قرارگرفته در سطرهای قبلی
-        for r, c in enumerate(board):
-            # بررسی هم‌ستونی یا قرارگیری روی قطر یکسان
-            if c == col or abs(c - col) == abs(r - row):
-                return False
+#     # بررسی امن بودن محل قرارگیری وزیر
+#     def is_safe(row, col):
+#         # بررسی وزیرهای قرارگرفته در سطرهای قبلی
+#         for r, c in enumerate(board):
+#             # بررسی هم‌ستونی یا قرارگیری روی قطر یکسان
+#             if c == col or abs(c - col) == abs(r - row):
+#                 return False
 
-        # هیچ برخوردی وجود ندارد
-        return True
+#         # هیچ برخوردی وجود ندارد
+#         return True
 
-    # جست‌وجوی بازگشتی برای قرار دادن وزیرها
-    def backtrack(row):
-        # اگر همه سطرها وزیر داشته باشند، یک راه‌حل کامل پیدا شده است
-        if row == n:
-            solutions.append(board[:])
-            return
+#     # جست‌وجوی بازگشتی برای قرار دادن وزیرها
+#     def backtrack(row):
+#         # اگر همه سطرها وزیر داشته باشند، یک راه‌حل کامل پیدا شده است
+#         if row == n:
+#             solutions.append(board[:])
+#             return
 
-        # بررسی تمام ستون‌های سطر فعلی
-        for col in range(n):
-            if is_safe(row, col):
-                # قرار دادن وزیر در ستون انتخاب‌شده
-                board.append(col)
+#         # بررسی تمام ستون‌های سطر فعلی
+#         for col in range(n):
+#             if is_safe(row, col):
+#                 # قرار دادن وزیر در ستون انتخاب‌شده
+#                 board.append(col)
 
-                # رفتن به سطر بعدی
-                backtrack(row + 1)
+#                 # رفتن به سطر بعدی
+#                 backtrack(row + 1)
 
-                # حذف وزیر برای بررسی انتخاب‌های دیگر
-                board.pop()
+#                 # حذف وزیر برای بررسی انتخاب‌های دیگر
+#                 board.pop()
 
-    # شروع جست‌وجو از سطر اول
-    backtrack(0)
+#     # شروع جست‌وجو از سطر اول
+#     backtrack(0)
 
-    # برگرداندن تمام راه‌حل‌های پیدا‌شده
-    return solutions
+#     # برگرداندن تمام راه‌حل‌های پیدا‌شده
+#     return solutions
 
 
-# ==========================================
-# 202. FIBONACCI - محاسبه عدد فیبوناچی با برنامه‌نویسی تکراری
-# ==========================================
+# # ==========================================
+# # 202. FIBONACCI - محاسبه عدد فیبوناچی با برنامه‌نویسی تکراری
+# # ==========================================
 
 
-def fibonacci(n):
-    # مقداردهی اولیه دنباله فیبوناچی
-    sequence = [0, 1]
+# def fibonacci(n):
+#     # مقداردهی اولیه دنباله فیبوناچی
+#     sequence = [0, 1]
 
-    # اگر n کمتر از 2 باشد، مقدار مستقیم برگردانده می‌شود
-    if n < 2:
-        return sequence[n]
+#     # اگر n کمتر از 2 باشد، مقدار مستقیم برگردانده می‌شود
+#     if n < 2:
+#         return sequence[n]
 
-    # محاسبه اعداد بعدی با جمع دو عدد قبلی
-    for i in range(2, n + 1):
-        sequence.append(sequence[i - 1] + sequence[i - 2])
+#     # محاسبه اعداد بعدی با جمع دو عدد قبلی
+#     for i in range(2, n + 1):
+#         sequence.append(sequence[i - 1] + sequence[i - 2])
 
-    # برگرداندن عدد فیبوناچی در اندیس n
-    return sequence[n]
+#     # برگرداندن عدد فیبوناچی در اندیس n
+#     return sequence[n]
