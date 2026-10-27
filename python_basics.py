@@ -4143,3 +4143,69 @@ my_list.remove(1)
 print(my_list.length)      # 1
 
 
+# ==========================================
+# 185. HASH TABLE - جدول درهم‌سازی
+# ==========================================
+
+class HashTable:
+    def __init__(self):
+        # دیکشنری اصلی برای ذخیره داده‌ها
+        self.collection = {}
+
+    # ==========================================
+    # HASH - تبدیل کلید به مقدار هش
+    # ==========================================
+
+    def hash(self, key):
+        total = 0
+
+        # جمع کد عددی کاراکترهای کلید
+        for char in key:
+            total += ord(char)
+
+        return total
+
+    # ==========================================
+    # ADD - اضافه کردن کلید و مقدار
+    # ==========================================
+
+    def add(self, key, value):
+        hashed = self.hash(key)
+
+        # ساخت دیکشنری داخلی برای مقدار هش جدید
+        if hashed not in self.collection:
+            self.collection[hashed] = {}
+
+        # ذخیره مقدار با کلید اصلی
+        self.collection[hashed][key] = value
+
+    # ==========================================
+    # REMOVE - حذف کلید و مقدار
+    # ==========================================
+
+    def remove(self, key):
+        hashed = self.hash(key)
+
+        # بررسی وجود هش و کلید اصلی
+        if hashed in self.collection and key in self.collection[hashed]:
+            del self.collection[hashed][key]
+
+            # حذف دیکشنری داخلی در صورت خالی شدن
+            if not self.collection[hashed]:
+                del self.collection[hashed]
+
+    # ==========================================
+    # LOOKUP - جست‌وجو و دریافت مقدار
+    # ==========================================
+
+    def lookup(self, key):
+        hashed = self.hash(key)
+
+        # بررسی وجود هش و کلید موردنظر
+        if hashed in self.collection and key in self.collection[hashed]:
+            return self.collection[hashed][key]
+
+        # اگر کلید پیدا نشود
+        return None
+
+
