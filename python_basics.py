@@ -3912,3 +3912,38 @@ if __name__ == '__main__':
 # Output:
 # Best price for Wireless Mouse for Premium user: $40.00
 
+# ==========================================
+# 179. ABSTRACT PLAYER CLASS - کلاس انتزاعی بازیکن
+# ==========================================
+
+import abc
+import random
+
+
+class Player(abc.ABC):
+    def __init__(self):
+        self.moves = []  # حرکت‌های مجاز بازیکن
+        self.position = (0, 0)  # موقعیت اولیه (x, y)
+        self.path = [self.position]  # مسیر طی‌شده
+
+    def make_move(self):
+        # انتخاب تصادفی یکی از حرکت‌های مجاز
+        move = random.choice(self.moves)
+
+        # به‌روزرسانی مختصات بازیکن
+        self.position = (
+            self.position[0] + move[0],
+            self.position[1] + move[1]
+        )
+
+        # ثبت موقعیت جدید در مسیر
+        self.path.append(self.position)
+
+        return self.position
+
+    # هر کلاس فرزند باید روش ارتقای سطح را پیاده‌سازی کند.
+    @abc.abstractmethod
+    def level_up(self):
+        pass
+
+
