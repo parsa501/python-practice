@@ -4494,6 +4494,7 @@ def quick_sort(arr):
 # 195. SELECTION SORT - مرتب‌سازی انتخابی
 # ==========================================
 
+
 def selection_sort(arr):
     # تعداد عناصر آرایه
     n = len(arr)
@@ -4515,15 +4516,17 @@ def selection_sort(arr):
     # برگرداندن آرایه مرتب‌شده
     return arr
 
+
 # ==========================================
 # 196. LUHN ALGORITHM - اعتبارسنجی شماره کارت
 # ==========================================
 
+
 def verify_card_number(card_number):
     # حذف خط تیره‌ها و فاصله‌ها از شماره کارت
-    cleaned = ''
+    cleaned = ""
     for char in card_number:
-        if char != '-' and char != ' ':
+        if char != "-" and char != " ":
             cleaned += char
 
     # پردازش ارقام از راست به چپ و دوبرابر کردن یک‌درمیان آن‌ها
@@ -4550,6 +4553,51 @@ def verify_card_number(card_number):
 
     # اگر مجموع بر ۱۰ بخش‌پذیر باشد، شماره معتبر است
     if total % 10 == 0:
-        return 'VALID!'
+        return "VALID!"
 
-    return 'INVALID!'
+    return "INVALID!"
+
+
+# ==========================================
+# 197. TOWER OF HANOI - حل برج هانوی با بازگشت
+# ==========================================
+
+
+def hanoi_solver(n):
+    # ساخت سه میله؛ دیسک بزرگ‌تر عدد بزرگ‌تری دارد
+    rods = [list(range(n, 0, -1)), [], []]
+    moves = []
+
+    # ثبت وضعیت فعلی هر سه میله
+    def record():
+        moves.append(f"{rods[0]} {rods[1]} {rods[2]}")
+
+    # انتقال یک دیسک از میله مبدأ به میله مقصد
+    def move_disk(source, target):
+        disk = rods[source].pop()
+        rods[target].append(disk)
+        record()
+
+    # حل بازگشتی مسئله برج هانوی
+    def solve(num_disks, source, auxiliary, target):
+        # حالت پایه: دیسکی برای انتقال باقی نمانده است
+        if num_disks == 0:
+            return
+
+        # انتقال دیسک‌های بالایی به میله کمکی
+        solve(num_disks - 1, source, target, auxiliary)
+
+        # انتقال بزرگ‌ترین دیسک این مرحله به مقصد
+        move_disk(source, target)
+
+        # انتقال دیسک‌های کمکی روی دیسک منتقل‌شده
+        solve(num_disks - 1, auxiliary, source, target)
+
+    # ثبت وضعیت اولیه میله‌ها
+    record()
+
+    # انتقال همه دیسک‌ها از میله اول به میله سوم
+    solve(n, 0, 1, 2)
+
+    # تبدیل وضعیت‌ها به یک رشته چندخطی
+    return "\n".join(moves)
