@@ -3778,624 +3778,619 @@
 # # Rex says ROOOOAR!
 
 
+# # ==========================================
+# # 172. PRODUCT CLASS AND TYPE HINTS - کلاس محصول و راهنمای نوع داده
+# # ==========================================
 
+# from abc import ABC, abstractmethod
 
-# ==========================================
-# 172. PRODUCT CLASS AND TYPE HINTS - کلاس محصول و راهنمای نوع داده
-# ==========================================
 
-from abc import ABC, abstractmethod
+# class Product:
+#     # name از نوع str و price از نوع float است.
+#     # -> None یعنی سازنده مقدار بازگشتی ندارد.
+#     def __init__(self, name: str, price: float) -> None:
+#         self.name = name
+#         self.price = price
 
-class Product:
-    # name از نوع str و price از نوع float است.
-    # -> None یعنی سازنده مقدار بازگشتی ندارد.
-    def __init__(self, name: str, price: float) -> None:
-        self.name = name
-        self.price = price
+#     # تعیین نمایش متنی محصول
+#     def __str__(self) -> str:
+#         return f"{self.name} - ${self.price}"
 
-    # تعیین نمایش متنی محصول
-    def __str__(self) -> str:
-        return f'{self.name} - ${self.price}'
 
+# # ==========================================
+# # 173. DISCOUNT STRATEGY - کلاس انتزاعی روش تخفیف
+# # ==========================================
 
-# ==========================================
-# 173. DISCOUNT STRATEGY - کلاس انتزاعی روش تخفیف
-# ==========================================
 
-class DiscountStrategy(ABC):
+# class DiscountStrategy(ABC):
 
-    # بررسی امکان استفاده از تخفیف
-    @abstractmethod
-    def is_applicable(self, product: Product, user_tier: str) -> bool:
-        pass
+#     # بررسی امکان استفاده از تخفیف
+#     @abstractmethod
+#     def is_applicable(self, product: Product, user_tier: str) -> bool:
+#         pass
 
-    # محاسبه قیمت پس از تخفیف
-    @abstractmethod
-    def apply_discount(self, product: Product) -> float:
-        pass
+#     # محاسبه قیمت پس از تخفیف
+#     @abstractmethod
+#     def apply_discount(self, product: Product) -> float:
+#         pass
 
 
-# ==========================================
-# 174. PERCENTAGE DISCOUNT - تخفیف درصدی
-# ==========================================
+# # ==========================================
+# # 174. PERCENTAGE DISCOUNT - تخفیف درصدی
+# # ==========================================
 
-class PercentageDiscount(DiscountStrategy):
-    def __init__(self, percent: int) -> None:
-        self.percent = percent
 
-    def is_applicable(self, product: Product, user_tier: str) -> bool:
-        # تخفیف‌های حداکثر ۷۰ درصدی مجاز هستند.
-        return self.percent <= 70
+# class PercentageDiscount(DiscountStrategy):
+#     def __init__(self, percent: int) -> None:
+#         self.percent = percent
 
-    def apply_discount(self, product: Product) -> float:
-        # قیمت نهایی = قیمت اولیه × (۱ - درصد تخفیف)
-        return product.price * (1 - self.percent / 100)
+#     def is_applicable(self, product: Product, user_tier: str) -> bool:
+#         # تخفیف‌های حداکثر ۷۰ درصدی مجاز هستند.
+#         return self.percent <= 70
 
+#     def apply_discount(self, product: Product) -> float:
+#         # قیمت نهایی = قیمت اولیه × (۱ - درصد تخفیف)
+#         return product.price * (1 - self.percent / 100)
 
-# ==========================================
-# 175. FIXED AMOUNT DISCOUNT - تخفیف مبلغ ثابت
-# ==========================================
 
-class FixedAmountDiscount(DiscountStrategy):
-    def __init__(self, amount: int) -> None:
-        self.amount = amount
+# # ==========================================
+# # 175. FIXED AMOUNT DISCOUNT - تخفیف مبلغ ثابت
+# # ==========================================
 
-    def is_applicable(self, product: Product, user_tier: str) -> bool:
-        # تخفیف زمانی مجاز است که مبلغ آن کمتر از ۹۰٪ قیمت باشد.
-        return product.price * 0.9 > self.amount
 
-    def apply_discount(self, product: Product) -> float:
-        # کم کردن مبلغ ثابت از قیمت محصول
-        return product.price - self.amount
+# class FixedAmountDiscount(DiscountStrategy):
+#     def __init__(self, amount: int) -> None:
+#         self.amount = amount
 
+#     def is_applicable(self, product: Product, user_tier: str) -> bool:
+#         # تخفیف زمانی مجاز است که مبلغ آن کمتر از ۹۰٪ قیمت باشد.
+#         return product.price * 0.9 > self.amount
 
-# ==========================================
-# 176. PREMIUM USER DISCOUNT - تخفیف کاربر ویژه
-# ==========================================
+#     def apply_discount(self, product: Product) -> float:
+#         # کم کردن مبلغ ثابت از قیمت محصول
+#         return product.price - self.amount
 
-class PremiumUserDiscount(DiscountStrategy):
 
-    def is_applicable(self, product: Product, user_tier: str) -> bool:
-        # lower() حروف را کوچک می‌کند تا مقایسه راحت‌تر شود.
-        return user_tier.lower() == 'premium'
+# # ==========================================
+# # 176. PREMIUM USER DISCOUNT - تخفیف کاربر ویژه
+# # ==========================================
 
-    def apply_discount(self, product: Product) -> float:
-        # کاربر ویژه ۲۰٪ تخفیف می‌گیرد.
-        return product.price * 0.8
 
+# class PremiumUserDiscount(DiscountStrategy):
 
-# ==========================================
-# 177. DISCOUNT ENGINE - موتور محاسبه بهترین قیمت
-# ==========================================
+#     def is_applicable(self, product: Product, user_tier: str) -> bool:
+#         # lower() حروف را کوچک می‌کند تا مقایسه راحت‌تر شود.
+#         return user_tier.lower() == "premium"
 
-class DiscountEngine:
-    def __init__(self, strategies: list[DiscountStrategy]) -> None:
-        # دریافت فهرست روش‌های تخفیف
-        self.strategies = strategies
+#     def apply_discount(self, product: Product) -> float:
+#         # کاربر ویژه ۲۰٪ تخفیف می‌گیرد.
+#         return product.price * 0.8
 
-    def calculate_best_price(self, product: Product, user_tier: str) -> float:
-        # قیمت اولیه هم یکی از گزینه‌هاست.
-        prices = [product.price]
 
-        for strategy in self.strategies:
-            # بررسی قابل‌استفاده بودن هر تخفیف
-            if strategy.is_applicable(product, user_tier):
-                discounted = strategy.apply_discount(product)
-                prices.append(discounted)
-
-        # برگرداندن کمترین قیمت از بین گزینه‌ها
-        return min(prices)
-
-
-# ==========================================
-# 178. MAIN PROGRAM - اجرای برنامه
-# ==========================================
-
-if __name__ == '__main__':
-    product = Product('Wireless Mouse', 50.0)
-    user_tier = 'Premium'
-
-    # ساخت روش‌های تخفیف
-    strategies = [
-        PercentageDiscount(10),
-        FixedAmountDiscount(5),
-        PremiumUserDiscount()
-    ]
-
-    # ساخت موتور تخفیف و محاسبه بهترین قیمت
-    engine = DiscountEngine(strategies)
-    best_price = engine.calculate_best_price(product, user_tier)
-
-    # نمایش بهترین قیمت با دو رقم اعشار
-    print(f"Best price for {product.name} for {user_tier} user: ${best_price:.2f}")
-
-# Output:
-# Best price for Wireless Mouse for Premium user: $40.00
-
-# ==========================================
-# 179. ABSTRACT PLAYER CLASS - کلاس انتزاعی بازیکن
-# ==========================================
-
-import abc
-import random
-
-
-class Player(abc.ABC):
-    def __init__(self):
-        self.moves = []  # حرکت‌های مجاز بازیکن
-        self.position = (0, 0)  # موقعیت اولیه (x, y)
-        self.path = [self.position]  # مسیر طی‌شده
-
-    def make_move(self):
-        # انتخاب تصادفی یکی از حرکت‌های مجاز
-        move = random.choice(self.moves)
-
-        # به‌روزرسانی مختصات بازیکن
-        self.position = (
-            self.position[0] + move[0],
-            self.position[1] + move[1]
-        )
-
-        # ثبت موقعیت جدید در مسیر
-        self.path.append(self.position)
-
-        return self.position
-
-    # هر کلاس فرزند باید روش ارتقای سطح را پیاده‌سازی کند.
-    @abc.abstractmethod
-    def level_up(self):
-        pass
-
-
-# ==========================================
-# 180. PAWN CLASS - کلاس سرباز بازی
-# ==========================================
-
-class Pawn(Player):
-    def __init__(self):
-        super().__init__()
-
-        # حرکت‌های اولیه: بالا، پایین، چپ و راست
-        self.moves = [
-            (0, 1),
-            (0, -1),
-            (-1, 0),
-            (1, 0)
-        ]
-
-    def level_up(self):
-        # با ارتقای سطح، حرکت‌های مورب نیز اضافه می‌شوند.
-        self.moves.extend([
-            (-1, -1),
-            (-1, 1),
-            (1, -1),
-            (1, 1)
-        ])
-        
-# ==========================================
-# 181. RECTANGLE CLASS - کلاس مستطیل
-# ==========================================
-
-class Rectangle:
-    def __init__(self, width, height):
-        self.width = width
-        self.height = height
-
-    # تغییر عرض مستطیل
-    def set_width(self, width):
-        self.width = width
-
-    # تغییر ارتفاع مستطیل
-    def set_height(self, height):
-        self.height = height
-
-    # محاسبه مساحت
-    def get_area(self):
-        return self.width * self.height
-
-    # محاسبه محیط
-    def get_perimeter(self):
-        return 2 * (self.width + self.height)
-
-    # محاسبه طول قطر با قضیه فیثاغورس
-    def get_diagonal(self):
-        return (self.width ** 2 + self.height ** 2) ** 0.5
-
-    # رسم مستطیل با استفاده از ستاره
-    def get_picture(self):
-        # محدودیت اندازه تصویر
-        if self.width > 50 or self.height > 50:
-            return "Too big for picture."
-
-        # تکرار ستاره‌ها در هر سطر و تکرار سطرها
-        return ("*" * self.width + "\n") * self.height
-
-    # محاسبه تعداد شکل‌های کوچک قابل جای‌گیری در مستطیل
-    def get_amount_inside(self, shape):
-        return (self.width // shape.width) * (self.height // shape.height)
-
-    # نمایش اطلاعات مستطیل
-    def __str__(self):
-        return f"Rectangle(width={self.width}, height={self.height})"
-
-
-# ==========================================
-# 182. SQUARE CLASS - کلاس مربع با وراثت
-# ==========================================
-
-class Square(Rectangle):
-    def __init__(self, side):
-        # مربع از کلاس مستطیل ارث‌بری می‌کند.
-        # طول و عرض مربع برابر با side هستند.
-        super().__init__(side, side)
-
-    # تغییر عرض باعث تغییر ارتفاع هم می‌شود.
-    def set_width(self, width):
-        self.width = width
-        self.height = width
-
-    # تغییر ارتفاع باعث تغییر عرض هم می‌شود.
-    def set_height(self, height):
-        self.width = height
-        self.height = height
-
-    # تغییر هم‌زمان طول ضلع‌های مربع
-    def set_side(self, side):
-        self.width = side
-        self.height = side
+# # ==========================================
+# # 177. DISCOUNT ENGINE - موتور محاسبه بهترین قیمت
+# # ==========================================
 
-    # بازنویسی نمایش متنی برای مربع
-    def __str__(self):
-        return f"Square(side={self.width})"
 
-# ==========================================
-# 183. LINKED LIST - لیست پیوندی
-# ==========================================
-
-class LinkedList:
+# class DiscountEngine:
+#     def __init__(self, strategies: list[DiscountStrategy]) -> None:
+#         # دریافت فهرست روش‌های تخفیف
+#         self.strategies = strategies
 
-    # گره داخلی؛ هر گره داده و اشاره‌گر به گره بعدی دارد.
-    class Node:
-        def __init__(self, element):
-            self.element = element
-            self.next = None
+#     def calculate_best_price(self, product: Product, user_tier: str) -> float:
+#         # قیمت اولیه هم یکی از گزینه‌هاست.
+#         prices = [product.price]
 
-    def __init__(self):
-        self.length = 0  # تعداد عناصر لیست
-        self.head = None  # اولین گره لیست
+#         for strategy in self.strategies:
+#             # بررسی قابل‌استفاده بودن هر تخفیف
+#             if strategy.is_applicable(product, user_tier):
+#                 discounted = strategy.apply_discount(product)
+#                 prices.append(discounted)
 
-    # بررسی خالی بودن لیست
-    def is_empty(self):
-        return self.length == 0
+#         # برگرداندن کمترین قیمت از بین گزینه‌ها
+#         return min(prices)
 
-    # ==========================================
-    # ADD - اضافه کردن عنصر به انتهای لیست
-    # ==========================================
 
-    def add(self, element):
-        node = self.Node(element)
+# # ==========================================
+# # 178. MAIN PROGRAM - اجرای برنامه
+# # ==========================================
 
-        if self.is_empty():
-            # اگر لیست خالی باشد، گره جدید اولین گره است.
-            self.head = node
-        else:
-            # حرکت از اولین گره تا آخرین گره
-            current_node = self.head
+# if __name__ == "__main__":
+#     product = Product("Wireless Mouse", 50.0)
+#     user_tier = "Premium"
 
-            while current_node.next is not None:
-                current_node = current_node.next
+#     # ساخت روش‌های تخفیف
+#     strategies = [PercentageDiscount(10), FixedAmountDiscount(5), PremiumUserDiscount()]
 
-            # اتصال آخرین گره به گره جدید
-            current_node.next = node
+#     # ساخت موتور تخفیف و محاسبه بهترین قیمت
+#     engine = DiscountEngine(strategies)
+#     best_price = engine.calculate_best_price(product, user_tier)
 
-        self.length += 1
+#     # نمایش بهترین قیمت با دو رقم اعشار
+#     print(f"Best price for {product.name} for {user_tier} user: ${best_price:.2f}")
 
-    # ==========================================
-    # REMOVE - حذف عنصر از لیست
-    # ==========================================
+# # Output:
+# # Best price for Wireless Mouse for Premium user: $40.00
 
-    def remove(self, element):
-        previous_node = None
-        current_node = self.head
+# # ==========================================
+# # 179. ABSTRACT PLAYER CLASS - کلاس انتزاعی بازیکن
+# # ==========================================
 
-        # جست‌وجوی عنصر موردنظر در لیست
-        while (
-            current_node is not None
-            and current_node.element != element
-        ):
-            previous_node = current_node
-            current_node = current_node.next
+# import abc
+# import random
 
-        if current_node is None:
-            # اگر عنصر پیدا نشود، لیست تغییری نمی‌کند.
-            return
 
-        elif previous_node is not None:
-            # حذف گره‌ای که در وسط یا انتهای لیست است.
-            previous_node.next = current_node.next
+# class Player(abc.ABC):
+#     def __init__(self):
+#         self.moves = []  # حرکت‌های مجاز بازیکن
+#         self.position = (0, 0)  # موقعیت اولیه (x, y)
+#         self.path = [self.position]  # مسیر طی‌شده
 
-        else:
-            # اگر اولین گره حذف شود، head به گره بعدی می‌رود.
-            self.head = current_node.next
+#     def make_move(self):
+#         # انتخاب تصادفی یکی از حرکت‌های مجاز
+#         move = random.choice(self.moves)
 
-        self.length -= 1
+#         # به‌روزرسانی مختصات بازیکن
+#         self.position = (self.position[0] + move[0], self.position[1] + move[1])
 
+#         # ثبت موقعیت جدید در مسیر
+#         self.path.append(self.position)
 
-# ==========================================
-# 184. TESTING LINKED LIST - آزمایش لیست پیوندی
-# ==========================================
+#         return self.position
 
-my_list = LinkedList()
+#     # هر کلاس فرزند باید روش ارتقای سطح را پیاده‌سازی کند.
+#     @abc.abstractmethod
+#     def level_up(self):
+#         pass
 
-# لیست در ابتدا خالی است.
-print(my_list.is_empty())  # True
 
-# اضافه کردن دو عنصر
-my_list.add(1)
-my_list.add(2)
+# # ==========================================
+# # 180. PAWN CLASS - کلاس سرباز بازی
+# # ==========================================
 
-print(my_list.is_empty())  # False
-print(my_list.length)      # 2
 
-# حذف عنصر 1
-my_list.remove(1)
+# class Pawn(Player):
+#     def __init__(self):
+#         super().__init__()
 
-print(my_list.length)      # 1
+#         # حرکت‌های اولیه: بالا، پایین، چپ و راست
+#         self.moves = [(0, 1), (0, -1), (-1, 0), (1, 0)]
 
+#     def level_up(self):
+#         # با ارتقای سطح، حرکت‌های مورب نیز اضافه می‌شوند.
+#         self.moves.extend([(-1, -1), (-1, 1), (1, -1), (1, 1)])
 
-# ==========================================
-# 185. HASH TABLE - جدول درهم‌سازی
-# ==========================================
 
-class HashTable:
-    def __init__(self):
-        # دیکشنری اصلی برای ذخیره داده‌ها
-        self.collection = {}
+# # ==========================================
+# # 181. RECTANGLE CLASS - کلاس مستطیل
+# # ==========================================
 
-    # ==========================================
-    # HASH - تبدیل کلید به مقدار هش
-    # ==========================================
 
-    def hash(self, key):
-        total = 0
+# class Rectangle:
+#     def __init__(self, width, height):
+#         self.width = width
+#         self.height = height
 
-        # جمع کد عددی کاراکترهای کلید
-        for char in key:
-            total += ord(char)
+#     # تغییر عرض مستطیل
+#     def set_width(self, width):
+#         self.width = width
 
-        return total
+#     # تغییر ارتفاع مستطیل
+#     def set_height(self, height):
+#         self.height = height
 
-    # ==========================================
-    # ADD - اضافه کردن کلید و مقدار
-    # ==========================================
+#     # محاسبه مساحت
+#     def get_area(self):
+#         return self.width * self.height
 
-    def add(self, key, value):
-        hashed = self.hash(key)
+#     # محاسبه محیط
+#     def get_perimeter(self):
+#         return 2 * (self.width + self.height)
 
-        # ساخت دیکشنری داخلی برای مقدار هش جدید
-        if hashed not in self.collection:
-            self.collection[hashed] = {}
+#     # محاسبه طول قطر با قضیه فیثاغورس
+#     def get_diagonal(self):
+#         return (self.width**2 + self.height**2) ** 0.5
 
-        # ذخیره مقدار با کلید اصلی
-        self.collection[hashed][key] = value
+#     # رسم مستطیل با استفاده از ستاره
+#     def get_picture(self):
+#         # محدودیت اندازه تصویر
+#         if self.width > 50 or self.height > 50:
+#             return "Too big for picture."
 
-    # ==========================================
-    # REMOVE - حذف کلید و مقدار
-    # ==========================================
+#         # تکرار ستاره‌ها در هر سطر و تکرار سطرها
+#         return ("*" * self.width + "\n") * self.height
 
-    def remove(self, key):
-        hashed = self.hash(key)
+#     # محاسبه تعداد شکل‌های کوچک قابل جای‌گیری در مستطیل
+#     def get_amount_inside(self, shape):
+#         return (self.width // shape.width) * (self.height // shape.height)
 
-        # بررسی وجود هش و کلید اصلی
-        if hashed in self.collection and key in self.collection[hashed]:
-            del self.collection[hashed][key]
+#     # نمایش اطلاعات مستطیل
+#     def __str__(self):
+#         return f"Rectangle(width={self.width}, height={self.height})"
 
-            # حذف دیکشنری داخلی در صورت خالی شدن
-            if not self.collection[hashed]:
-                del self.collection[hashed]
 
-    # ==========================================
-    # LOOKUP - جست‌وجو و دریافت مقدار
-    # ==========================================
+# # ==========================================
+# # 182. SQUARE CLASS - کلاس مربع با وراثت
+# # ==========================================
 
-    def lookup(self, key):
-        hashed = self.hash(key)
 
-        # بررسی وجود هش و کلید موردنظر
-        if hashed in self.collection and key in self.collection[hashed]:
-            return self.collection[hashed][key]
+# class Square(Rectangle):
+#     def __init__(self, side):
+#         # مربع از کلاس مستطیل ارث‌بری می‌کند.
+#         # طول و عرض مربع برابر با side هستند.
+#         super().__init__(side, side)
 
-        # اگر کلید پیدا نشود
-        return None
+#     # تغییر عرض باعث تغییر ارتفاع هم می‌شود.
+#     def set_width(self, width):
+#         self.width = width
+#         self.height = width
 
+#     # تغییر ارتفاع باعث تغییر عرض هم می‌شود.
+#     def set_height(self, height):
+#         self.width = height
+#         self.height = height
 
-# ==========================================
-# 186. RECURSION - بازگشت (تابع بازگشتی)
-# ==========================================
+#     # تغییر هم‌زمان طول ضلع‌های مربع
+#     def set_side(self, side):
+#         self.width = side
+#         self.height = side
 
-def countup(number):
-    # شرط پایه: اگر عدد کمتر از ۱ باشد، لیست خالی برگردانده می‌شود.
-    if number < 1:
-        return []
+#     # بازنویسی نمایش متنی برای مربع
+#     def __str__(self):
+#         return f"Square(side={self.width})"
 
-    # فراخوانی دوباره تابع با عدد کوچک‌تر
-    count_list = countup(number - 1)
 
-    # اضافه کردن عدد فعلی به انتهای لیست
-    count_list.append(number)
+# # ==========================================
+# # 183. LINKED LIST - لیست پیوندی
+# # ==========================================
 
-    return count_list
 
+# class LinkedList:
 
-# اجرای تابع
-print(countup(5))
+#     # گره داخلی؛ هر گره داده و اشاره‌گر به گره بعدی دارد.
+#     class Node:
+#         def __init__(self, element):
+#             self.element = element
+#             self.next = None
 
-# Output:
-# [1, 2, 3, 4, 5]
+#     def __init__(self):
+#         self.length = 0  # تعداد عناصر لیست
+#         self.head = None  # اولین گره لیست
 
+#     # بررسی خالی بودن لیست
+#     def is_empty(self):
+#         return self.length == 0
 
-# ==========================================
-# 187. RECURSION WITH RANGE - ساخت بازه با تابع بازگشتی
-# ==========================================
+#     # ==========================================
+#     # ADD - اضافه کردن عنصر به انتهای لیست
+#     # ==========================================
 
-def range_of_numbers(start_num, end_num):
-    # شرط پایه: وقتی به عدد شروع رسیدیم، همان را برمی‌گردانیم.
-    if start_num == end_num:
-        return [start_num]
+#     def add(self, element):
+#         node = self.Node(element)
 
-    # فراخوانی بازگشتی با کوچک کردن عدد پایان
-    # سپس اضافه کردن عدد پایان به انتهای لیست
-    return range_of_numbers(start_num, end_num - 1) + [end_num]
+#         if self.is_empty():
+#             # اگر لیست خالی باشد، گره جدید اولین گره است.
+#             self.head = node
+#         else:
+#             # حرکت از اولین گره تا آخرین گره
+#             current_node = self.head
 
+#             while current_node.next is not None:
+#                 current_node = current_node.next
 
-# مثال استفاده
-print(range_of_numbers(1, 5))
+#             # اتصال آخرین گره به گره جدید
+#             current_node.next = node
 
-# Output:
-# [1, 2, 3, 4, 5]
+#         self.length += 1
 
-# ==========================================
-# 188. MERGE SORT - مرتب‌سازی ادغامی
-# ==========================================
+#     # ==========================================
+#     # REMOVE - حذف عنصر از لیست
+#     # ==========================================
 
-def merge_sort(arr):
-    # شرط پایه: لیست‌های صفر یا یک‌عضوی مرتب هستند.
-    if len(arr) <= 1:
-        return arr
+#     def remove(self, element):
+#         previous_node = None
+#         current_node = self.head
 
-    # تقسیم لیست به دو نیمه
-    mid = len(arr) // 2
+#         # جست‌وجوی عنصر موردنظر در لیست
+#         while current_node is not None and current_node.element != element:
+#             previous_node = current_node
+#             current_node = current_node.next
 
-    # مرتب‌سازی بازگشتی نیمه چپ و راست
-    left = merge_sort(arr[:mid])
-    right = merge_sort(arr[mid:])
+#         if current_node is None:
+#             # اگر عنصر پیدا نشود، لیست تغییری نمی‌کند.
+#             return
 
-    # لیست نهایی برای ذخیره عناصر مرتب‌شده
-    sorted_list = []
-    i = 0  # اندیس نیمه چپ
-    j = 0  # اندیس نیمه راست
+#         elif previous_node is not None:
+#             # حذف گره‌ای که در وسط یا انتهای لیست است.
+#             previous_node.next = current_node.next
 
-    # مقایسه عناصر دو نیمه و انتخاب عنصر کوچک‌تر
-    while i < len(left) and j < len(right):
-        if left[i] <= right[j]:
-            sorted_list.append(left[i])
-            i += 1
-        else:
-            sorted_list.append(right[j])
-            j += 1
+#         else:
+#             # اگر اولین گره حذف شود، head به گره بعدی می‌رود.
+#             self.head = current_node.next
 
-    # اضافه کردن عناصر باقی‌مانده نیمه چپ
-    sorted_list.extend(left[i:])
+#         self.length -= 1
 
-    # اضافه کردن عناصر باقی‌مانده نیمه راست
-    sorted_list.extend(right[j:])
 
-    return sorted_list
+# # ==========================================
+# # 184. TESTING LINKED LIST - آزمایش لیست پیوندی
+# # ==========================================
 
+# my_list = LinkedList()
 
-# ==========================================
-# 189. TESTING MERGE SORT - آزمایش مرتب‌سازی
-# ==========================================
+# # لیست در ابتدا خالی است.
+# print(my_list.is_empty())  # True
 
-numbers = [8, 3, 5, 1, 9, 2, 7, 4]
+# # اضافه کردن دو عنصر
+# my_list.add(1)
+# my_list.add(2)
 
-print(merge_sort(numbers))
+# print(my_list.is_empty())  # False
+# print(my_list.length)  # 2
 
-# Output:
-# [1, 2, 3, 4, 5, 7, 8, 9]
+# # حذف عنصر 1
+# my_list.remove(1)
 
+# print(my_list.length)  # 1
 
-# ==========================================
-# 190. BINARY SEARCH - جست‌وجوی دودویی
-# ==========================================
 
-def binary_search(search_list, value):
-    # ثبت مسیر بررسی عناصر تا رسیدن به هدف
-    path_to_target = []
+# # ==========================================
+# # 185. HASH TABLE - جدول درهم‌سازی
+# # ==========================================
 
-    # تعیین محدوده جست‌وجو
-    low = 0
-    high = len(search_list) - 1
 
-    # ادامه جست‌وجو تا زمانی که محدوده معتبر باشد
-    while low <= high:
-        # محاسبه اندیس عنصر وسط
-        mid = (low + high) // 2
-        value_at_middle = search_list[mid]
+# class HashTable:
+#     def __init__(self):
+#         # دیکشنری اصلی برای ذخیره داده‌ها
+#         self.collection = {}
 
-        # ثبت عنصر بررسی‌شده
-        path_to_target.append(value_at_middle)
+#     # ==========================================
+#     # HASH - تبدیل کلید به مقدار هش
+#     # ==========================================
 
-        if value == value_at_middle:
-            # هدف پیدا شده است؛ مسیر و اندیس را برمی‌گردانیم.
-            return path_to_target, f'Value found at index {mid}'
+#     def hash(self, key):
+#         total = 0
 
-        elif value > value_at_middle:
-            # هدف بزرگ‌تر است؛ نیمه چپ حذف می‌شود.
-            low = mid + 1
+#         # جمع کد عددی کاراکترهای کلید
+#         for char in key:
+#             total += ord(char)
 
-        else:
-            # هدف کوچک‌تر است؛ نیمه راست حذف می‌شود.
-            high = mid - 1
+#         return total
 
-    # اگر محدوده تمام شود، هدف پیدا نشده است.
-    return [], "Value not found"
+#     # ==========================================
+#     # ADD - اضافه کردن کلید و مقدار
+#     # ==========================================
 
+#     def add(self, key, value):
+#         hashed = self.hash(key)
 
-# ==========================================
-# 191. TESTING BINARY SEARCH - آزمایش جست‌وجوی دودویی
-# ==========================================
+#         # ساخت دیکشنری داخلی برای مقدار هش جدید
+#         if hashed not in self.collection:
+#             self.collection[hashed] = {}
 
-print(binary_search([1, 2, 3, 4, 5], 3))
-# ([3], 'Value found at index 2')
+#         # ذخیره مقدار با کلید اصلی
+#         self.collection[hashed][key] = value
 
-print(binary_search([1, 2, 3, 4, 5, 9], 4))
-# ([3, 5, 4], 'Value found at index 3')
+#     # ==========================================
+#     # REMOVE - حذف کلید و مقدار
+#     # ==========================================
 
-print(binary_search([1, 3, 5, 9, 14, 22], 10))
-# ([], 'Value not found')
+#     def remove(self, key):
+#         hashed = self.hash(key)
 
+#         # بررسی وجود هش و کلید اصلی
+#         if hashed in self.collection and key in self.collection[hashed]:
+#             del self.collection[hashed][key]
 
-# ==========================================
-# 192. SQUARE ROOT BISECTION - محاسبه جذر با نصف‌کردن بازه
-# ==========================================
+#             # حذف دیکشنری داخلی در صورت خالی شدن
+#             if not self.collection[hashed]:
+#                 del self.collection[hashed]
 
-def square_root_bisection(square_target, tolerance=1e-7, max_iterations=100):
-    # بررسی منفی نبودن عدد ورودی
-    if square_target < 0:
-        raise ValueError(
-            'Square root of negative number is not defined in real numbers'
-        )
+#     # ==========================================
+#     # LOOKUP - جست‌وجو و دریافت مقدار
+#     # ==========================================
 
-    # جذر صفر و یک برابر با خودشان است.
-    if square_target == 0 or square_target == 1:
-        print(f'The square root of {square_target} is {square_target}')
-        return square_target
+#     def lookup(self, key):
+#         hashed = self.hash(key)
 
-    # تعیین بازه اولیه جست‌وجو
-    low = 0
-    high = max(1, square_target)
+#         # بررسی وجود هش و کلید موردنظر
+#         if hashed in self.collection and key in self.collection[hashed]:
+#             return self.collection[hashed][key]
 
-    # تکرار الگوریتم تا رسیدن به دقت مطلوب
-    for _ in range(max_iterations):
-        # محاسبه نقطه وسط بازه
-        mid = (low + high) / 2
-        square_mid = mid * mid
+#         # اگر کلید پیدا نشود
+#         return None
 
-        # اگر عرض بازه به حد دقت برسد، تقریب را برمی‌گردانیم.
-        if high - low <= tolerance:
-            print(f'The square root of {square_target} is approximately {mid}')
-            return mid
 
-        elif square_mid < square_target:
-            # جذر بزرگ‌تر از mid است؛ نیمه پایین حذف می‌شود.
-            low = mid
+# # ==========================================
+# # 186. RECURSION - بازگشت (تابع بازگشتی)
+# # ==========================================
 
-        else:
-            # جذر کوچک‌تر از mid است؛ نیمه بالا حذف می‌شود.
-            high = mid
 
-    # اگر تعداد تکرارها کافی نباشد، الگوریتم شکست می‌خورد.
-    print(f'Failed to converge within {max_iterations} iterations')
-    return None
+# def countup(number):
+#     # شرط پایه: اگر عدد کمتر از ۱ باشد، لیست خالی برگردانده می‌شود.
+#     if number < 1:
+#         return []
 
+#     # فراخوانی دوباره تابع با عدد کوچک‌تر
+#     count_list = countup(number - 1)
+
+#     # اضافه کردن عدد فعلی به انتهای لیست
+#     count_list.append(number)
+
+#     return count_list
+
+
+# # اجرای تابع
+# print(countup(5))
+
+# # Output:
+# # [1, 2, 3, 4, 5]
+
+
+# # ==========================================
+# # 187. RECURSION WITH RANGE - ساخت بازه با تابع بازگشتی
+# # ==========================================
+
+
+# def range_of_numbers(start_num, end_num):
+#     # شرط پایه: وقتی به عدد شروع رسیدیم، همان را برمی‌گردانیم.
+#     if start_num == end_num:
+#         return [start_num]
+
+#     # فراخوانی بازگشتی با کوچک کردن عدد پایان
+#     # سپس اضافه کردن عدد پایان به انتهای لیست
+#     return range_of_numbers(start_num, end_num - 1) + [end_num]
+
+
+# # مثال استفاده
+# print(range_of_numbers(1, 5))
+
+# # Output:
+# # [1, 2, 3, 4, 5]
+
+# # ==========================================
+# # 188. MERGE SORT - مرتب‌سازی ادغامی
+# # ==========================================
+
+
+# def merge_sort(arr):
+#     # شرط پایه: لیست‌های صفر یا یک‌عضوی مرتب هستند.
+#     if len(arr) <= 1:
+#         return arr
+
+#     # تقسیم لیست به دو نیمه
+#     mid = len(arr) // 2
+
+#     # مرتب‌سازی بازگشتی نیمه چپ و راست
+#     left = merge_sort(arr[:mid])
+#     right = merge_sort(arr[mid:])
+
+#     # لیست نهایی برای ذخیره عناصر مرتب‌شده
+#     sorted_list = []
+#     i = 0  # اندیس نیمه چپ
+#     j = 0  # اندیس نیمه راست
+
+#     # مقایسه عناصر دو نیمه و انتخاب عنصر کوچک‌تر
+#     while i < len(left) and j < len(right):
+#         if left[i] <= right[j]:
+#             sorted_list.append(left[i])
+#             i += 1
+#         else:
+#             sorted_list.append(right[j])
+#             j += 1
+
+#     # اضافه کردن عناصر باقی‌مانده نیمه چپ
+#     sorted_list.extend(left[i:])
+
+#     # اضافه کردن عناصر باقی‌مانده نیمه راست
+#     sorted_list.extend(right[j:])
+
+#     return sorted_list
+
+
+# # ==========================================
+# # 189. TESTING MERGE SORT - آزمایش مرتب‌سازی
+# # ==========================================
+
+# numbers = [8, 3, 5, 1, 9, 2, 7, 4]
+
+# print(merge_sort(numbers))
+
+# # Output:
+# # [1, 2, 3, 4, 5, 7, 8, 9]
+
+
+# # ==========================================
+# # 190. BINARY SEARCH - جست‌وجوی دودویی
+# # ==========================================
+
+
+# def binary_search(search_list, value):
+#     # ثبت مسیر بررسی عناصر تا رسیدن به هدف
+#     path_to_target = []
+
+#     # تعیین محدوده جست‌وجو
+#     low = 0
+#     high = len(search_list) - 1
+
+#     # ادامه جست‌وجو تا زمانی که محدوده معتبر باشد
+#     while low <= high:
+#         # محاسبه اندیس عنصر وسط
+#         mid = (low + high) // 2
+#         value_at_middle = search_list[mid]
+
+#         # ثبت عنصر بررسی‌شده
+#         path_to_target.append(value_at_middle)
+
+#         if value == value_at_middle:
+#             # هدف پیدا شده است؛ مسیر و اندیس را برمی‌گردانیم.
+#             return path_to_target, f"Value found at index {mid}"
+
+#         elif value > value_at_middle:
+#             # هدف بزرگ‌تر است؛ نیمه چپ حذف می‌شود.
+#             low = mid + 1
+
+#         else:
+#             # هدف کوچک‌تر است؛ نیمه راست حذف می‌شود.
+#             high = mid - 1
+
+#     # اگر محدوده تمام شود، هدف پیدا نشده است.
+#     return [], "Value not found"
+
+
+# # ==========================================
+# # 191. TESTING BINARY SEARCH - آزمایش جست‌وجوی دودویی
+# # ==========================================
+
+# print(binary_search([1, 2, 3, 4, 5], 3))
+# # ([3], 'Value found at index 2')
+
+# print(binary_search([1, 2, 3, 4, 5, 9], 4))
+# # ([3, 5, 4], 'Value found at index 3')
+
+# print(binary_search([1, 3, 5, 9, 14, 22], 10))
+# # ([], 'Value not found')
+
+
+# # ==========================================
+# # 192. SQUARE ROOT BISECTION - محاسبه جذر با نصف‌کردن بازه
+# # ==========================================
+
+
+# def square_root_bisection(square_target, tolerance=1e-7, max_iterations=100):
+#     # بررسی منفی نبودن عدد ورودی
+#     if square_target < 0:
+#         raise ValueError(
+#             "Square root of negative number is not defined in real numbers"
+#         )
+
+#     # جذر صفر و یک برابر با خودشان است.
+#     if square_target == 0 or square_target == 1:
+#         print(f"The square root of {square_target} is {square_target}")
+#         return square_target
+
+#     # تعیین بازه اولیه جست‌وجو
+#     low = 0
+#     high = max(1, square_target)
+
+#     # تکرار الگوریتم تا رسیدن به دقت مطلوب
+#     for _ in range(max_iterations):
+#         # محاسبه نقطه وسط بازه
+#         mid = (low + high) / 2
+#         square_mid = mid * mid
+
+#         # اگر عرض بازه به حد دقت برسد، تقریب را برمی‌گردانیم.
+#         if high - low <= tolerance:
+#             print(f"The square root of {square_target} is approximately {mid}")
+#             return mid
+
+#         elif square_mid < square_target:
+#             # جذر بزرگ‌تر از mid است؛ نیمه پایین حذف می‌شود.
+#             low = mid
+
+#         else:
+#             # جذر کوچک‌تر از mid است؛ نیمه بالا حذف می‌شود.
+#             high = mid
+
+#     # اگر تعداد تکرارها کافی نباشد، الگوریتم شکست می‌خورد.
+#     print(f"Failed to converge within {max_iterations} iterations")
+#     return None
