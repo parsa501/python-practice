@@ -4254,4 +4254,54 @@ print(range_of_numbers(1, 5))
 # Output:
 # [1, 2, 3, 4, 5]
 
+# ==========================================
+# 188. MERGE SORT - مرتب‌سازی ادغامی
+# ==========================================
+
+def merge_sort(arr):
+    # شرط پایه: لیست‌های صفر یا یک‌عضوی مرتب هستند.
+    if len(arr) <= 1:
+        return arr
+
+    # تقسیم لیست به دو نیمه
+    mid = len(arr) // 2
+
+    # مرتب‌سازی بازگشتی نیمه چپ و راست
+    left = merge_sort(arr[:mid])
+    right = merge_sort(arr[mid:])
+
+    # لیست نهایی برای ذخیره عناصر مرتب‌شده
+    sorted_list = []
+    i = 0  # اندیس نیمه چپ
+    j = 0  # اندیس نیمه راست
+
+    # مقایسه عناصر دو نیمه و انتخاب عنصر کوچک‌تر
+    while i < len(left) and j < len(right):
+        if left[i] <= right[j]:
+            sorted_list.append(left[i])
+            i += 1
+        else:
+            sorted_list.append(right[j])
+            j += 1
+
+    # اضافه کردن عناصر باقی‌مانده نیمه چپ
+    sorted_list.extend(left[i:])
+
+    # اضافه کردن عناصر باقی‌مانده نیمه راست
+    sorted_list.extend(right[j:])
+
+    return sorted_list
+
+
+# ==========================================
+# 189. TESTING MERGE SORT - آزمایش مرتب‌سازی
+# ==========================================
+
+numbers = [8, 3, 5, 1, 9, 2, 7, 4]
+
+print(merge_sort(numbers))
+
+# Output:
+# [1, 2, 3, 4, 5, 7, 8, 9]
+
 
