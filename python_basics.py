@@ -4667,3 +4667,40 @@ def gen_parentheses(pairs):
 # آزمایش تابع با دو و سه جفت پرانتز
 print(gen_parentheses(2))
 print(gen_parentheses(3))
+
+
+# ==========================================
+# 200. DEPTH-FIRST SEARCH (DFS) - جست‌وجوی عمق‌اول در گراف
+# ==========================================
+
+def dfs(matrix, start_node):
+    # تعداد گره‌های گراف
+    n = len(matrix)
+
+    # مشخص کردن وضعیت بازدید گره‌ها
+    visited = [False] * n
+
+    # پشته برای نگهداری گره‌های در انتظار بررسی
+    stack = [start_node]
+
+    # ذخیره ترتیب بازدید گره‌ها
+    result = []
+
+    # ادامه جست‌وجو تا خالی شدن پشته
+    while stack:
+        # برداشتن آخرین گره از پشته
+        node = stack.pop()
+
+        # بررسی گره در صورتی که قبلاً بازدید نشده باشد
+        if not visited[node]:
+            visited[node] = True
+            result.append(node)
+
+            # پیمایش همسایه‌ها از اندیس بزرگ به کوچک
+            for neighbor in range(n - 1, -1, -1):
+                # بررسی وجود یال و بازدیدنشدن همسایه
+                if matrix[node][neighbor] == 1 and not visited[neighbor]:
+                    stack.append(neighbor)
+
+    # برگرداندن ترتیب بازدید گره‌ها
+    return result
