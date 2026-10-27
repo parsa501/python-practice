@@ -4488,3 +4488,29 @@ def quick_sort(arr):
 
     # مرتب‌سازی بازگشتی و ترکیب سه بخش
     return quick_sort(less) + equal + quick_sort(greater)
+
+
+# ==========================================
+# 195. SELECTION SORT - مرتب‌سازی انتخابی
+# ==========================================
+
+def selection_sort(arr):
+    # تعداد عناصر آرایه
+    n = len(arr)
+
+    # پیمایش هر موقعیت از آرایه
+    for i in range(n):
+        # فرض می‌کنیم عنصر فعلی کوچک‌ترین است
+        min_idx = i
+
+        # جست‌وجوی کوچک‌ترین عنصر در بخش باقی‌مانده
+        for j in range(i + 1, n):
+            if arr[j] < arr[min_idx]:
+                min_idx = j
+
+        # جابه‌جایی عنصر فعلی با کوچک‌ترین عنصر پیدا‌شده
+        if min_idx != i:
+            arr[i], arr[min_idx] = arr[min_idx], arr[i]
+
+    # برگرداندن آرایه مرتب‌شده
+    return arr
