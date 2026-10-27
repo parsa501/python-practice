@@ -4602,9 +4602,11 @@ def hanoi_solver(n):
     # تبدیل وضعیت‌ها به یک رشته چندخطی
     return "\n".join(moves)
 
+
 # ==========================================
 # 198. ADJACENCY LIST TO MATRIX - تبدیل لیست مجاورت به ماتریس
 # ==========================================
+
 
 def adjacency_list_to_matrix(adj_list):
     # تعداد گره‌های گراف
@@ -4631,17 +4633,18 @@ def adjacency_list_to_matrix(adj_list):
 # 199. GENERATE PARENTHESES - تولید پرانتزهای معتبر با BFS
 # ==========================================
 
+
 def gen_parentheses(pairs):
     # بررسی صحیح بودن نوع ورودی
     if not isinstance(pairs, int):
-        return 'The number of pairs should be an integer'
+        return "The number of pairs should be an integer"
 
     # بررسی مثبت بودن تعداد جفت‌ها
     if pairs < 1:
-        return 'The number of pairs should be at least 1'
+        return "The number of pairs should be at least 1"
 
     # صف شامل رشته فعلی، تعداد پرانتزهای باز و تعداد پرانتزهای بسته است
-    queue = [('', 0, 0)]
+    queue = [("", 0, 0)]
     result = []
 
     # پیمایش حالت‌ها با الگوریتم جست‌وجوی سطح‌به‌سطح
@@ -4654,11 +4657,11 @@ def gen_parentheses(pairs):
         else:
             # افزودن پرانتز باز، تا زمانی که از تعداد مجاز بیشتر نشود
             if opens_used < pairs:
-                queue.append((current + '(', opens_used + 1, closes_used))
+                queue.append((current + "(", opens_used + 1, closes_used))
 
             # افزودن پرانتز بسته فقط در صورت وجود پرانتز بازِ جفت‌نشده
             if closes_used < opens_used:
-                queue.append((current + ')', opens_used, closes_used + 1))
+                queue.append((current + ")", opens_used, closes_used + 1))
 
     # برگرداندن فهرست تمام حالت‌های معتبر
     return result
@@ -4672,6 +4675,7 @@ print(gen_parentheses(3))
 # ==========================================
 # 200. DEPTH-FIRST SEARCH (DFS) - جست‌وجوی عمق‌اول در گراف
 # ==========================================
+
 
 def dfs(matrix, start_node):
     # تعداد گره‌های گراف
@@ -4709,6 +4713,7 @@ def dfs(matrix, start_node):
 # ==========================================
 # 201. DFS N-QUEENS - حل مسئله وزیرها با جست‌وجوی عمق‌اول
 # ==========================================
+
 
 def dfs_n_queens(n):
     # اگر اندازه صفحه کمتر از یک باشد، راه‌حلی وجود ندارد
@@ -4756,3 +4761,24 @@ def dfs_n_queens(n):
 
     # برگرداندن تمام راه‌حل‌های پیدا‌شده
     return solutions
+
+
+# ==========================================
+# 202. FIBONACCI - محاسبه عدد فیبوناچی با برنامه‌نویسی تکراری
+# ==========================================
+
+
+def fibonacci(n):
+    # مقداردهی اولیه دنباله فیبوناچی
+    sequence = [0, 1]
+
+    # اگر n کمتر از 2 باشد، مقدار مستقیم برگردانده می‌شود
+    if n < 2:
+        return sequence[n]
+
+    # محاسبه اعداد بعدی با جمع دو عدد قبلی
+    for i in range(2, n + 1):
+        sequence.append(sequence[i - 1] + sequence[i - 2])
+
+    # برگرداندن عدد فیبوناچی در اندیس n
+    return sequence[n]
