@@ -3972,3 +3972,50 @@ class Pawn(Player):
             (1, 1)
         ])
         
+# ==========================================
+# 181. RECTANGLE CLASS - کلاس مستطیل
+# ==========================================
+
+class Rectangle:
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+
+    # تغییر عرض مستطیل
+    def set_width(self, width):
+        self.width = width
+
+    # تغییر ارتفاع مستطیل
+    def set_height(self, height):
+        self.height = height
+
+    # محاسبه مساحت
+    def get_area(self):
+        return self.width * self.height
+
+    # محاسبه محیط
+    def get_perimeter(self):
+        return 2 * (self.width + self.height)
+
+    # محاسبه طول قطر با قضیه فیثاغورس
+    def get_diagonal(self):
+        return (self.width ** 2 + self.height ** 2) ** 0.5
+
+    # رسم مستطیل با استفاده از ستاره
+    def get_picture(self):
+        # محدودیت اندازه تصویر
+        if self.width > 50 or self.height > 50:
+            return "Too big for picture."
+
+        # تکرار ستاره‌ها در هر سطر و تکرار سطرها
+        return ("*" * self.width + "\n") * self.height
+
+    # محاسبه تعداد شکل‌های کوچک قابل جای‌گیری در مستطیل
+    def get_amount_inside(self, shape):
+        return (self.width // shape.width) * (self.height // shape.height)
+
+    # نمایش اطلاعات مستطیل
+    def __str__(self):
+        return f"Rectangle(width={self.width}, height={self.height})"
+
+
