@@ -4121,3 +4121,25 @@ class LinkedList:
         self.length -= 1
 
 
+# ==========================================
+# 184. TESTING LINKED LIST - آزمایش لیست پیوندی
+# ==========================================
+
+my_list = LinkedList()
+
+# لیست در ابتدا خالی است.
+print(my_list.is_empty())  # True
+
+# اضافه کردن دو عنصر
+my_list.add(1)
+my_list.add(2)
+
+print(my_list.is_empty())  # False
+print(my_list.length)      # 2
+
+# حذف عنصر 1
+my_list.remove(1)
+
+print(my_list.length)      # 1
+
+
