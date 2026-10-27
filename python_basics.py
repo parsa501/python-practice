@@ -4234,3 +4234,24 @@ print(countup(5))
 # [1, 2, 3, 4, 5]
 
 
+# ==========================================
+# 187. RECURSION WITH RANGE - ساخت بازه با تابع بازگشتی
+# ==========================================
+
+def range_of_numbers(start_num, end_num):
+    # شرط پایه: وقتی به عدد شروع رسیدیم، همان را برمی‌گردانیم.
+    if start_num == end_num:
+        return [start_num]
+
+    # فراخوانی بازگشتی با کوچک کردن عدد پایان
+    # سپس اضافه کردن عدد پایان به انتهای لیست
+    return range_of_numbers(start_num, end_num - 1) + [end_num]
+
+
+# مثال استفاده
+print(range_of_numbers(1, 5))
+
+# Output:
+# [1, 2, 3, 4, 5]
+
+
