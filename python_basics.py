@@ -4625,3 +4625,45 @@ def adjacency_list_to_matrix(adj_list):
 
     # برگرداندن ماتریس مجاورت
     return matrix
+
+
+# ==========================================
+# 199. GENERATE PARENTHESES - تولید پرانتزهای معتبر با BFS
+# ==========================================
+
+def gen_parentheses(pairs):
+    # بررسی صحیح بودن نوع ورودی
+    if not isinstance(pairs, int):
+        return 'The number of pairs should be an integer'
+
+    # بررسی مثبت بودن تعداد جفت‌ها
+    if pairs < 1:
+        return 'The number of pairs should be at least 1'
+
+    # صف شامل رشته فعلی، تعداد پرانتزهای باز و تعداد پرانتزهای بسته است
+    queue = [('', 0, 0)]
+    result = []
+
+    # پیمایش حالت‌ها با الگوریتم جست‌وجوی سطح‌به‌سطح
+    while queue:
+        current, opens_used, closes_used = queue.pop(0)
+
+        # اگر طول رشته به تعداد موردنیاز رسیده باشد، آن را ذخیره می‌کنیم
+        if len(current) == 2 * pairs:
+            result.append(current)
+        else:
+            # افزودن پرانتز باز، تا زمانی که از تعداد مجاز بیشتر نشود
+            if opens_used < pairs:
+                queue.append((current + '(', opens_used + 1, closes_used))
+
+            # افزودن پرانتز بسته فقط در صورت وجود پرانتز بازِ جفت‌نشده
+            if closes_used < opens_used:
+                queue.append((current + ')', opens_used, closes_used + 1))
+
+    # برگرداندن فهرست تمام حالت‌های معتبر
+    return result
+
+
+# آزمایش تابع با دو و سه جفت پرانتز
+print(gen_parentheses(2))
+print(gen_parentheses(3))
