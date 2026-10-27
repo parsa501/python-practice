@@ -4048,3 +4048,76 @@ class Square(Rectangle):
     def __str__(self):
         return f"Square(side={self.width})"
 
+# ==========================================
+# 183. LINKED LIST - لیست پیوندی
+# ==========================================
+
+class LinkedList:
+
+    # گره داخلی؛ هر گره داده و اشاره‌گر به گره بعدی دارد.
+    class Node:
+        def __init__(self, element):
+            self.element = element
+            self.next = None
+
+    def __init__(self):
+        self.length = 0  # تعداد عناصر لیست
+        self.head = None  # اولین گره لیست
+
+    # بررسی خالی بودن لیست
+    def is_empty(self):
+        return self.length == 0
+
+    # ==========================================
+    # ADD - اضافه کردن عنصر به انتهای لیست
+    # ==========================================
+
+    def add(self, element):
+        node = self.Node(element)
+
+        if self.is_empty():
+            # اگر لیست خالی باشد، گره جدید اولین گره است.
+            self.head = node
+        else:
+            # حرکت از اولین گره تا آخرین گره
+            current_node = self.head
+
+            while current_node.next is not None:
+                current_node = current_node.next
+
+            # اتصال آخرین گره به گره جدید
+            current_node.next = node
+
+        self.length += 1
+
+    # ==========================================
+    # REMOVE - حذف عنصر از لیست
+    # ==========================================
+
+    def remove(self, element):
+        previous_node = None
+        current_node = self.head
+
+        # جست‌وجوی عنصر موردنظر در لیست
+        while (
+            current_node is not None
+            and current_node.element != element
+        ):
+            previous_node = current_node
+            current_node = current_node.next
+
+        if current_node is None:
+            # اگر عنصر پیدا نشود، لیست تغییری نمی‌کند.
+            return
+
+        elif previous_node is not None:
+            # حذف گره‌ای که در وسط یا انتهای لیست است.
+            previous_node.next = current_node.next
+
+        else:
+            # اگر اولین گره حذف شود، head به گره بعدی می‌رود.
+            self.head = current_node.next
+
+        self.length -= 1
+
+
